@@ -36,7 +36,7 @@ class TranscriptRole extends Model
      */
     public function staff(): BelongsToMany
     {
-        return $this->belongsToMany(Staff::class, 'transcript_staff_roles')
+        return $this->belongsToMany(Staff::class, 'transcript_staff_roles', 'role_id', 'staff_id')
                     ->withPivot(['assigned_at', 'assigned_by', 'is_active'])
                     ->withTimestamps();
     }

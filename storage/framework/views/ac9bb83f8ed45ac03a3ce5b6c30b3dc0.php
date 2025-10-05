@@ -41,7 +41,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form method="POST" action="<?php echo e(route('transcript.staff.login')); ?>" class="space-y-6" id="staffLoginForm">
+                    <form method="POST" action="<?php echo e(route('transcript.staff.login.submit')); ?>" class="space-y-6" id="staffLoginForm">
                         <?php echo csrf_field(); ?>
                         
                         <div>

@@ -25,8 +25,8 @@ class TranscriptStaffAuth
 
         $staff = Auth::guard('transcript_staff')->user();
         
-        // Check if staff is active
-        if (!$staff->is_active) {
+        // Check if staff is active (status = 1 means active)
+        if ($staff->status != 1) {
             Auth::guard('transcript_staff')->logout();
             if ($request->expectsJson()) {
                 return response()->json(['message' => 'Account is inactive'], 403);

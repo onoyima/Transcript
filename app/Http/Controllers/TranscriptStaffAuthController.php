@@ -6,7 +6,6 @@ use App\Models\Staff;
 use App\Models\TranscriptRole;
 use App\Models\TranscriptPermission;
 use App\Services\SecurityAuditService;
-use App\Services\RateLimitService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,18 +36,6 @@ class TranscriptStaffAuthController extends Controller
      */
     public function login(Request $request)
     {
-        // Rate limiting check
-        if (!RateLimitService::checkLoginAttempts($request->ip())) {
-            SecurityAuditService::logSuspiciousActivity('Rate limit exceeded for staff login attempts', [
-                'ip_address' => $request->ip(),
-                'user_agent' => $request->userAgent()
-            ]);
-            
-            return back()->withErrors([
-                'email' => 'Too many login attempts. Please try again later.'
-            ]);
-        }
-
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6'
@@ -56,81 +43,87 @@ class TranscriptStaffAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         
+        // Debug logging
+        \Log::info('Login attempt', ['email' => $credentials['email']]);
+        
         // Find staff member
         $staff = Staff::where('email', $credentials['email'])->first();
         
-        if ($staff && Hash::check($credentials['password'], $staff->password)) {
-            // Check if staff is active
-            if (!$staff->is_active) {
-                SecurityAuditService::logLoginAttempt(
-                    $staff->id,
-                    $request->ip(),
-                    false,
-                    'Staff login failed - account inactive'
-                );
-                
-                return back()->withErrors([
-                    'email' => 'Your account is inactive. Please contact the administrator.'
-                ]);
-            }
-            
-            // Check if staff has any active roles
-            $activeRoles = $staff->activeRoles()->count();
-            
-            if ($activeRoles === 0) {
-                SecurityAuditService::logLoginAttempt(
-                    $staff->id,
-                    $request->ip(),
-                    false,
-                    'Staff login failed - no active roles assigned'
-                );
-                
-                return back()->withErrors([
-                    'email' => 'Your account does not have any active roles. Please contact the administrator.'
-                ]);
-            }
-            
-            // Authenticate the staff member
-            Auth::guard('transcript_staff')->login($staff);
-            
-            // Record successful login
-            RateLimitService::recordLoginAttempt($request->ip(), true);
-            
+        if (!$staff) {
+            \Log::info('Staff not found', ['email' => $credentials['email']]);
+            return back()->withErrors([
+                'email' => 'These credentials do not match our records.'
+            ]);
+        }
+        
+        \Log::info('Staff found', ['id' => $staff->id, 'email' => $staff->email, 'status' => $staff->status]);
+        
+        if (!Hash::check($credentials['password'], $staff->password)) {
+            \Log::info('Password check failed', ['staff_id' => $staff->id]);
+            return back()->withErrors([
+                'email' => 'These credentials do not match our records.'
+            ]);
+        }
+        
+        \Log::info('Password check passed', ['staff_id' => $staff->id]);
+        
+        // Check if staff is active (status = 1 means active)
+        if ($staff->status != 1) {
+            \Log::info('Status check failed', ['staff_id' => $staff->id, 'status' => $staff->status]);
             SecurityAuditService::logLoginAttempt(
                 $staff->id,
                 $request->ip(),
-                true,
-                'Staff login successful'
+                false,
+                'Staff login failed - account inactive'
             );
-
-            // Store session security data
-            session([
-                'transcript_staff_session' => [
-                    'ip_address' => $request->ip(),
-                    'user_agent' => $request->userAgent(),
-                    'login_time' => now(),
-                    'roles' => $staff->activeRoles()->pluck('name')->toArray()
-                ]
+            
+            return back()->withErrors([
+                'email' => 'Your account is inactive. Please contact the administrator.'
             ]);
-
-            // Redirect based on primary role
-            $primaryRole = $staff->activeRoles()->first();
-            return $this->redirectBasedOnRole($primaryRole);
         }
-
-        // Record failed login
-        RateLimitService::recordLoginAttempt($request->ip(), false);
+        
+        // Check if staff has any active roles
+        $activeRoles = $staff->activeRoles()->count();
+        \Log::info('Active roles check', ['staff_id' => $staff->id, 'active_roles_count' => $activeRoles]);
+        
+        if ($activeRoles === 0) {
+            \Log::info('Active roles check failed', ['staff_id' => $staff->id]);
+            SecurityAuditService::logLoginAttempt(
+                $staff->id,
+                $request->ip(),
+                false,
+                'Staff login failed - no active roles assigned'
+            );
+            
+            return back()->withErrors([
+                'email' => 'Your account does not have any active roles. Please contact the administrator.'
+            ]);
+        }
+        
+        // Authenticate the staff member
+        Auth::guard('transcript_staff')->login($staff);
+        \Log::info('Authentication successful', ['staff_id' => $staff->id, 'email' => $staff->email]);
         
         SecurityAuditService::logLoginAttempt(
-            $staff ? $staff->id : null,
+            $staff->id,
             $request->ip(),
-            false,
-            'Invalid credentials provided for staff login'
+            true,
+            'Staff login successful'
         );
 
-        return back()->withErrors([
-            'email' => 'Invalid credentials provided.'
+        // Store session security data
+        session([
+            'transcript_staff_session' => [
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'login_time' => now(),
+                'roles' => $staff->activeRoles()->pluck('name')->toArray()
+            ]
         ]);
+
+        // Redirect based on primary role
+        $primaryRole = $staff->activeRoles()->first();
+        return $this->redirectBasedOnRole($primaryRole);
     }
 
     /**
@@ -392,15 +385,15 @@ class TranscriptStaffAuthController extends Controller
 
         if ($staff->hasPermission('view_transcript_payments')) {
             $stats['total_payments'] = \App\Models\PaymentTransaction::count();
-            $stats['pending_payments'] = \App\Models\PaymentTransaction::where('status', 'pending')->count();
-            $stats['verified_payments'] = \App\Models\PaymentTransaction::where('status', 'verified')->count();
-            $stats['completed_payments'] = \App\Models\PaymentTransaction::where('status', 'completed')->count();
-            $stats['total_revenue'] = \App\Models\PaymentTransaction::where('status', 'completed')->sum('amount');
+            $stats['pending_payments'] = \App\Models\PaymentTransaction::where('transaction_status', 'Pending')->count();
+            $stats['verified_payments'] = \App\Models\PaymentTransaction::where('transaction_status', 'Success')->count();
+            $stats['completed_payments'] = \App\Models\PaymentTransaction::where('transaction_status', 'Success')->count();
+            $stats['total_revenue'] = \App\Models\PaymentTransaction::where('transaction_status', 'Success')->sum('amount');
         }
 
         if ($staff->hasPermission('manage_transcript_staff')) {
             $stats['total_staff'] = \App\Models\Staff::count();
-            $stats['active_staff'] = \App\Models\Staff::where('is_active', true)->count();
+            $stats['active_staff'] = \App\Models\Staff::where('status', 1)->count();
         }
 
         // General statistics available to all staff
@@ -464,7 +457,7 @@ class TranscriptStaffAuthController extends Controller
             'position' => $staff->position,
             'appointment_date' => $staff->appointment_date,
             'title' => $staff->title,
-            'status' => $staff->is_active ? 'Active' : 'Inactive'
+            'status' => $staff->status == 1 ? 'Active' : 'Inactive'
         ];
         
         // Get activity statistics based on permissions
@@ -476,8 +469,8 @@ class TranscriptStaffAuthController extends Controller
         }
         
         if ($staff->hasPermission('view_transcript_payments')) {
-            $activityStats['payments_processed'] = \App\Models\PaymentTransaction::where('status', 'verified')->count();
-            $activityStats['total_revenue'] = \App\Models\PaymentTransaction::where('status', 'completed')->sum('amount');
+            $activityStats['payments_processed'] = \App\Models\PaymentTransaction::where('transaction_status', 'Success')->count();
+            $activityStats['total_revenue'] = \App\Models\PaymentTransaction::where('transaction_status', 'Success')->sum('amount');
         }
         
         if ($staff->hasPermission('generate_transcript_reports')) {

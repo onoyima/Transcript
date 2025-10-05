@@ -38,7 +38,7 @@ class Staff extends Authenticatable
      */
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(TranscriptRole::class, 'transcript_staff_roles')
+        return $this->belongsToMany(TranscriptRole::class, 'transcript_staff_roles', 'staff_id', 'role_id')
                     ->withPivot(['assigned_at', 'assigned_by', 'is_active'])
                     ->withTimestamps();
     }

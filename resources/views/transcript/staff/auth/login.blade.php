@@ -43,7 +43,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('transcript.staff.login') }}" class="space-y-6" id="staffLoginForm">
+                    <form method="POST" action="{{ route('transcript.staff.login.submit') }}" class="space-y-6" id="staffLoginForm">
                         @csrf
                         
                         <div>
