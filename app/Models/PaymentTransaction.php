@@ -21,7 +21,11 @@ class PaymentTransaction extends Model
         'transaction_reference',
         'payment_date',
         'payment_response',
-        'notes'
+        'notes',
+        'order_id',
+        'payer_name',
+        'payer_email',
+        'payer_phone'
     ];
 
     protected $casts = [

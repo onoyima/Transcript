@@ -1,8 +1,6 @@
-@extends('layouts.staff')
+<?php $__env->startSection('title', 'Payment Details'); ?>
 
-@section('title', 'Payment Details')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Page Header -->
     <div class="mb-8">
@@ -10,10 +8,11 @@
             <div class="flex items-center">
                 <i class="fas fa-credit-card text-blue-600 mr-3 text-2xl"></i>
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-                    Payment Details - {{ $payment->order_id }}
+                    Payment Details - <?php echo e($payment->order_id); ?>
+
                 </h1>
             </div>
-            <a href="{{ route('transcript.staff.payments') }}" 
+            <a href="<?php echo e(route('transcript.staff.payments')); ?>" 
                class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
                 <i class="fas fa-arrow-left mr-2"></i> Back to Payments
             </a>
@@ -30,50 +29,51 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Order ID:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->order_id }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->order_id); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Transaction ID:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->transaction_id ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->transaction_id ?? 'N/A'); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Amount:</span>
-                            <span class="text-gray-900 dark:text-white font-semibold">₦{{ number_format($payment->amount, 2) }}</span>
+                            <span class="text-gray-900 dark:text-white font-semibold">₦<?php echo e(number_format($payment->amount, 2)); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Status:</span>
                             <span>
-                                @if($payment->status == 'pending')
+                                <?php if($payment->status == 'pending'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Pending</span>
-                                @elseif($payment->status == 'approved')
+                                <?php elseif($payment->status == 'approved'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Approved</span>
-                                @elseif($payment->status == 'failed')
+                                <?php elseif($payment->status == 'failed'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Failed</span>
-                                @elseif($payment->status == 'refunded')
+                                <?php elseif($payment->status == 'refunded'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">Refunded</span>
-                                @endif
+                                <?php endif; ?>
                             </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Fee Type:</span>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                                {{ $payment->feeType->name ?? 'N/A' }}
+                                <?php echo e($payment->feeType->name ?? 'N/A'); ?>
+
                             </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Description:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->description ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->description ?? 'N/A'); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Payment Date:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->created_at->format('M d, Y H:i:s') }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->created_at->format('M d, Y H:i:s')); ?></span>
                         </div>
-                        @if($payment->updated_at != $payment->created_at)
+                        <?php if($payment->updated_at != $payment->created_at): ?>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Last Updated:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->updated_at->format('M d, Y H:i:s') }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->updated_at->format('M d, Y H:i:s')); ?></span>
                         </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -83,34 +83,34 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Student Name:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->payer_name }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->payer_name); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Matric Number:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->matric_no ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->student->matric_no ?? 'N/A'); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Email:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->payer_email }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->payer_email); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Phone:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->payer_phone ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->payer_phone ?? 'N/A'); ?></span>
                         </div>
-                        @if($payment->student)
+                        <?php if($payment->student): ?>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Faculty:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->faculty ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->student->faculty ?? 'N/A'); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Department:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->department ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->student->department ?? 'N/A'); ?></span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Graduation Year:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->graduation_year ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white"><?php echo e($payment->student->graduation_year ?? 'N/A'); ?></span>
                         </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -118,24 +118,24 @@
             <!-- Action Buttons -->
             <div class="mt-8">
                 <div class="flex flex-wrap gap-3">
-                    @can('manage_transcript_payments', $staff)
-                    @if($payment->status == 'pending')
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200" onclick="verifyPayment({{ $payment->id }})">
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_transcript_payments', $staff)): ?>
+                    <?php if($payment->status == 'pending'): ?>
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200" onclick="verifyPayment(<?php echo e($payment->id); ?>)">
                         <i class="fas fa-check mr-2"></i> Verify Payment
                     </button>
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200" onclick="rejectPayment({{ $payment->id }})">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200" onclick="rejectPayment(<?php echo e($payment->id); ?>)">
                         <i class="fas fa-times mr-2"></i> Reject Payment
                     </button>
-                    @endif
+                    <?php endif; ?>
                     
-                    @if($payment->status == 'approved')
-                    @can('process_transcript_refunds', $staff)
-                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200" onclick="processRefund({{ $payment->id }})">
+                    <?php if($payment->status == 'approved'): ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('process_transcript_refunds', $staff)): ?>
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200" onclick="processRefund(<?php echo e($payment->id); ?>)">
                         <i class="fas fa-undo mr-2"></i> Process Refund
                     </button>
-                    @endcan
-                    @endif
-                    @endcan
+                    <?php endif; ?>
+                    <?php endif; ?>
+                    <?php endif; ?>
 
                     <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200" onclick="printPayment()">
                         <i class="fas fa-print mr-2"></i> Print Receipt
@@ -146,7 +146,7 @@
     </div>
 
             <!-- Payment History Card -->
-            @if(isset($paymentHistory) && $paymentHistory->count() > 0)
+            <?php if(isset($paymentHistory) && $paymentHistory->count() > 0): ?>
             <div class="bg-white rounded-lg shadow-md mt-6">
                 <div class="px-6 py-4 border-b border-gray-200">
                     <h3 class="text-lg font-semibold text-gray-800">
@@ -167,25 +167,26 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach($paymentHistory as $history)
+                                <?php $__currentLoopData = $paymentHistory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $history): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr class="hover:bg-gray-50">
-                                    <td class="px-4 py-3 text-sm text-gray-900">{{ $history->created_at->format('M d, Y H:i:s') }}</td>
-                                    <td class="px-4 py-3 text-sm text-gray-900">{{ $history->action }}</td>
+                                    <td class="px-4 py-3 text-sm text-gray-900"><?php echo e($history->created_at->format('M d, Y H:i:s')); ?></td>
+                                    <td class="px-4 py-3 text-sm text-gray-900"><?php echo e($history->action); ?></td>
                                     <td class="px-4 py-3 text-sm">
-                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {{ $history->status == 'approved' ? 'bg-green-100 text-green-800' : ($history->status == 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
-                                            {{ ucfirst($history->status) }}
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full <?php echo e($history->status == 'approved' ? 'bg-green-100 text-green-800' : ($history->status == 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800')); ?>">
+                                            <?php echo e(ucfirst($history->status)); ?>
+
                                         </span>
                                     </td>
-                                    <td class="px-4 py-3 text-sm text-gray-900">{{ $history->staff_name ?? 'System' }}</td>
-                                    <td class="px-4 py-3 text-sm text-gray-900">{{ $history->notes ?? '-' }}</td>
+                                    <td class="px-4 py-3 text-sm text-gray-900"><?php echo e($history->staff_name ?? 'System'); ?></td>
+                                    <td class="px-4 py-3 text-sm text-gray-900"><?php echo e($history->notes ?? '-'); ?></td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            @endif
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -253,8 +254,8 @@
                 </div>
                 <div class="mb-4">
                     <label for="refundAmount" class="block text-sm font-medium text-gray-700 mb-2">Refund Amount <span class="text-red-600">*</span></label>
-                    <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="refundAmount" step="0.01" max="{{ $payment->amount }}" value="{{ $payment->amount }}" required>
-                    <small class="text-sm text-gray-500 mt-1">Maximum refund amount: ₦{{ number_format($payment->amount, 2) }}</small>
+                    <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="refundAmount" step="0.01" max="<?php echo e($payment->amount); ?>" value="<?php echo e($payment->amount); ?>" required>
+                    <small class="text-sm text-gray-500 mt-1">Maximum refund amount: ₦<?php echo e(number_format($payment->amount, 2)); ?></small>
                 </div>
             </form>
         </div>
@@ -264,9 +265,9 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 <script>
 function showModal(modalId) {
     document.getElementById(modalId).classList.remove('hidden');
@@ -295,11 +296,11 @@ function printPayment() {
 document.getElementById('confirmVerify').addEventListener('click', function() {
     const notes = document.getElementById('verifyNotes').value;
     
-    fetch(`{{ route('transcript.staff.payments.verify', $payment->id) }}`, {
+    fetch(`<?php echo e(route('transcript.staff.payments.verify', $payment->id)); ?>`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
         },
         body: JSON.stringify({
             notes: notes
@@ -329,11 +330,11 @@ document.getElementById('confirmReject').addEventListener('click', function() {
         return;
     }
     
-    fetch(`{{ url('transcript/staff/payments') }}/{{ $payment->id }}/reject`, {
+    fetch(`<?php echo e(url('transcript/staff/payments')); ?>/<?php echo e($payment->id); ?>/reject`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
         },
         body: JSON.stringify({
             reason: reason
@@ -364,16 +365,16 @@ document.getElementById('confirmRefund').addEventListener('click', function() {
         return;
     }
     
-    if (parseFloat(amount) > {{ $payment->amount }}) {
+    if (parseFloat(amount) > <?php echo e($payment->amount); ?>) {
         alert('Refund amount cannot exceed the original payment amount.');
         return;
     }
     
-    fetch(`{{ url('transcript/staff/payments') }}/{{ $payment->id }}/refund`, {
+    fetch(`<?php echo e(url('transcript/staff/payments')); ?>/<?php echo e($payment->id); ?>/refund`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
         },
         body: JSON.stringify({
             reason: reason,
@@ -396,4 +397,5 @@ document.getElementById('confirmRefund').addEventListener('click', function() {
     closeModal('refundModal');
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.staff', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/transcript/staff/payments/show.blade.php ENDPATH**/ ?>

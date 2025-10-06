@@ -1,8 +1,6 @@
-@extends('layouts.staff')
+<?php $__env->startSection('title', 'Payment Management'); ?>
 
-@section('title', 'Payment Management')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Page Header -->
 <div class="mb-6">
     <div class="flex items-center justify-between">
@@ -14,13 +12,13 @@
             <p class="text-gray-600 dark:text-gray-400 mt-1">Manage and track all payment transactions</p>
         </div>
         <div class="flex items-center space-x-3">
-            @can('generate_payment_reports', $staff)
-            <a href="{{ route('transcript.staff.reports') }}" 
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('generate_payment_reports', $staff)): ?>
+            <a href="<?php echo e(route('transcript.staff.reports')); ?>" 
                class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200">
                 <i class="fas fa-chart-bar mr-2"></i>
                 Generate Reports
             </a>
-            @endcan
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -109,78 +107,84 @@
                 </tr>
             </thead>
             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                @forelse($payments as $payment)
+                <?php $__empty_1 = true; $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                        {{ $payment->order_id }}
+                        <?php echo e($payment->order_id); ?>
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {{ $payment->payer_name }}
+                        <?php echo e($payment->payer_name); ?>
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {{ $payment->student->matric_no ?? 'N/A' }}
+                        <?php echo e($payment->student->matric_no ?? 'N/A'); ?>
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                            {{ $payment->feeType->name ?? 'N/A' }}
+                            <?php echo e($payment->feeType->name ?? 'N/A'); ?>
+
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                        ₦{{ number_format($payment->amount, 2) }}
+                        ₦<?php echo e(number_format($payment->amount, 2)); ?>
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        @if($payment->status == 'pending')
+                        <?php if($payment->status == 'pending'): ?>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
                                 Pending
                             </span>
-                        @elseif($payment->status == 'approved')
+                        <?php elseif($payment->status == 'approved'): ?>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                 Approved
                             </span>
-                        @elseif($payment->status == 'failed')
+                        <?php elseif($payment->status == 'failed'): ?>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
                                 Failed
                             </span>
-                        @elseif($payment->status == 'refunded')
+                        <?php elseif($payment->status == 'refunded'): ?>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
                                 Refunded
                             </span>
-                        @endif
+                        <?php endif; ?>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {{ $payment->created_at->format('M d, Y H:i') }}
+                        <?php echo e($payment->created_at->format('M d, Y H:i')); ?>
+
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div class="flex items-center space-x-2">
-                            <a href="{{ route('transcript.staff.payments.show', $payment->id) }}" 
+                            <a href="<?php echo e(route('transcript.staff.payments.show', $payment->id)); ?>" 
                                class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
                                title="View Details">
                                 <i class="fas fa-eye"></i>
                             </a>
                             
-                            @can('manage_transcript_payments', $staff)
-                            @if($payment->status == 'pending')
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_transcript_payments', $staff)): ?>
+                            <?php if($payment->status == 'pending'): ?>
                             <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors duration-200" 
-                                    onclick="verifyPayment({{ $payment->id }})" 
+                                    onclick="verifyPayment(<?php echo e($payment->id); ?>)" 
                                     title="Verify Payment">
                                 <i class="fas fa-check"></i>
                             </button>
-                            @endif
+                            <?php endif; ?>
                             
-                            @if($payment->status == 'approved')
-                            @can('process_transcript_refunds', $staff)
+                            <?php if($payment->status == 'approved'): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('process_transcript_refunds', $staff)): ?>
                             <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-200" 
-                                    onclick="processRefund({{ $payment->id }})" 
+                                    onclick="processRefund(<?php echo e($payment->id); ?>)" 
                                     title="Process Refund">
                                 <i class="fas fa-undo"></i>
                             </button>
-                                            @endcan
-                                            @endif
-                                            @endcan
+                                            <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>
-                                @empty
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <tr>
                                     <td colspan="8" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                                         <div class="flex flex-col items-center">
@@ -190,17 +194,18 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endforelse
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
 
                     <!-- Pagination -->
-                    @if(method_exists($payments, 'links'))
+                    <?php if(method_exists($payments, 'links')): ?>
                     <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
-                        {{ $payments->links() }}
+                        <?php echo e($payments->links()); ?>
+
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
                 </div>
             </div>
@@ -291,9 +296,9 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 <script>
 let currentPaymentId = null;
 
@@ -309,7 +314,7 @@ function filterPayments() {
     if (search) params.append('search', search);
     
     // Reload page with filters
-    window.location.href = '{{ route("transcript.staff.payments") }}?' + params.toString();
+    window.location.href = '<?php echo e(route("transcript.staff.payments")); ?>?' + params.toString();
 }
 
 function verifyPayment(paymentId) {
@@ -333,11 +338,11 @@ function closeModal(modalId) {
 document.getElementById('confirmVerify').addEventListener('click', function() {
     if (currentPaymentId) {
         // Send AJAX request to verify payment
-        fetch(`{{ url('transcript/staff/payments') }}/${currentPaymentId}/verify`, {
+        fetch(`<?php echo e(url('transcript/staff/payments')); ?>/${currentPaymentId}/verify`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
         })
         .then(response => response.json())
@@ -363,11 +368,11 @@ document.getElementById('confirmRefund').addEventListener('click', function() {
     
     if (currentPaymentId && reason && amount) {
         // Send AJAX request to process refund
-        fetch(`{{ url('transcript/staff/payments') }}/${currentPaymentId}/refund`, {
+        fetch(`<?php echo e(url('transcript/staff/payments')); ?>/${currentPaymentId}/refund`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             },
             body: JSON.stringify({
                 reason: reason,
@@ -398,4 +403,5 @@ document.getElementById('searchInput').addEventListener('keypress', function(e) 
     }
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.staff', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/transcript/staff/payments/index.blade.php ENDPATH**/ ?>

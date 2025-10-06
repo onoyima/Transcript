@@ -1,10 +1,10 @@
 <!-- ===== Header Start ===== -->
-<header class="sticky top-0 z-999 flex w-full bg-white/95 backdrop-blur-md border-b border-gray-200/50 drop-shadow-1 dark:bg-gray-900/95 dark:border-gray-700/50">
+<header class="sticky top-0 z-30 flex w-full bg-white/95 backdrop-blur-md border-b border-gray-200/50 drop-shadow-1 dark:bg-gray-900/95 dark:border-gray-700/50">
     <div class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
             <!-- Hamburger Toggle BTN -->
             <button
-                class="z-99999 block rounded-lg border border-gray-200 bg-white p-2 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:hidden"
+                class="z-50 block rounded-lg border border-gray-200 bg-white p-2 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:hidden"
                 @click.stop="sidebarToggle = !sidebarToggle">
                 <span class="relative block h-5.5 w-5.5 cursor-pointer">
                     <span class="du-block absolute right-0 h-full w-full">
@@ -118,7 +118,7 @@
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M16.1999 14.9343L15.6374 14.0624C15.5249 13.8937 15.4687 13.7249 15.4687 13.528V7.67803C15.4687 6.01865 14.7655 4.47178 13.4718 3.31865C12.4312 2.39053 11.0812 1.7999 9.64678 1.6874V1.1249C9.64678 0.787402 9.36553 0.478027 8.9999 0.478027C8.63428 0.478027 8.35303 0.759277 8.35303 1.1249V1.65928C8.29678 1.65928 8.24053 1.65928 8.18428 1.6874C4.92178 2.05303 2.4749 4.66865 2.4749 7.79053V13.528C2.44678 13.8093 2.39053 13.9499 2.33428 14.0343L1.7999 14.9343C1.63115 15.2155 1.63115 15.553 1.7999 15.8343C1.96865 16.0874 2.2499 16.2562 2.55928 16.2562H8.38115V16.8749C8.38115 17.2124 8.6624 17.5218 9.02803 17.5218C9.36553 17.5218 9.6749 17.2405 9.6749 16.8749V16.2562H15.4687C15.778 16.2562 16.0593 16.0874 16.228 15.8343C16.3968 15.553 16.3968 15.2155 16.1999 14.9343ZM3.23428 14.9905L3.43115 14.653C3.5999 14.3718 3.68428 14.0343 3.74053 13.6405V7.79053C3.74053 5.31553 5.70928 3.23428 8.3249 2.95303C9.92803 2.78428 11.503 3.2624 12.6562 4.2749C13.6687 5.1749 14.2312 6.38428 14.2312 7.67803V13.528C14.2312 13.9499 14.3437 14.3437 14.5968 14.7374L14.7655 14.9905H3.23428Z"
-                                    fill="" />
+                                    fill="currentColor" />
                             </svg>
 
                             @if(isset($notificationCount) && $notificationCount > 0)
@@ -182,8 +182,8 @@
                     </span>
 
                     <span class="h-12 w-12 rounded-full overflow-hidden border-2 border-green-200 dark:border-green-700">
-                        @if($staff->passport)
-                            <img src="{{ asset('storage/' . $staff->passport) }}" alt="Profile Photo" class="h-full w-full object-cover">
+                        @if($staff->passport_url)
+                            <img src="{{ $staff->passport_url }}" alt="Profile Photo" class="h-full w-full object-cover">
                         @else
                             <div class="h-full w-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
                                 <span class="text-white font-semibold">
@@ -218,10 +218,10 @@
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M11 9.62499C8.42188 9.62499 6.35938 7.59687 6.35938 5.12187C6.35938 2.64687 8.42188 0.618744 11 0.618744C13.5781 0.618744 15.6406 2.64687 15.6406 5.12187C15.6406 7.59687 13.5781 9.62499 11 9.62499ZM11 2.16562C9.28125 2.16562 7.90625 3.50624 7.90625 5.12187C7.90625 6.73749 9.28125 8.07812 11 8.07812C12.7188 8.07812 14.0938 6.73749 14.0938 5.12187C14.0938 3.50624 12.7188 2.16562 11 2.16562Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                     <path
                                         d="M17.7719 21.4156H4.2281C3.5406 21.4156 2.9906 20.8656 2.9906 20.1781V17.0844C2.9906 13.7156 5.7406 10.9656 9.10935 10.9656H12.925C16.2937 10.9656 19.0437 13.7156 19.0437 17.0844V20.1781C19.0437 20.8656 18.4937 21.4156 17.7719 21.4156ZM4.53748 19.8687H17.4969V17.0844C17.4969 14.575 15.4344 12.5125 12.925 12.5125H9.07498C6.5656 12.5125 4.5031 14.575 4.5031 17.0844V19.8687H4.53748Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                 </svg>
                                 My Profile
                             </a>
@@ -233,16 +233,16 @@
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M17.7844 4.04687C17.1969 4.04687 16.7125 3.5625 16.7125 2.975C16.7125 2.3875 17.1969 1.90312 17.7844 1.90312C18.3719 1.90312 18.8563 2.3875 18.8563 2.975C18.8563 3.5625 18.3719 4.04687 17.7844 4.04687Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                     <path
                                         d="M11.0281 4.04687C10.4406 4.04687 9.95625 3.5625 9.95625 2.975C9.95625 2.3875 10.4406 1.90312 11.0281 1.90312C11.6156 1.90312 12.1 2.3875 12.1 2.975C12.1 3.5625 11.6156 4.04687 11.0281 4.04687Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                     <path
                                         d="M4.27188 4.04687C3.68438 4.04687 3.2 3.5625 3.2 2.975C3.2 2.3875 3.68438 1.90312 4.27188 1.90312C4.85938 1.90312 5.34375 2.3875 5.34375 2.975C5.34375 3.5625 4.85938 4.04687 4.27188 4.04687Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                     <path
                                         d="M18.8563 1.90312H17.7844C17.1969 1.90312 16.7125 1.41875 16.7125 0.83125C16.7125 0.24375 17.1969 -0.240625 17.7844 -0.240625H18.8563C20.2313 -0.240625 21.3719 0.9 21.3719 2.275V19.25C21.3719 20.625 20.2313 21.7656 18.8563 21.7656H3.14375C1.76875 21.7656 0.628125 20.625 0.628125 19.25V2.275C0.628125 0.9 1.76875 -0.240625 3.14375 -0.240625H4.21563C4.80313 -0.240625 5.2875 0.24375 5.2875 0.83125C5.2875 1.41875 4.80313 1.90312 4.21563 1.90312H3.14375C2.55625 1.90312 2.07188 2.3875 2.07188 2.975V19.25C2.07188 19.8375 2.55625 20.3219 3.14375 20.3219H18.8563C19.4438 20.3219 19.9281 19.8375 19.9281 19.25V2.975C19.9281 2.3875 19.4438 1.90312 18.8563 1.90312Z"
-                                        fill="" />
+                                        fill="currentColor" />
                                 </svg>
                                 Dashboard
                             </a>

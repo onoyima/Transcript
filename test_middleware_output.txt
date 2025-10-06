@@ -1,0 +1,82 @@
+=== TESTING MIDDLEWARE PROTECTION AND PERMISSIONS ===
+
+1. TESTING STAFF MEMBERS:
+   no_role: OBUMNEME OFOR (oforo2@veritas.edu.ng) - Roles: Transcript Officer
+
+   Temporarily assigned 'transcript_officer' role to OBUMNEME OFOR
+
+2. PERMISSION TESTING:
+
+   no_role (OBUMNEME OFOR):
+     - view_transcript_applications: ALLOWED
+     - manage_transcript_applications: ALLOWED
+     - process_transcript_requests: ALLOWED
+     - view_transcript_payments: ALLOWED
+     - manage_transcript_payments: DENIED
+     - process_transcript_payments: DENIED
+     - manage_transcript_staff: DENIED
+     - view_transcript_reports: DENIED
+     - generate_transcript_reports: DENIED
+     - manage_transcript_system: DENIED
+
+   officer (OBUMNEME OFOR):
+     - view_transcript_applications: ALLOWED
+     - manage_transcript_applications: ALLOWED
+     - process_transcript_requests: ALLOWED
+     - view_transcript_payments: ALLOWED
+     - manage_transcript_payments: DENIED
+     - process_transcript_payments: DENIED
+     - manage_transcript_staff: DENIED
+     - view_transcript_reports: DENIED
+     - generate_transcript_reports: DENIED
+     - manage_transcript_system: DENIED
+
+3. ROLE-BASED ACCESS TESTING:
+
+   Required Role: transcript_officer
+     no_role: ALLOWED (EXPECTED)
+     officer: ALLOWED (EXPECTED)
+
+   Required Role: payment_officer
+     no_role: DENIED (EXPECTED)
+     officer: DENIED (EXPECTED)
+
+   Required Role: transcript_admin
+     no_role: DENIED (EXPECTED)
+     officer: DENIED (EXPECTED)
+
+   Required Role: transcript_supervisor
+     no_role: DENIED (EXPECTED)
+     officer: DENIED (EXPECTED)
+
+4. GATE AUTHORIZATION TESTING:
+
+   no_role (OBUMNEME OFOR):
+     - Gate 'manage_transcript_staff': DENIED
+     - Gate 'view_transcript_applications': DENIED
+     - Gate 'manage_transcript_applications': DENIED
+     - Gate 'process_transcript_requests': DENIED
+
+   officer (OBUMNEME OFOR):
+     - Gate 'manage_transcript_staff': DENIED
+     - Gate 'view_transcript_applications': DENIED
+     - Gate 'manage_transcript_applications': DENIED
+     - Gate 'process_transcript_requests': DENIED
+
+5. MIDDLEWARE SIMULATION:
+
+   no_role Access Simulation:
+     /transcript/staff/management (requires: manage_transcript_staff): DENIED
+     /transcript/staff/applications (requires: view_transcript_applications): ALLOWED
+     /transcript/staff/payments (requires: view_transcript_payments): ALLOWED
+     /transcript/staff/reports (requires: view_transcript_reports): DENIED
+
+   officer Access Simulation:
+     /transcript/staff/management (requires: manage_transcript_staff): DENIED
+     /transcript/staff/applications (requires: view_transcript_applications): ALLOWED
+     /transcript/staff/payments (requires: view_transcript_payments): ALLOWED
+     /transcript/staff/reports (requires: view_transcript_reports): DENIED
+
+   Cleaned up: Removed temporary 'transcript_officer' role from OBUMNEME OFOR
+
+=== MIDDLEWARE AND PERMISSION TESTING COMPLETED ===

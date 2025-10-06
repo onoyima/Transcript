@@ -85,12 +85,21 @@ class Staff extends Authenticatable
     /**
      * Assign a role to this staff member.
      */
-    public function assignRole(Role $role, ?Staff $assignedBy = null): void
+    public function assignRole($role, $assignedBy = null): void
     {
+        // Handle both Role objects and role name strings
+        if (is_string($role)) {
+            $roleObject = TranscriptRole::where('name', $role)->first();
+            if (!$roleObject) {
+                throw new \InvalidArgumentException("Role '{$role}' not found.");
+            }
+            $role = $roleObject;
+        }
+
         if (!$this->hasRole($role->name)) {
             $this->roles()->attach($role, [
                 'assigned_at' => now(),
-                'assigned_by' => $assignedBy?->id,
+                'assigned_by' => is_object($assignedBy) ? $assignedBy->id : $assignedBy,
                 'is_active' => true,
             ]);
         }
@@ -99,8 +108,17 @@ class Staff extends Authenticatable
     /**
      * Remove a role from this staff member.
      */
-    public function removeRole(Role $role): void
+    public function removeRole($role): void
     {
+        // Handle both Role objects and role name strings
+        if (is_string($role)) {
+            $roleObject = TranscriptRole::where('name', $role)->first();
+            if (!$roleObject) {
+                throw new \InvalidArgumentException("Role '{$role}' not found.");
+            }
+            $role = $roleObject;
+        }
+
         $this->roles()->detach($role);
     }
 
@@ -110,9 +128,9 @@ class Staff extends Authenticatable
     public function getFullNameAttribute(): string
     {
         $names = array_filter([
-            $this->first_name,
+            $this->fname,
             $this->middle_name,
-            $this->surname
+            $this->lname
         ]);
         
         return implode(' ', $names);
@@ -123,8 +141,8 @@ class Staff extends Authenticatable
      */
     public function getInitialsAttribute(): string
     {
-        $firstInitial = $this->first_name ? strtoupper(substr($this->first_name, 0, 1)) : '';
-        $lastInitial = $this->surname ? strtoupper(substr($this->surname, 0, 1)) : '';
+        $firstInitial = $this->fname ? strtoupper(substr($this->fname, 0, 1)) : '';
+        $lastInitial = $this->lname ? strtoupper(substr($this->lname, 0, 1)) : '';
         
         return $firstInitial . $lastInitial;
     }
@@ -178,7 +196,7 @@ class Staff extends Authenticatable
      */
     public function getDisplayNameAttribute(): string
     {
-        return trim($this->first_name . ' ' . $this->surname);
+        return trim($this->fname . ' ' . $this->lname);
     }
 
     /**

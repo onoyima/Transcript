@@ -93,7 +93,7 @@ class Student extends Authenticatable implements MustVerifyEmail
      */
     public function getDisplayNameAttribute()
     {
-        return trim($this->first_name . ' ' . $this->surname);
+        return trim($this->fname . ' ' . $this->lname);
     }
 
     /**
@@ -101,7 +101,12 @@ class Student extends Authenticatable implements MustVerifyEmail
      */
     public function getFullNameAttribute()
     {
-        return trim($this->first_name . ' ' . $this->surname);
+        $names = array_filter([
+            $this->fname,
+            $this->mname,
+            $this->lname
+        ]);
+        return implode(' ', $names);
     }
 
     /**
@@ -109,9 +114,19 @@ class Student extends Authenticatable implements MustVerifyEmail
      */
     public function getInitialsAttribute()
     {
-        $firstInitial = $this->first_name ? strtoupper(substr($this->first_name, 0, 1)) : '';
-        $lastInitial = $this->surname ? strtoupper(substr($this->surname, 0, 1)) : '';
+        $firstInitial = $this->fname ? strtoupper(substr($this->fname, 0, 1)) : '';
+        $lastInitial = $this->lname ? strtoupper(substr($this->lname, 0, 1)) : '';
         return $firstInitial . $lastInitial;
+    }
+
+    /**
+     * Get the matric number attribute.
+     */
+    public function getMatricNumberAttribute()
+    {
+        // If username follows matric number format, return it
+        // Otherwise, return the username or a generated format
+        return $this->username ?? 'N/A';
     }
 
     /**

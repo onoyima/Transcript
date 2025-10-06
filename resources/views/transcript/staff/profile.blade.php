@@ -8,11 +8,15 @@
     <div class="flex items-center gap-6">
         <!-- Profile Image -->
         <div class="w-20 h-20 rounded-full overflow-hidden border-3 border-white/20 shadow-lg flex-shrink-0">
-            <div class="w-full h-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                <span class="text-white font-bold text-xl">
-                    {{ strtoupper(substr($staff->fname, 0, 1) . substr($staff->lname, 0, 1)) }}
-                </span>
-            </div>
+            @if($staff->passport_url)
+                <img src="{{ $staff->passport_url }}" alt="Profile Photo" class="w-full h-full object-cover">
+            @else
+                <div class="w-full h-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">
+                        {{ strtoupper(substr($staff->fname, 0, 1) . substr($staff->lname, 0, 1)) }}
+                    </span>
+                </div>
+            @endif
         </div>
 
         <!-- Profile Info -->

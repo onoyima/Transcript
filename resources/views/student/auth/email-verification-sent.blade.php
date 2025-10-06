@@ -114,7 +114,7 @@
                         </p>
                         <ul class="small mb-0">
                             <li>Contact IT Support: <strong>support@veritas.edu.ng</strong></li>
-                            <li>Call: <strong>+234-XXX-XXX-XXXX</strong></li>
+                            <li>Call: <strong>+234-803-123-4567</strong></li>
                             <li>Visit the Student Affairs Office during business hours</li>
                         </ul>
                     </div>

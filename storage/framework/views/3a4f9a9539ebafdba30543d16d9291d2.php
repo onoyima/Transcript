@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <aside
-    :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white/95 backdrop-blur-md border-r border-gray-200/50 duration-300 ease-linear dark:bg-gray-900/95 dark:border-gray-700/50 lg:static lg:translate-x-0 shadow-xl"
+    :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+    class="absolute left-0 top-0 z-40 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white/95 backdrop-blur-md border-r border-gray-200/50 duration-300 ease-linear dark:bg-gray-900/95 dark:border-gray-700/50 lg:static shadow-xl"
     @click.outside="sidebarToggle = false">
     
     <!-- SIDEBAR HEADER -->
@@ -50,7 +50,7 @@
                     <!-- Dashboard -->
 
                     <!-- Applications -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view_transcript_applications', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('view_transcript_applications')): ?>
                     <li>
                         <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.applications*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
                             href="<?php echo e(route('transcript.staff.applications')); ?>">
@@ -68,7 +68,7 @@
                     <!-- Applications -->
 
                     <!-- Payments -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_transcript_payments', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('view_transcript_payments')): ?>
                     <li>
                         <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.payments*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
                             href="<?php echo e(route('transcript.staff.payments')); ?>">
@@ -79,8 +79,20 @@
                     <?php endif; ?>
                     <!-- Payments -->
 
+                    <!-- Refunds -->
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('process_transcript_refunds')): ?>
+                    <li>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.refunds*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="#">
+                            <i class="fas fa-undo text-lg <?php echo e(request()->routeIs('transcript.staff.refunds*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                            Refunds
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <!-- Refunds -->
+
                     <!-- Students -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_students', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('view_transcript_applications')): ?>
                     <li>
                         <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.students*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
                             href="#">
@@ -92,28 +104,64 @@
                     <!-- Students -->
 
                     <!-- Staff Management -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_staff', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('manage_transcript_staff')): ?>
                     <li>
-                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.staff*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
-                            href="#">
-                            <i class="fas fa-user-tie text-lg <?php echo e(request()->routeIs('transcript.staff.staff*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.manage*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="<?php echo e(route('transcript.staff.manage')); ?>">
+                            <i class="fas fa-user-tie text-lg <?php echo e(request()->routeIs('transcript.staff.manage*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
                             Staff Management
                         </a>
                     </li>
                     <?php endif; ?>
                     <!-- Staff Management -->
 
+                    <!-- Admin Dashboard -->
+                    <?php if(Auth::guard('transcript_staff')->user() && (Auth::guard('transcript_staff')->user()->hasRole('transcript_admin') || Auth::guard('transcript_staff')->user()->hasRole('transcript_supervisor'))): ?>
+                    <li>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.admin*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="<?php echo e(route('transcript.staff.admin.dashboard')); ?>">
+                            <i class="fas fa-cogs text-lg <?php echo e(request()->routeIs('transcript.staff.admin*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                            Admin Dashboard
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <!-- Admin Dashboard -->
+
                     <!-- Reports -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view_reports', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('generate_transcript_reports')): ?>
                     <li>
                         <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.reports*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
-                            href="#">
+                            href="<?php echo e(route('transcript.staff.reports')); ?>">
                             <i class="fas fa-chart-bar text-lg <?php echo e(request()->routeIs('transcript.staff.reports*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
                             Reports
                         </a>
                     </li>
                     <?php endif; ?>
                     <!-- Reports -->
+
+                    <!-- Payment Reports -->
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('generate_payment_reports')): ?>
+                    <li>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.payment-reports*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="#">
+                            <i class="fas fa-file-invoice-dollar text-lg <?php echo e(request()->routeIs('transcript.staff.payment-reports*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                            Payment Reports
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <!-- Payment Reports -->
+
+                    <!-- Analytics -->
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('view_transcript_analytics')): ?>
+                    <li>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.analytics*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="#">
+                            <i class="fas fa-analytics text-lg <?php echo e(request()->routeIs('transcript.staff.analytics*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <!-- Analytics -->
                 </ul>
             </div>
 
@@ -135,7 +183,7 @@
                     <!-- Profile -->
 
                     <!-- System Settings -->
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage_settings', Auth::guard('transcript_staff')->user())): ?>
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('manage_transcript_system')): ?>
                     <li>
                         <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.settings*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
                             href="#">
@@ -145,6 +193,18 @@
                     </li>
                     <?php endif; ?>
                     <!-- System Settings -->
+
+                    <!-- Security Management -->
+                    <?php if(Auth::guard('transcript_staff')->user() && Auth::guard('transcript_staff')->user()->hasPermission('manage_transcript_security')): ?>
+                    <li>
+                        <a class="group relative flex items-center gap-3 rounded-xl py-3 px-4 font-medium text-gray-700 duration-300 ease-in-out hover:bg-green-50 hover:text-green-700 dark:text-gray-300 dark:hover:bg-green-900/20 dark:hover:text-green-400 <?php echo e(request()->routeIs('transcript.staff.security*') ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : ''); ?>"
+                            href="#">
+                            <i class="fas fa-shield-alt text-lg <?php echo e(request()->routeIs('transcript.staff.security*') ? 'text-green-600 dark:text-green-400' : 'text-gray-500 group-hover:text-green-600 dark:text-gray-400 dark:group-hover:text-green-400'); ?>"></i>
+                            Security
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <!-- Security Management -->
                 </ul>
             </div>
         </nav>
@@ -159,8 +219,8 @@
             <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl p-4 border border-green-200/50 dark:border-green-700/50">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-green-200 dark:border-green-700">
-                        <?php if($staff->passport): ?>
-                            <img src="<?php echo e(asset('storage/' . $staff->passport)); ?>" alt="Profile Photo" class="w-full h-full object-cover">
+                        <?php if($staff->passport_url): ?>
+                            <img src="<?php echo e($staff->passport_url); ?>" alt="Profile Photo" class="w-full h-full object-cover">
                         <?php else: ?>
                             <div class="w-full h-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
                                 <span class="text-white font-semibold text-sm">

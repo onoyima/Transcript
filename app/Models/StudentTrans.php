@@ -28,4 +28,28 @@ class StudentTrans extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    /**
+     * Get the type attribute (maps application_type to type for view compatibility)
+     */
+    public function getTypeAttribute()
+    {
+        return $this->application_type ?? 'official';
+    }
+
+    /**
+     * Get the status attribute (maps application_status to status for view compatibility)
+     */
+    public function getStatusAttribute()
+    {
+        return $this->application_status ?? 'pending';
+    }
+
+    /**
+     * Get the payment relationship (returns the latest payment transaction)
+     */
+    public function getPaymentAttribute()
+    {
+        return $this->paymentTransactions()->latest()->first();
+    }
 }

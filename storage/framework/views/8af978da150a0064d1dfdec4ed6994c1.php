@@ -5,7 +5,7 @@
         <div class="flex items-start justify-between">
             <div class="flex-1">
                 <h1 class="text-2xl font-bold text-gray-100 dark:text-white mb-2">
-                    Welcome back, <?php echo e(auth('transcript_staff')->user()->first_name); ?>! 👋
+                    Welcome back, <?php echo e(auth('transcript_staff')->user()->fname); ?>! 👋
                 </h1>
                 <p class="text-gray-900 dark:text-gray-100 mb-4">
                     Here's an overview of your staff portal and system management activities.

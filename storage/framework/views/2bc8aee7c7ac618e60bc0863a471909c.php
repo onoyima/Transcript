@@ -121,8 +121,8 @@
             <?php echo $__env->make('spartials.staff-navbar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
             <!-- Main Content -->
-            <main class="grow">
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <main class="grow relative">
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 relative">
                     
                     <!-- Flash Messages -->
                     <?php if(session('success')): ?>

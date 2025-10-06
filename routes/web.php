@@ -165,6 +165,35 @@ Route::prefix('transcript/staff')->name('transcript.staff.')->group(function() {
         Route::get('profile', [TranscriptStaffAuthController::class, 'showProfile'])->name('profile');
         Route::post('profile/update', [TranscriptStaffAuthController::class, 'updateProfile'])->name('profile.update');
 
+        // Temporary Debug Route
+        Route::get('debug/permissions', function() {
+            $staff = Auth::guard('transcript_staff')->user();
+            if (!$staff) {
+                return 'No staff user logged in';
+            }
+            
+            $roles = $staff->roles->pluck('name')->toArray();
+            $permissions = $staff->getAllPermissions()->pluck('name')->toArray();
+            
+            return [
+                'staff_name' => $staff->fname . ' ' . $staff->lname,
+                'staff_email' => $staff->email,
+                'roles' => $roles,
+                'permissions' => $permissions,
+                'permission_checks' => [
+                    'view_transcript_applications' => $staff->hasPermission('view_transcript_applications'),
+                    'view_transcript_payments' => $staff->hasPermission('view_transcript_payments'),
+                    'process_transcript_refunds' => $staff->hasPermission('process_transcript_refunds'),
+                    'manage_transcript_staff' => $staff->hasPermission('manage_transcript_staff'),
+                    'generate_transcript_reports' => $staff->hasPermission('generate_transcript_reports'),
+                    'generate_payment_reports' => $staff->hasPermission('generate_payment_reports'),
+                    'view_transcript_analytics' => $staff->hasPermission('view_transcript_analytics'),
+                    'manage_transcript_system' => $staff->hasPermission('manage_transcript_system'),
+                    'manage_transcript_security' => $staff->hasPermission('manage_transcript_security'),
+                ]
+            ];
+        })->name('debug.permissions');
+
         // Application Management (Transcript Officers and above)
         Route::middleware(['transcript.staff.role:transcript_officer,transcript_admin,transcript_supervisor'])->group(function() {
             Route::get('applications', [TranscriptStaffAuthController::class, 'applications'])->name('applications');
@@ -187,14 +216,15 @@ Route::prefix('transcript/staff')->name('transcript.staff.')->group(function() {
 
         // Staff Management (Admin and Supervisor only)
         Route::middleware(['transcript.staff.role:transcript_admin,transcript_supervisor'])->group(function() {
-            Route::get('manage', [TranscriptStaffAuthController::class, 'manageStaff'])->name('manage');
-            Route::get('manage/create', [TranscriptStaffAuthController::class, 'createStaff'])->name('manage.create');
-            Route::post('manage/store', [TranscriptStaffAuthController::class, 'storeStaff'])->name('manage.store');
-            Route::get('manage/{id}/edit', [TranscriptStaffAuthController::class, 'editStaff'])->name('manage.edit');
-            Route::put('manage/{id}', [TranscriptStaffAuthController::class, 'updateStaff'])->name('manage.update');
-            Route::delete('manage/{id}', [TranscriptStaffAuthController::class, 'deleteStaff'])->name('manage.delete');
-            Route::post('manage/{id}/assign-role', [TranscriptStaffAuthController::class, 'assignRole'])->name('manage.assign-role');
-            Route::delete('manage/{id}/remove-role', [TranscriptStaffAuthController::class, 'removeRole'])->name('manage.remove-role');
+            Route::get('manage', [TranscriptStaffAuthController::class, 'staffManagement'])->name('manage');
+            Route::post('manage/{targetStaff}/assign-role', [TranscriptStaffAuthController::class, 'assignRole'])->name('assignRole');
+            Route::delete('manage/{targetStaff}/remove-role', [TranscriptStaffAuthController::class, 'removeRole'])->name('removeRole');
+        });
+
+        // Admin Dashboard (Admin and Supervisor only)
+        Route::middleware(['transcript.staff.role:transcript_admin,transcript_supervisor'])->group(function() {
+            Route::get('admin/dashboard', [TranscriptStaffAuthController::class, 'adminDashboard'])->name('admin.dashboard');
+            Route::post('admin/update-status/{id}', [TranscriptStaffAuthController::class, 'updateApplicationStatus'])->name('admin.updateStatus');
         });
     });
 });

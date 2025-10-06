@@ -17,8 +17,8 @@ class TestStaffSeeder extends Seeder
         // Create test staff members
         $testStaff = [
             [
-                'first_name' => 'John',
-                'last_name' => 'Admin',
+                'fname' => 'John',
+                'lname' => 'Admin',
                 'email' => 'admin@transcript.test',
                 'password' => Hash::make('password123'),
                 'phone' => '08012345678',
@@ -28,8 +28,8 @@ class TestStaffSeeder extends Seeder
                 'role' => 'transcript_admin'
             ],
             [
-                'first_name' => 'Jane',
-                'last_name' => 'Officer',
+                'fname' => 'Jane',
+                'lname' => 'Officer',
                 'email' => 'officer@transcript.test',
                 'password' => Hash::make('password123'),
                 'phone' => '08012345679',
@@ -39,8 +39,8 @@ class TestStaffSeeder extends Seeder
                 'role' => 'transcript_officer'
             ],
             [
-                'first_name' => 'Mike',
-                'last_name' => 'Payment',
+                'fname' => 'Mike',
+                'lname' => 'Payment',
                 'email' => 'payment@transcript.test',
                 'password' => Hash::make('password123'),
                 'phone' => '08012345680',
@@ -50,8 +50,8 @@ class TestStaffSeeder extends Seeder
                 'role' => 'payment_officer'
             ],
             [
-                'first_name' => 'Sarah',
-                'last_name' => 'Supervisor',
+                'fname' => 'Sarah',
+                'lname' => 'Supervisor',
                 'email' => 'supervisor@transcript.test',
                 'password' => Hash::make('password123'),
                 'phone' => '08012345681',

@@ -197,6 +197,14 @@ class TranscriptStaffAuthController extends Controller
     }
 
     /**
+     * Show transcript applications (alias for transcriptApplications)
+     */
+    public function applications()
+    {
+        return $this->transcriptApplications();
+    }
+
+    /**
      * Show payment management
      */
     public function paymentManagement()
@@ -241,7 +249,7 @@ class TranscriptStaffAuthController extends Controller
     /**
      * Show staff management (admin only)
      */
-    public function staffManagement()
+    public function staffManagement(Request $request)
     {
         $staff = Auth::guard('transcript_staff')->user();
         
@@ -249,7 +257,30 @@ class TranscriptStaffAuthController extends Controller
             abort(403, 'You do not have permission to manage staff.');
         }
 
-        $allStaff = Staff::with('activeRoles')->get();
+        // Build query to fetch only staff with roles
+        $query = Staff::with('activeRoles')
+            ->whereHas('activeRoles'); // Only fetch staff that have at least one active role
+
+        // Apply search filter if provided
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function($q) use ($search) {
+                $q->where('fname', 'like', "%{$search}%")
+                  ->orWhere('lname', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('department', 'like', "%{$search}%");
+            });
+        }
+
+        // Apply role filter if provided
+        if ($request->filled('role_filter')) {
+            $roleFilter = $request->get('role_filter');
+            $query->whereHas('activeRoles', function($q) use ($roleFilter) {
+                $q->where('name', $roleFilter);
+            });
+        }
+
+        $allStaff = $query->orderBy('fname')->orderBy('lname')->get();
         $roles = TranscriptRole::where('is_active', true)->get();
         
         return view('transcript.staff.management.index', compact('allStaff', 'roles', 'staff'));
@@ -314,35 +345,6 @@ class TranscriptStaffAuthController extends Controller
         );
 
         return back()->with('success', 'Role removed successfully.');
-    }
-
-    /**
-     * Update application status
-     */
-    public function updateApplicationStatus(Request $request, $applicationId)
-    {
-        $staff = Auth::guard('transcript_staff')->user();
-        
-        if (!$staff->hasPermission('manage_transcript_applications')) {
-            abort(403, 'You do not have permission to update application status.');
-        }
-
-        $request->validate([
-            'status' => 'required|in:pending,approved,rejected,processing,completed',
-            'notes' => 'nullable|string|max:1000'
-        ]);
-
-        // Update application logic would go here
-        // This is a placeholder for the actual application update logic
-        
-        SecurityAuditService::logSessionEvent(
-            $staff->id,
-            request()->ip(),
-            'application_update',
-            "Updated application {$applicationId} status to {$request->status}"
-        );
-
-        return back()->with('success', 'Application status updated successfully.');
     }
 
     /**
@@ -511,5 +513,240 @@ class TranscriptStaffAuthController extends Controller
         ]);
 
         return back()->with('success', 'Profile updated successfully!');
+    }
+
+    /**
+     * Admin Dashboard - Shows all applications for management
+     * Requires transcript_admin or transcript_supervisor role
+     */
+    public function adminDashboard()
+    {
+        $staff = Auth::guard('transcript_staff')->user();
+        
+        // Check if staff has admin permissions
+        if (!$staff->hasAnyRole(['transcript_admin', 'transcript_supervisor'])) {
+            abort(403, 'You do not have permission to access the admin dashboard.');
+        }
+
+        // Get all applications with student information
+        $applications = \App\Models\StudentTrans::with(['student'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
+        // Get summary statistics
+        $stats = [
+            'total_applications' => $applications->count(),
+            'pending_applications' => $applications->where('application_status', 'Started')->count(),
+            'in_progress_applications' => $applications->where('application_status', 'In Progress')->count(),
+            'completed_applications' => $applications->where('application_status', 'Completed')->count(),
+            'pending_payments' => $applications->where('payment_status', 'Pending')->count(),
+            'completed_payments' => $applications->where('payment_status', 'Completed')->count(),
+        ];
+        
+        return view('transcript.staff.admin.dashboard', compact('applications', 'stats', 'staff'));
+    }
+
+    /**
+     * Update Application Status - Admin function
+     */
+    public function updateApplicationStatus(Request $request, $id)
+    {
+        $staff = Auth::guard('transcript_staff')->user();
+        
+        // Check if staff has admin permissions
+        if (!$staff->hasAnyRole(['transcript_admin', 'transcript_supervisor'])) {
+            abort(403, 'You do not have permission to update application status.');
+        }
+
+        $request->validate([
+            'application_status' => 'required|in:Started,In Progress,Completed',
+            'payment_status' => 'required|in:Pending,Completed,Failed'
+        ]);
+
+        $application = \App\Models\StudentTrans::findOrFail($id);
+        
+        $oldApplicationStatus = $application->application_status;
+        $oldPaymentStatus = $application->payment_status;
+        
+        $application->update([
+            'application_status' => $request->application_status,
+            'payment_status' => $request->payment_status
+        ]);
+
+        // Log the status update
+        SecurityAuditService::logSessionEvent(
+            $staff->id,
+            request()->ip(),
+            'application_status_update',
+            "Updated application {$application->id} status from '{$oldApplicationStatus}' to '{$request->application_status}' and payment status from '{$oldPaymentStatus}' to '{$request->payment_status}'"
+        );
+
+        return back()->with('success', 'Application status updated successfully.');
+    }
+
+    /**
+     * Show reports dashboard
+     */
+    public function reports()
+    {
+        $staff = Auth::guard('transcript_staff')->user();
+        
+        if (!$staff->hasPermission('generate_transcript_reports')) {
+            abort(403, 'You do not have permission to generate reports.');
+        }
+
+        // Get report statistics
+        $stats = $this->getReportStats($staff);
+        
+        return view('transcript.staff.reports.index', compact('staff', 'stats'));
+    }
+
+    /**
+     * Generate specific report
+     */
+    public function generateReport(Request $request)
+    {
+        $staff = Auth::guard('transcript_staff')->user();
+        
+        if (!$staff->hasPermission('generate_transcript_reports')) {
+            abort(403, 'You do not have permission to generate reports.');
+        }
+
+        $request->validate([
+            'report_type' => 'required|in:applications,payments,staff,summary',
+            'date_from' => 'nullable|date',
+            'date_to' => 'nullable|date|after_or_equal:date_from'
+        ]);
+
+        $reportData = $this->generateReportData($request->report_type, $request->date_from, $request->date_to);
+        
+        return response()->json($reportData);
+    }
+
+    /**
+     * Get report statistics
+     */
+    private function getReportStats($staff)
+    {
+        $stats = [];
+
+        if ($staff->hasPermission('view_transcript_applications')) {
+            $stats['applications'] = [
+                'total' => \App\Models\StudentTrans::count(),
+                'this_month' => \App\Models\StudentTrans::whereMonth('created_at', now()->month)->count(),
+                'pending' => \App\Models\StudentTrans::where('application_status', 'Started')->count(),
+                'completed' => \App\Models\StudentTrans::where('application_status', 'Completed')->count()
+            ];
+        }
+
+        if ($staff->hasPermission('view_transcript_payments')) {
+            $stats['payments'] = [
+                'total' => \App\Models\PaymentTransaction::count(),
+                'this_month' => \App\Models\PaymentTransaction::whereMonth('created_at', now()->month)->count(),
+                'total_revenue' => \App\Models\PaymentTransaction::where('transaction_status', 'Success')->sum('amount'),
+                'pending' => \App\Models\PaymentTransaction::where('transaction_status', 'Pending')->count()
+            ];
+        }
+
+        if ($staff->hasPermission('manage_transcript_staff')) {
+            $stats['staff'] = [
+                'total' => \App\Models\Staff::count(),
+                'active' => \App\Models\Staff::where('status', 1)->count(),
+                'with_roles' => \App\Models\Staff::whereHas('activeRoles')->count()
+            ];
+        }
+
+        return $stats;
+    }
+
+    /**
+     * Generate report data based on type and date range
+     */
+    private function generateReportData($type, $dateFrom = null, $dateTo = null)
+    {
+        $query = null;
+        $data = [];
+
+        switch ($type) {
+            case 'applications':
+                $query = \App\Models\StudentTrans::with(['student']);
+                break;
+            case 'payments':
+                $query = \App\Models\PaymentTransaction::with(['studentTrans.student']);
+                break;
+            case 'staff':
+                $query = \App\Models\Staff::with(['activeRoles']);
+                break;
+            case 'summary':
+                return $this->generateSummaryReport($dateFrom, $dateTo);
+        }
+
+        if ($dateFrom) {
+            $query->whereDate('created_at', '>=', $dateFrom);
+        }
+        if ($dateTo) {
+            $query->whereDate('created_at', '<=', $dateTo);
+        }
+
+        $data = $query->get();
+
+        return [
+            'type' => $type,
+            'date_from' => $dateFrom,
+            'date_to' => $dateTo,
+            'data' => $data,
+            'count' => $data->count()
+        ];
+    }
+
+    /**
+     * Generate summary report
+     */
+    private function generateSummaryReport($dateFrom = null, $dateTo = null)
+    {
+        $summary = [
+            'applications' => [
+                'total' => \App\Models\StudentTrans::count(),
+                'pending' => \App\Models\StudentTrans::where('application_status', 'Started')->count(),
+                'in_progress' => \App\Models\StudentTrans::where('application_status', 'In Progress')->count(),
+                'completed' => \App\Models\StudentTrans::where('application_status', 'Completed')->count()
+            ],
+            'payments' => [
+                'total' => \App\Models\PaymentTransaction::count(),
+                'pending' => \App\Models\PaymentTransaction::where('transaction_status', 'Pending')->count(),
+                'success' => \App\Models\PaymentTransaction::where('transaction_status', 'Success')->count(),
+                'total_revenue' => \App\Models\PaymentTransaction::where('transaction_status', 'Success')->sum('amount')
+            ],
+            'staff' => [
+                'total' => \App\Models\Staff::count(),
+                'active' => \App\Models\Staff::where('status', 1)->count()
+            ]
+        ];
+
+        if ($dateFrom || $dateTo) {
+            // Apply date filters to summary
+            $applicationsQuery = \App\Models\StudentTrans::query();
+            $paymentsQuery = \App\Models\PaymentTransaction::query();
+
+            if ($dateFrom) {
+                $applicationsQuery->whereDate('created_at', '>=', $dateFrom);
+                $paymentsQuery->whereDate('created_at', '>=', $dateFrom);
+            }
+            if ($dateTo) {
+                $applicationsQuery->whereDate('created_at', '<=', $dateTo);
+                $paymentsQuery->whereDate('created_at', '<=', $dateTo);
+            }
+
+            $summary['filtered_applications'] = $applicationsQuery->count();
+            $summary['filtered_payments'] = $paymentsQuery->count();
+            $summary['filtered_revenue'] = $paymentsQuery->where('transaction_status', 'Success')->sum('amount');
+        }
+
+        return [
+            'type' => 'summary',
+            'date_from' => $dateFrom,
+            'date_to' => $dateTo,
+            'summary' => $summary
+        ];
     }
 }

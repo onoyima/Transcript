@@ -1,0 +1,2834 @@
+=== TESTING DATABASE DATA ===
+
+1. EXISTING TRANSCRIPT ROLES:
+-----------------------------
+ID: 1 | Name: transcript_officer | Display: Transcript Officer | Active: Yes
+ID: 2 | Name: payment_officer | Display: Payment Officer | Active: Yes
+ID: 3 | Name: transcript_admin | Display: Transcript Administrator | Active: Yes
+ID: 4 | Name: transcript_supervisor | Display: Transcript Supervisor | Active: Yes
+
+2. EXISTING TRANSCRIPT PERMISSIONS:
+-----------------------------------
+ID: 1 | Name: view_transcript_applications | Display: View Transcript Applications | Module: transcript | Active: Yes
+ID: 2 | Name: manage_transcript_applications | Display: Manage Transcript Applications | Module: transcript | Active: Yes
+ID: 3 | Name: process_transcript_requests | Display: Process Transcript Requests | Module: transcript | Active: Yes
+ID: 4 | Name: generate_transcript_reports | Display: Generate Transcript Reports | Module: transcript | Active: Yes
+ID: 5 | Name: view_transcript_payments | Display: View Transcript Payments | Module: payment | Active: Yes
+ID: 6 | Name: manage_transcript_payments | Display: Manage Transcript Payments | Module: payment | Active: Yes
+ID: 7 | Name: process_transcript_refunds | Display: Process Transcript Refunds | Module: payment | Active: Yes
+ID: 8 | Name: generate_payment_reports | Display: Generate Payment Reports | Module: payment | Active: Yes
+ID: 9 | Name: manage_transcript_staff | Display: Manage Transcript Staff | Module: admin | Active: Yes
+ID: 10 | Name: manage_transcript_system | Display: Manage Transcript System | Module: admin | Active: Yes
+ID: 11 | Name: view_transcript_analytics | Display: View Transcript Analytics | Module: admin | Active: Yes
+ID: 12 | Name: manage_transcript_security | Display: Manage Transcript Security | Module: admin | Active: Yes
+
+3. EXISTING STAFF MEMBERS:
+--------------------------
+ID: 1 | Name: OBUMNEME OFOR | Email: oforo2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 2 | Name: VERITAS STAFF | Email: ict@veritas.edu.ng
+  Roles: None assigned
+
+ID: 3 | Name: ADAORA ODUNUKWE | Email: odunukwea2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 4 | Name: MARTHA EZIMMUO | Email: janeeva132@veritas.edu.ng
+  Roles: Transcript Administrator 
+
+ID: 5 | Name: ONUOHA EMEABA | Email: onuohak@veritas.edu.ng
+  Roles: None assigned
+
+ID: 6 | Name: TEMITOPE BALOGUN | Email: balogunt2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 7 | Name: KAYODE TOLUHI | Email: toluhik@veritas.edu.ng
+  Roles: None assigned
+
+ID: 8 | Name: BAYO FADIPE | Email: fadipem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 9 | Name: MOSES KORINYA | Email: korinyam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 10 | Name: EMMANUEL OKAFOR | Email: okafore2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 11 | Name: ABEL OIGBOCHIE | Email: oigbochiea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 12 | Name: PEACE OSAGHAE | Email: osaghaep2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 13 | Name: ISAAC NYAM | Email: nyami@veritas.edu.ng
+  Roles: None assigned
+
+ID: 14 | Name: PAUL HAAGA | Email: haagap2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 15 | Name: LUCIA BITRUS | Email: bitrusl2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 16 | Name: ABRAHAM ONAJI | Email: onajia2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 17 | Name: NNEAMAKA OBODO | Email: obodon@veritas.edu.ng
+  Roles: None assigned
+
+ID: 18 | Name: CHRISTIANTUS ANYANWU | Email: anyanwuc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 19 | Name: JOSEPH AYE | Email: ayej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 20 | Name: BABATUNDE OLANIYI | Email: olaniyib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 21 | Name: GABRIEL IORNUMBE | Email: iornumbeg2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 22 | Name: TITILAYO AKINOLA | Email: akinolat2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 23 | Name: IKECHUKWU UKANDU | Email: ukandui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 24 | Name: ANTHONY IHUOMA | Email: ihuomaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 25 | Name: JULIET MUONEME | Email: muonemej2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 26 | Name: CHINYERE ECOMA | Email: ecomac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 27 | Name: MONDAY ABDULLAHI | Email: abdullahim2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 28 | Name: GABRIEL EGBE | Email: egbeg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 29 | Name: KEVIN ANWETING | Email: anwetingk@veritas.edu.ng
+  Roles: None assigned
+
+ID: 30 | Name: ALEXANDER DABOR | Email: dabora2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 31 | Name: KINGSLEY IDOGEN | Email: idogenk2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 32 | Name: UFUOMA ERUSE | Email: eruseu2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 33 | Name: KALU KALU | Email: kaluk2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 34 | Name: DOMINIC SHIMAWUA | Email: shimawuad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 35 | Name: EMMANUEL MKPOJIOGU | Email: mkpojiogue@veritas.edu.ng
+  Roles: None assigned
+
+ID: 36 | Name: OKWUCHI UGOANYANWU | Email: ugoanyanwuo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 37 | Name: CHIKA DURU | Email: duruc2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 38 | Name: RAPHAEL ENIHE | Email: eniher2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 39 | Name: EMMANUEL OKWARA | Email: okwarae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 40 | Name: OFE UKO | Email: ukoo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 41 | Name: CYRIL OBANURE | Email: obanurec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 42 | Name: NELSON UKWAMEDUA | Email: ukwameduan2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 43 | Name: MICHAEL BAZZA | Email: bazzam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 44 | Name: MEMBER GBAKIGHIR | Email: gbakighirs2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 45 | Name: BASIL EKOT | Email: ekotb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 46 | Name: MICHAEL OYENUGA | Email: oyenugam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 47 | Name: SOLOMON JERESA | Email: jeresas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 48 | Name: SUNDAY OMALE | Email: omalea2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 49 | Name: EMMANUEL IDIH | Email: idihe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 50 | Name: EPHRAIM STEPHEN ESSIEN | Email: essiene2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 51 | Name: DANGANA EGBUM | Email: egbumd@veritas.edu.ng
+  Roles: None assigned
+
+ID: 52 | Name: DANIEL OGUCHE | Email: oguched2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 53 | Name: IKECHUKWU IZEGBU | Email: izegbui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 54 | Name: SUCESS MUSA | Email: musas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 55 | Name: JOHNKENEDY OZOEMENA | Email: ozoemenaj2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 56 | Name: VERONICA SALAU | Email: salauv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 57 | Name: UCHECHUKWU OPARA | Email: oparau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 58 | Name: MESHACK AGGREH | Email: aggrehm2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 59 | Name: PHILIP VANDE | Email: vandep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 60 | Name: CHRISTIANA BITRUS | Email: bitrusc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 61 | Name: PETER BAKWAPH | Email: bakwaphp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 62 | Name: NWANYINNA NSONWU | Email: nsonwuf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 63 | Name: CORDELIA NWANCHA | Email: ofurumc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 64 | Name: SAMUEL AGBI | Email: agbais@veritas.edu.ng
+  Roles: None assigned
+
+ID: 65 | Name: EDADI UKAM | Email: ukame@veritas.edu.ng
+  Roles: None assigned
+
+ID: 66 | Name: PHILOMENA OSUJI | Email: osujip@veritas.edu.ng
+  Roles: None assigned
+
+ID: 67 | Name: ENOBONG EKAETOR | Email: ekaetore@veritas.edu.ng
+  Roles: None assigned
+
+ID: 68 | Name: FRANCIS UWAECHIA | Email: uwaechiaf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 69 | Name: PRECIOUS CHINONYERE | Email: chinonyerep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 70 | Name: ROSELINE AYEH | Email: ayehr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 71 | Name: ENITAN WALE-ODUNAIYA | Email: wale-odunaiyae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 72 | Name: UYAGU DAVID | Email: uyagud@veritas.edu.ng
+  Roles: None assigned
+
+ID: 73 | Name: MARY NWACHUKWU | Email: nwachukwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 74 | Name: DAVID SAMUEL | Email: samueld@veritas.edu.ng
+  Roles: None assigned
+
+ID: 75 | Name: JULIANA ONAH | Email: onahj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 76 | Name: RITA BAKO | Email: bakor@veritas.edu.ng
+  Roles: None assigned
+
+ID: 77 | Name: THERESA OZOUDE | Email: ozoudet@veritas.edu.ng
+  Roles: None assigned
+
+ID: 78 | Name: IORCHIR IORHEMEN | Email: iorhemeni@veritas.edu.ng
+  Roles: None assigned
+
+ID: 79 | Name: ROMANUS NDUJI | Email: ndujir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 80 | Name: JOY JAMES | Email: jamesj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 81 | Name: ISUMAFEN IMOSEMI | Email: imosemi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 82 | Name: ESTHER ALI BABA | Email: ali-babae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 83 | Name: MARCUS ORJI | Email: orjim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 84 | Name: SOLOMON GOTENG | Email: goteng@veritas.edu.ng
+  Roles: None assigned
+
+ID: 85 | Name: MICHAEL OJO | Email: ojom@veritas.edu.ng
+  Roles: None assigned
+
+ID: 86 | Name: EMEKA NWOKOCHA | Email: idewelei2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 87 | Name: ISREAL IDEWELE | Email: idewelei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 88 | Name: ABIODUN AYENI | Email: ayenia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 89 | Name: CHIMENKA AMAJIRI | Email: amajiric@veritas.edu.ng
+  Roles: None assigned
+
+ID: 90 | Name: JOYCE EDET | Email: edetj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 91 | Name: ATTAH EGWEMI | Email: egwemia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 92 | Name: EMMANUEL NTINSO | Email: ntinsoe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 93 | Name: INI EKPE | Email: ekpei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 94 | Name: IFEOMA OKONKWO | Email: okonkwoi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 95 | Name: UGOCHUKWU ONYENZE | Email: onyenzeu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 96 | Name: ODION KAKULU | Email: kakulue@veritas.edu.ng
+  Roles: None assigned
+
+ID: 97 | Name: OKOI EFFIOM | Email: effiomo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 98 | Name: EDADI UKAM | Email: ukame@veritas.edu.ng
+  Roles: None assigned
+
+ID: 99 | Name: NGUWASEN CHIA | Email: chian@veritas.edu.ng
+  Roles: None assigned
+
+ID: 100 | Name: OMONO MATTHEWS-AMUNE | Email: matthewsamuneo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 101 | Name: EMMANUEL EGAR | Email: egare@veritas.edu.ng
+  Roles: None assigned
+
+ID: 102 | Name: THOMAS OLADELE | Email: oladelet@veritas.edu.ng
+  Roles: None assigned
+
+ID: 103 | Name: SUNDAY ADEJOH | Email: adejohs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 104 | Name: NGOZIKA OKEY-NDECHE | Email: okeyndechen@veritas.edu.ng
+  Roles: None assigned
+
+ID: 105 | Name: VALENTINE ONWUNJIOGU | Email: onwunjioguv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 106 | Name: JOE MADUBUKO | Email: madubukoi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 107 | Name: CHIKA EZE | Email: ezec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 108 | Name: NKECHI UWAKWE-ABUGU | Email: uwakweabugun@veritas.edu.ng
+  Roles: None assigned
+
+ID: 109 | Name: MARTIN OGHARANDUKUN | Email: ogharandukunm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 110 | Name: OLUSOLA OGUNLADE | Email: ogunladeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 111 | Name: ANTHONY AGHEDO | Email: aghedoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 112 | Name: FABIAN AGBO | Email: agbof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 113 | Name: CHRISTIAN ODOH | Email: odoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 114 | Name: SAMSON OBIEM | Email: abuos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 115 | Name: LAWRENCE OLARUBOFIN | Email: olarubofinl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 116 | Name: ADAMU ABU | Email: abua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 117 | Name: IJEOMA ANYIKWA | Email: anyikwai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 118 | Name: TANKO YARI | Email: yarit@veritas.edu.ng
+  Roles: None assigned
+
+ID: 119 | Name: EMMANUEL EZE | Email: ezee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 120 | Name: NYAWOSA HASSAN | Email: assann@veritas.edu.ng
+  Roles: None assigned
+
+ID: 121 | Name: BERNADETTE ONUOHA | Email: bernadetteo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 122 | Name: KASGAK CHRISTMAS | Email: christmask@veritas.edu.ng
+  Roles: None assigned
+
+ID: 123 | Name: MARCELLA AMAEFULE | Email: amaefulem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 124 | Name: FRANCIS OGBAJI | Email: ogbajif@veritas.edu.ng
+  Roles: None assigned
+
+ID: 125 | Name: ANTHONIA UCHE | Email: uchea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 126 | Name: ADAKOLE OGBE | Email: ogbea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 127 | Name: ANDREW CHENGE | Email: chengea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 128 | Name: AMARACHI ALIGWARA | Email: aligwaraa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 129 | Name: STELLA OKONKWO | Email: okonkwos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 130 | Name: MICHAEL OYENUGA | Email: oyenugamold@veritas.edu.ng
+  Roles: None assigned
+
+ID: 131 | Name: MEMBER GBAKIGHIR | Email: gbakighirm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 132 | Name: SUSSANA ULUOCHA | Email: uluochas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 133 | Name: MARTIN ONUKWUBA | Email: onukwubam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 134 | Name: FELIX IYALA | Email: iyalaf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 135 | Name: NELSON UKWAMEDUA | Email: ukwameduan@veritas.edu.ng
+  Roles: None assigned
+
+ID: 136 | Name: REUBEN OKIKE | Email: okiker@veritas.edu.ng
+  Roles: None assigned
+
+ID: 137 | Name: JEREMIAH JOHN | Email: johnj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 138 | Name: ISAAC OTEGWU | Email: otegwui1@veritas.edu.ng
+  Roles: None assigned
+
+ID: 139 | Name: ISAAC OTEGWU | Email: otegwui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 140 | Name: RIFKATU MARKUS | Email: markusr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 141 | Name: FRANCIS OJO | Email: ojof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 142 | Name: PEARL NWEKE | Email: nwekep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 143 | Name: KATE CHIMA | Email: chimak@veritas.edu.ng
+  Roles: None assigned
+
+ID: 144 | Name: LUCIA BITRUS | Email: bitrusl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 145 | Name: FRANCISCA OKONKWO | Email: okonkwof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 146 | Name: ENITAN WALE-ODUNAIYA | Email: wale-odunaiyae2@veritas.edu.ng
+  Roles: None assigned
+
+ID: 147 | Name: EDMUND UZOMA | Email: uzomae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 148 | Name: LOVETH ANDREW | Email: andrewl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 149 | Name: OTUSANYA ESTHER | Email: otusanyae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 150 | Name: PAULINUS ALI | Email: alip@veritas.edu.ng
+  Roles: None assigned
+
+ID: 151 | Name: LIVINUS DIJI | Email: dijil@veritas.edu.ng
+  Roles: None assigned
+
+ID: 152 | Name: ESTHER AHAMEFULA | Email: ahamefulae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 153 | Name: BASIL NWANCHA | Email: nwanchab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 154 | Name: LYNDA OKORIGBO | Email: okorigbol@veritas.edu.ng
+  Roles: None assigned
+
+ID: 155 | Name: PAUL AKWEN | Email: akwenp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 156 | Name: FABIAN ANIAGOLU | Email: aniagoluf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 157 | Name: ADRIAN SALLAMA | Email: sallamaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 158 | Name: TERWASE KUSSAH | Email: kussaht@veritas.edu.ng
+  Roles: None assigned
+
+ID: 159 | Name: EUCHARIA OPARA | Email: oparae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 160 | Name: BENJAMIN ALAFIATAYO | Email: alafiatayob@veritas.edu.ng
+  Roles: None assigned
+
+ID: 161 | Name: CHUKWUEBUKA CHUKWUNETA | Email: chukwunetac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 162 | Name: GODWIN NWAOBI | Email: nwaobig@veritas.edu.ng
+  Roles: None assigned
+
+ID: 163 | Name: POLYCARP YAHAYA | Email: yahayap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 164 | Name: ADAGBO ONOJA | Email: onojaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 165 | Name: GODWIN UDOURIOH | Email: udouriohg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 166 | Name: EMMANUELA IBEH | Email: ibehe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 167 | Name: DANIEL ANTHONY | Email: anthonyd@veritas.edu.ng
+  Roles: None assigned
+
+ID: 168 | Name: ANTHONY AMANA | Email: amanaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 169 | Name: NYAWOSA HASSAN | Email: hassann@veritas.edu.ng
+  Roles: None assigned
+
+ID: 170 | Name: CATHERINE IBRAHIM | Email: ibrahimc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 171 | Name: EUGENE ITAM | Email: itame@veritas.edu.ng
+  Roles: None assigned
+
+ID: 172 | Name: DEBORAH EBEM | Email: ebemd@veritas.edu.ng
+  Roles: None assigned
+
+ID: 173 | Name: ANGELA IBE | Email: ibea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 174 | Name: JOY IGWURUBE | Email: igwurubej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 175 | Name: FABIAN AGBO | Email: agbof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 176 | Name: VIRGINIA OKEKE-KUSA | Email: okeke-kusav@veritas.edu.ng
+  Roles: None assigned
+
+ID: 177 | Name: SILAS OGBONNA | Email: ogbonnas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 178 | Name: EUCHARIA AJAERO | Email: ajaeroe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 179 | Name: ONYINYECHI ECHEMA | Email: echemao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 180 | Name: BLESSING SUCCESS | Email: successb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 181 | Name: PURITY ISHAYA | Email: ishayap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 182 | Name: CHIGOZIE BORIS-OLUGU | Email: obasic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 183 | Name: ADEBOLA OMOPARIOLA | Email: omopariolaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 184 | Name: AUGUSTINA IWUJI | Email: iwujia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 185 | Name: YADOSO M. GANGWARI | Email: gangwariy@veritas.edu.ng
+  Roles: None assigned
+
+ID: 186 | Name: AKUDO ANOURE | Email: chukwumaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 187 | Name: JOHN ADOLE | Email: adolej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 188 | Name: MARTINLUTHER NWANERI | Email: nwanerim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 189 | Name: SHEDRACK JAMES | Email: jamess@veritas.edu.ng
+  Roles: None assigned
+
+ID: 190 | Name: UJU PADDY-OKOYE | Email: paddy-okoyeu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 191 | Name: BARNABAS SHABAYANG | Email: shabayangb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 192 | Name: OGBONNAYA OFOR | Email: oforog@veritas.edu.ng
+  Roles: None assigned
+
+ID: 193 | Name: MAUREEN NNAJI | Email: nnajim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 194 | Name: JOSE LAWRENCE | Email: lawrencej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 195 | Name: SAMAILA BAHAGO | Email: bahagos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 196 | Name: CYNTHIA AMADI | Email: amadic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 197 | Name: UCHENNA ALOZIEUWA | Email: alozieuwau1@veritas.edu.ng
+  Roles: None assigned
+
+ID: 198 | Name: NGOZI IKE-OKAFOR | Email: ike-okafore@veritas.edu.ng
+  Roles: None assigned
+
+ID: 199 | Name: STANLEY NNEDU | Email: nnedus@veritas.edu.ng
+  Roles: None assigned
+
+ID: 200 | Name: OLUGBENGA MATE | Email: mateo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 201 | Name: NNAEMEKA AGUEGBOH | Email: aguegbohn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 202 | Name: LAWRENCE EBI | Email: ebil@veritas.edu.ng
+  Roles: None assigned
+
+ID: 203 | Name: MONICA NNAJIUBA | Email: nnajiubam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 204 | Name: UCHECHUKWU OGWUDA | Email: ogwudau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 205 | Name: CALISTA ONYEAJAGWA | Email: onyeajagwac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 206 | Name: VICTOR OMBUGADU | Email: ombugaduv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 207 | Name: AUGUSTINE IDOKO | Email: idokoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 208 | Name: IVEREN THADDEUS | Email: thaddeusi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 209 | Name: DANIEL AGBAGHARE | Email: agbaghared@veritas.edu.ng
+  Roles: None assigned
+
+ID: 210 | Name: SIMON ALI | Email: alis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 211 | Name: MATTHEW OKOH | Email: okohm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 212 | Name: ANYANWU-MGBEMERE NENE | Email: anyanwun@veritas.edu.ng
+  Roles: None assigned
+
+ID: 213 | Name: HAPPINESS BAWA | Email: bawah@veritas.edu.ng
+  Roles: None assigned
+
+ID: 214 | Name: MICHAEL CHIAHA | Email: chiaham@veritas.edu.ng
+  Roles: None assigned
+
+ID: 215 | Name: TEMITOPE OGHARANDUKUN | Email: ogharandukunt@veritas.edu.ng
+  Roles: None assigned
+
+ID: 216 | Name: AUGUSTINA SORONNADI | Email: soronnadia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 217 | Name: FIDELIS EGBE | Email: egbef@veritas.edu.ng
+  Roles: None assigned
+
+ID: 218 | Name: EMMANUELLA ONOTA | Email: onotae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 219 | Name: NGURUMUN IORCHIR | Email: iorchirn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 220 | Name: IGBOKWE AMADI | Email: amadii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 221 | Name: ZEPHY OKORO | Email: okoroz@veritas.edu.ng
+  Roles: None assigned
+
+ID: 222 | Name: ANHUNDA JEREMIAH | Email: anhundj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 223 | Name: VICTOR EBIEKPE | Email: ebiekpev@veritas.edu.ng
+  Roles: None assigned
+
+ID: 224 | Name: JOY JAMES | Email: jamesj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 225 | Name: BENJAMIN YISA | Email: yisab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 226 | Name: UCHENNA ADIOLE | Email: adioleu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 227 | Name: GLORIA BATURE | Email: batureg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 228 | Name: FIDELIS IWU | Email: iwuf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 229 | Name: JOY OBANIGWE | Email: obanigwej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 230 | Name: UCHENNA ENEM | Email: enemu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 231 | Name: MARY AKHAINE | Email: akhainem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 232 | Name: RACHEAL OMOGBAI | Email: omogbair@veritas.edu.ng
+  Roles: None assigned
+
+ID: 233 | Name: ALICE NKOM | Email: nkoma@veritas.edu.ng
+  Roles: None assigned
+
+ID: 234 | Name: OKECHUKWU CYRIL | Email: cyrilo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 235 | Name: TIMOTHY AGBASIERE | Email: agbasieret@veritas.edu.ng
+  Roles: None assigned
+
+ID: 236 | Name: ADEYINKA OKEMETA | Email: okemetaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 237 | Name: DENNIS NUHU | Email: nuhud@veritas.edu.ng
+  Roles: None assigned
+
+ID: 238 | Name: PATRICK OKETA | Email: oketap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 239 | Name: RICHARD UGBE | Email: ugber@veritas.edu.ng
+  Roles: None assigned
+
+ID: 240 | Name: PETER USHIE | Email: ushiep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 241 | Name: MICHAEL EGBERE | Email: egberem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 242 | Name: ANTHONIA OYEGUE | Email: oyeguea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 243 | Name: SOLOMON OGABA | Email: ogabas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 244 | Name: SOLOMON BOYI | Email: boyis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 245 | Name: CHRISTIAN ASOLUKA | Email: asolukac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 246 | Name: UCHENNA ALOZIEUWA | Email: alozieuwau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 247 | Name: RAYMOND ABENGA | Email: abengar@veritas.edu.ng
+  Roles: None assigned
+
+ID: 248 | Name: CHIBUGO LEBECHI | Email: lebechic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 249 | Name: JOSEPH AREGBESOLA | Email: aregbesolaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 250 | Name: JAMES MUSA | Email: musaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 251 | Name: EMMANUEL AGBATA | Email: agbatae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 252 | Name: OZIOMA UGWU | Email: ugwuo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 253 | Name: TOCHUKWU EZEKAFOR | Email: ezekafort@veritas.edu.ng
+  Roles: None assigned
+
+ID: 254 | Name: DANIEL DANLADI | Email: danladid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 255 | Name: ALHERI BITRUS | Email: bitrusa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 256 | Name: JOE ESSIEN | Email: essienj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 257 | Name: ISAH MASU | Email: masui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 258 | Name: DAVID IMOSEMI | Email: imosemid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 259 | Name: CHIDIEBERE NWACHUKWU | Email: nwachukwup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 260 | Name: INNOCENT JOOJI | Email: joojii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 261 | Name: MIRACLE ENIH | Email: enihm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 262 | Name: AMAECHI DENNIS | Email: dennisa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 263 | Name: CHINYERE ABALOGU | Email: abaloguc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 264 | Name: SONNY OSOGWU | Email: osogwus@veritas.edu.ng
+  Roles: None assigned
+
+ID: 265 | Name: ALICE ABAH | Email: abaha@veritas.edu.ng
+  Roles: None assigned
+
+ID: 266 | Name: LARABA BABAJIKA | Email: babajikal@veritas.edu.ng
+  Roles: None assigned
+
+ID: 267 | Name: CHINELO ANYAEGBUNAM | Email: anyaegbunamc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 268 | Name: CEPHAS ILIYA | Email: iliyac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 269 | Name: STELLA EMECHEBE | Email: emechebes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 270 | Name: GRACE USHIE | Email: ushieg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 271 | Name: ENOBONG OTON | Email: otone@veritas.edu.ng
+  Roles: None assigned
+
+ID: 272 | Name: OKON EMINUE | Email: eminueo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 273 | Name: JULIANA ODOH | Email: odohj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 274 | Name: SANDRA IWAMBE | Email: iwambes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 275 | Name: ROSE AGBI | Email: agbir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 276 | Name: ROSE AGBI | Email: agbir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 277 | Name: OLUSOLA DADA | Email: dadao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 278 | Name: TIMOTHY IBEH | Email: ibeht@veritas.edu.ng
+  Roles: None assigned
+
+ID: 279 | Name: MARGARET AKOJE | Email: akojem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 280 | Name: TERNENGE KUSUGH | Email: kusught@veritas.edu.ng
+  Roles: None assigned
+
+ID: 281 | Name: THERESA OLUSHOLA | Email: olusholat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 282 | Name: ANOMUOGHARAN OBOYO-JAMES | Email: oboyo-jamesa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 283 | Name: ANTHONY AKPAN | Email: akpana@veritas.edu.ng
+  Roles: None assigned
+
+ID: 284 | Name: AYUBA ILIYA | Email: iliyaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 285 | Name: PRECIOUS NWANKWO | Email: nwankwop@veritas.edu.ng
+  Roles: None assigned
+
+ID: 286 | Name: OSONDU OGUIKE | Email: oguikeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 287 | Name: TITUS EZE | Email: ezet@veritas.edu.ng
+  Roles: None assigned
+
+ID: 288 | Name: REBECCA ANDEM | Email: andemr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 289 | Name: ONYEBI ADAKOLE | Email: adakoleo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 290 | Name: ROY EDACHE | Email: edacher@veritas.edu.ng
+  Roles: None assigned
+
+ID: 291 | Name: PATRICK DIKEDI | Email: dikedip@veritas.edu.ng
+  Roles: None assigned
+
+ID: 292 | Name: AGNES AHUNGWA | Email: ahungwaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 293 | Name: ERIC TANIFORM | Email: taniforme@veritas.edu.ng
+  Roles: None assigned
+
+ID: 294 | Name: STELLA OPARA | Email: oparas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 295 | Name: RACHEL EZUGWU | Email: ezugwur@veritas.edu.ng
+  Roles: None assigned
+
+ID: 296 | Name: MARIA AGANOKE | Email: aganokem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 297 | Name: CHRISTOPHER UWADIALE | Email: uwadialec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 298 | Name: FELICITY MATHEW | Email: mathewf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 299 | Name: LUCIA NNOLIM | Email: nnoliml@veritas.edu.ng
+  Roles: None assigned
+
+ID: 300 | Name: UCHECHUKWU ANAETO-UBAH | Email: anaeto-ubahu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 301 | Name: BELENYE ABBEY | Email: abbeyb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 302 | Name: BERNARD OGRI | Email: ogrib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 303 | Name: CHARITY OBUM-NNADI | Email: obum-nnadic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 304 | Name: NSEOBONG EKWERE | Email: ekweren@veritas.edu.ng
+  Roles: None assigned
+
+ID: 305 | Name: BENJAMIN OGUCHI | Email: oguchib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 306 | Name: IGNATIUS IDEM | Email: idemi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 307 | Name: NKECHINYERE ONYENEMEREM | Email: onyenemeremn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 308 | Name: JUDE IGWEZE | Email: igwezej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 309 | Name: JANE ODU | Email: anyanwuj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 310 | Name: TANI DANIEL | Email: danielt@veritas.edu.ng
+  Roles: None assigned
+
+ID: 311 | Name: REGINA OGWUCHE | Email: ogwucher@veritas.edu.ng
+  Roles: None assigned
+
+ID: 312 | Name: GRAHAMS TOR | Email: torg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 313 | Name: CYRIL OLEH | Email: olehc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 314 | Name: OLUWATOSIN OLUSHOLA | Email: olusholao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 315 | Name: TERHEMBA GWAZA | Email: gwazat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 316 | Name: ANGELA DICK | Email: dicka@veritas.edu.ng
+  Roles: None assigned
+
+ID: 317 | Name: SAMUEL ONUH | Email: onuhs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 318 | Name: PASCHAL MBA | Email: mbap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 319 | Name: GRACE IGE | Email: igeg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 320 | Name: SAMUEL EJIME OKOH | Email: okohs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 321 | Name: BOLAJI JIMOH | Email: jimohb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 322 | Name: ISHAKU MAKSHWAR DUKUP | Email: dukupi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 323 | Name: ROMANUS NDUJI | Email: ndujir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 324 | Name: NESOCHI ALFRED-IGBOKWE | Email: alfred-igbokwen@veritas.edu.ng
+  Roles: None assigned
+
+ID: 325 | Name: CORDELIA NWANCHA | Email: nwanchacc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 326 | Name: CHRISTOPHER OTENE | Email: otenec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 327 | Name: BILLY BUGA | Email: billyb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 328 | Name: NKEIRU  ROSE OKEREKE | Email: okereken@veritas.edu.ng
+  Roles: None assigned
+
+ID: 329 | Name: MARIA-ASSUMPTA EDUOK-AKPAN | Email: eduoko@veritas.edu.ng
+  Roles: None assigned
+
+ID: 330 | Name: CHUKWUNONYE OJINNAKA | Email: ojinnakac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 331 | Name: TIMOTHY ADIDI | Email: adidit@veritas.edu.ng
+  Roles: None assigned
+
+ID: 332 | Name: MICHAEL SASA | Email: sasam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 333 | Name: JOSEPHINE OPOGAH | Email: opogahj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 334 | Name: SUNDAY ORBIH | Email: orbihs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 335 | Name: JOHNWENDY NWAUKWA | Email: nwaukwaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 336 | Name: OLUSOLA GABRIEL OLADAPO | Email: oladapog@veritas.edu.ng
+  Roles: None assigned
+
+ID: 337 | Name: KENECHI UCHE | Email: uchek@veritas.edu.ng
+  Roles: None assigned
+
+ID: 338 | Name: VITUS AGBAZUE | Email: agbazuev@veritas.edu.ng
+  Roles: None assigned
+
+ID: 339 | Name: ANTHONY AZUWIKE | Email: azuwikea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 340 | Name: CHINAEMELUM OKAFOR | Email: okaforc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 341 | Name: ANTHONY NZEAKO | Email: nzeakoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 342 | Name: TRIAL PEDRO | Email: rt@ver.edu.ng
+  Roles: None assigned
+
+ID: 343 | Name: KAMAI PETER | Email: kamaip@veritas.edu.ng
+  Roles: None assigned
+
+ID: 344 | Name: EMILIA IDOKO | Email: idokoe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 345 | Name: AC-OGBONNA CHRIS | Email: acogbonnac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 346 | Name: TOCHUKWU NDUBUKA | Email: ndubukat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 347 | Name: AJOGWU PATRICIA | Email: ajogwup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 348 | Name: FLORENCE AJODO | Email: ajodof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 349 | Name: AYENAJEYI SHAIBU | Email: shaibua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 350 | Name: GERTRUDE BIJIMI | Email: bijimig@veritas.edu.ng
+  Roles: None assigned
+
+ID: 351 | Name: ANTHONY AGHEDO | Email: aghedoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 352 | Name: CHIBUZO ABIMBOLA | Email: abimbolac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 353 | Name: LOVELYN CHARLES | Email: charlesl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 354 | Name: EKPONG MONIQUE | Email: ekpongm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 355 | Name: CHINONSO UBA | Email: ubac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 356 | Name: BLESSING AZATI | Email: azatib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 357 | Name: MICHAEL AJANYA | Email: ajanyam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 358 | Name: LEVI IZUWAH | Email: izuwahl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 359 | Name: FRANCIS OCHEI | Email: ocheif@veritas.edu.ng
+  Roles: None assigned
+
+ID: 360 | Name: MONDAY OSIM | Email: osimm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 361 | Name: PAUL OTIGHE | Email: otighep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 362 | Name: CALISTA OBINECHE | Email: obinechec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 363 | Name: AMID BRIGGS-KAMARA | Email: briggskamaraa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 364 | Name: EMY NZEKWU | Email: nzekwue@veritas.edu.ng
+  Roles: None assigned
+
+ID: 365 | Name: IKENNA ODUNUKWE | Email: odunukwei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 366 | Name: DOOSHIMA UNONGO | Email: unongod@veritas.edu
+  Roles: None assigned
+
+ID: 367 | Name: AMDII SAM | Email: amdiis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 368 | Name: FELIX SULEMAN | Email: sulemanf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 369 | Name: ESTHER OGBONNA | Email: ogbonnae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 370 | Name: REGINA HENRY | Email: henryr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 371 | Name: MUHAMMED SULAYMAN | Email: sulaymanm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 372 | Name: CHRISTOPHER SAMUEL | Email: samuelc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 373 | Name: CHRISTIAN ORIAKU | Email: oriakuc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 374 | Name: NSE UMOREN | Email: umorenn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 375 | Name: PRUDENCE ORIAKU | Email: oriakup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 376 | Name: MOSES ATAKPA | Email: atakpam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 377 | Name: THEOPHILUS UCHE | Email: uchet@veritas.edu.ng
+  Roles: None assigned
+
+ID: 378 | Name: PAUL BARNABAS | Email: barnabasp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 379 | Name: USAKU WAMMANDA | Email: wammandau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 380 | Name: MUSA PETER | Email: peterm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 381 | Name: IMAJE AKOBI | Email: akobii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 382 | Name: YUNANNA SAMSON | Email: samsony@veritas.edu.ng
+  Roles: None assigned
+
+ID: 383 | Name: STEPHEN OKOH | Email: okohs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 384 | Name: PHILIMON ISUWA | Email: isuwap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 385 | Name: ASOR TSEBEE | Email: tsebeea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 386 | Name: STANLEY EGENTI | Email: egentis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 387 | Name: DENNIS UGWUJA | Email: ugwujad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 388 | Name: ADA OKORONKWO | Email: okoronkwoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 389 | Name: BUKOLA AKIN-OSANAIYE | Email: akin-osanaiyeb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 390 | Name: KINGSLEY JOHN | Email: johnk@veritas.edu.ng
+  Roles: None assigned
+
+ID: 391 | Name: ISMAILA ABDULLAHI | Email: abdullahii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 392 | Name: HENRY EGHAREVBA | Email: egharevbah@veritas.edu.ng
+  Roles: None assigned
+
+ID: 393 | Name: MICHAEL ORJI | Email: orjii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 394 | Name: BEDE ANYAEGBUNAM | Email: anyaegbunamb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 395 | Name: MICHAEL EJIOFOR | Email: ejioform@veritas.edu.ng
+  Roles: None assigned
+
+ID: 396 | Name: THOMAS IMALERIO | Email: imaleriot@veritas.edu.ng
+  Roles: None assigned
+
+ID: 397 | Name: AKUSU PATRICK | Email: akusup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 398 | Name: HYACINTH ICHOKU | Email: vc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 399 | Name: ABUBAKAR SALEH | Email: saleha@veritas.edu.ng
+  Roles: None assigned
+
+ID: 400 | Name: MODESTUS NSONWU | Email: nsonwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 401 | Name: TOCHUKWU OKEKE | Email: okeket@veritas.edu.ng
+  Roles: None assigned
+
+ID: 402 | Name: OKEY OKOROAFOR | Email: okoroaforo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 403 | Name: JOSHUA ABAH | Email: abahj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 404 | Name: MARGARET OYEKAN | Email: oyekanm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 405 | Name: MARTIN UHOMOIBHI | Email: uhomoibhim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 406 | Name: ANTHONY OLAOYE | Email: olaoyea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 407 | Name: CHIZOMA ADEWUMI | Email: adewumic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 408 | Name: PAUL ANGAHAR | Email: angaharp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 409 | Name: IORAVER TSEGBA | Email: tsegbai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 410 | Name: EUCHARIA EZIGBO | Email: ezigboe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 411 | Name: ONYEKACHUKWU EKONG-KAKA | Email: ekong-kakao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 412 | Name: SIMON OKWUTE | Email: okwutes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 413 | Name: MICHAEL UDOEKPO | Email: udoekpom@veritas.edu.ng
+  Roles: None assigned
+
+ID: 414 | Name: PRECIOUS ABU | Email: abup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 415 | Name: ADERINTO SUEBU | Email: aderintos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 416 | Name: LEONARD OBI | Email: obil@veritas.edu.ng
+  Roles: None assigned
+
+ID: 417 | Name: UGOCHUKWU OTIKO | Email: otikou@veritas.edu.ng
+  Roles: None assigned
+
+ID: 418 | Name: SUNDAY PATRICK | Email: patricks@veritas.edu.ng
+  Roles: None assigned
+
+ID: 419 | Name: JOHN SAMBE | Email: sambej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 420 | Name: GENESIS AGBUDU | Email: agbudug@veritas.edu.ng
+  Roles: None assigned
+
+ID: 421 | Name: CEPHAS ADEKUNLE | Email: adekunlec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 422 | Name: CHIMALUM NWANKWO | Email: nwankwoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 423 | Name: OLUSEYE ADEGBOYE | Email: adegboyeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 424 | Name: SAMIYU OJUADE | Email: ojuades@veritas.edu.ng
+  Roles: None assigned
+
+ID: 425 | Name: RUTH ANDAH | Email: andahr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 426 | Name: BENNETH UZOECHI | Email: uzoechib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 427 | Name: CHIZOBA ONWUBUYA | Email: onwubuyac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 428 | Name: UCHENNA OYALI | Email: oyaliu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 429 | Name: ESI OKHIRIA | Email: okhiriae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 430 | Name: EMMANUEL UGWUANYI | Email: ugwuanyie@veritas.edu.ng
+  Roles: None assigned
+
+ID: 431 | Name: GEORGE STEPHEN | Email: stepheng@veritas.edu.ng
+  Roles: None assigned
+
+ID: 432 | Name: GAD AHMADU | Email: ahmadug@veritas.edu.ng
+  Roles: None assigned
+
+ID: 433 | Name: GEORGE-CLIFFORD OPARA | Email: oparag@veritas.edu.ng
+  Roles: None assigned
+
+ID: 434 | Name: CHIOMA CHUKWUNETA | Email: chukwunetac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 435 | Name: MONALISA DIKE | Email: dikem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 436 | Name: CHIKAOSOLU EMEKA | Email: emekac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 437 | Name: MARTINS AUTA | Email: autam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 438 | Name: YUSHA&#39;U IBRAHIM | Email: ibrahimy@veritas.edu.ng
+  Roles: None assigned
+
+ID: 439 | Name: EMMANUEL MAIANGUWA | Email: maianguwae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 440 | Name: PETER OKONKWO | Email: okonkwop@veritas.edu.ng
+  Roles: None assigned
+
+ID: 441 | Name: OBICHI NNAH | Email: nnaho@veritas.edu.ng
+  Roles: None assigned
+
+ID: 442 | Name: BENJAMIN IGBAZENDA | Email: igbazendab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 443 | Name: DAVID RINJI | Email: rinjid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 444 | Name: SAMUEL BITRUS | Email: bitruss@veritas.edu.ng
+  Roles: None assigned
+
+ID: 445 | Name: FRANCIS ONOJA | Email: onojaf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 446 | Name: INYOKWE OTINCHE | Email: otinchei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 447 | Name: OMOTAYO OJO | Email: ojoo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 448 | Name: PHILIMON ISUWA | Email: isuwap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 449 | Name: SUNDAY BALA | Email: balas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 450 | Name: MICHAEL ADIKWU | Email: adikwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 451 | Name: KENNETH OGBUJI | Email: ogbujik@veritas.edu.ng
+  Roles: None assigned
+
+ID: 452 | Name: NEHEMIAH GOTIP | Email: gotipn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 453 | Name: HAMMED SALAMI | Email: salamih@veritas.edu.ng
+  Roles: None assigned
+
+ID: 454 | Name: THERESA AGI | Email: AGIT@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 455 | Name: CHRISTINA KONJE | Email: KONJEC@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 456 | Name: IFEOMA EMELIFE | Email: EMELIFEI@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 457 | Name: MERCY AGGREH | Email: AGGREHS@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 458 | Name: OGILI MARK | Email: OGILIM@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 459 | Name: IFEANYI CHIKEZIE | Email: CHIKEZIEI@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 460 | Name: ANSLEM MAICHIKI | Email: MAICHIKIA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 461 | Name: AGNES ENEJI | Email: enejia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 462 | Name: ANTHONY UWAECHIA | Email: UWAECHIAA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 463 | Name: FESTUS NJOKU | Email: NJOKUF@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 464 | Name: TIMOTHY ADEYEMO | Email: ADEYEMOT@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 465 | Name: LINUS IDOKO | Email: IDOKOL@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 466 | Name: AHMED OMONIYI | Email: OMONIYIA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 467 | Name: MICHAEL KWANASHIE | Email: KWANASHIEM@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 468 | Name: KIYESOLA KOLAWOLE | Email: KOLAWOLEK@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 469 | Name: ADAEZE ANYANWU | Email: ANYANWUA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 470 | Name: BARNABAS ADUKWA | Email: ADUKWAB@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 471 | Name: SAMSON IRIMIYA | Email: IRIMIYAS@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 472 | Name: FRIDAY ACHEMA | Email: ACHEMAF@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 473 | Name: NNAMDI OPARA | Email: OPARAN@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 474 | Name: SIMON ODIBA | Email: ODIBAS@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 475 | Name: JOHN ITODO | Email: ITODOJ@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 476 | Name: OBEWU IFENDU | Email: IFENDUO@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 477 | Name: KEHINDE OSAMO | Email: OSAMOK@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 478 | Name: FELIX ULOKO | Email: ULOKOF@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 479 | Name: LYDIA BEGE | Email: BEGEL@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 480 | Name: RECHEAL UKWUANI | Email: UKWUANIR@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 481 | Name: STEPHEN UYANWUNE | Email: UYANWUNES@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 482 | Name: UKAMAKA NWOSU | Email: NWOSUU@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 483 | Name: REBECCA AJOLORE | Email: AJOLORER@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 484 | Name: CONSTANCE MADU | Email: MADUC@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 485 | Name: SARAH ODIWO | Email: ODIWOS@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 486 | Name: GABRIEL AYOGU | Email: AYOGUG@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 487 | Name: JUDE ONYEJI | Email: ONYEJIJ@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 488 | Name: PHILIP AKPEN | Email: AKPENP@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 489 | Name: PETER JAMES | Email: JAMESP@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 490 | Name: KENNETH AGBIM | Email: AGBIMK@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 491 | Name: CHIBUZO NWEZE | Email: NWEZEC@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 492 | Name: PATRICK ALUMUKU | Email: ALUMUKUP@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 493 | Name: MARCELLINUS SA'AONDO | Email: SA'AONDOM@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 494 | Name: ONYEBUCHI ILE | Email: ILEO@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 495 | Name: IMOH UWEM | Email: UWEMI@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 496 | Name: MICHAEL ELIKWU | Email: ELIKWUM@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 497 | Name: OYINLOLA OLANIYI | Email: OLANIYIO@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 498 | Name: CHUKWUDI OGBONNA | Email: OGBONNAC@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 499 | Name: MFON-ABASI IDIO | Email: idiom@veritas.edu.ng
+  Roles: None assigned
+
+ID: 500 | Name: SYLVESTER NWAORGU | Email: nwaorgus@veritas.edu.ng
+  Roles: None assigned
+
+ID: 501 | Name: CHUKWUDI ODOEME | Email: ODOEMEC@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 502 | Name: FELIX OYOSORO | Email: OYOSOROF@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 503 | Name: DAVID OKORIE | Email: OKORIED@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 504 | Name: OGWU JIBRIN | Email: jibrino@veritas.edu.ng
+  Roles: None assigned
+
+ID: 505 | Name: JOSEPHINE AGBONIKA | Email: agbonikaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 506 | Name: LAWRENCE CHRISTOPHER | Email: christopherl@veritas.edu.ng
+  Roles: None assigned
+
+ID: 507 | Name: CHINWENDU ONWUEGEKPE | Email: ONNWUEGEKPEC@veritas.edu.ng
+  Roles: None assigned
+
+ID: 508 | Name: TYOLUMUN KINGA-UPAA | Email: kinga-upaat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 509 | Name: NGANG NGANG | Email: ngangn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 510 | Name: PHILEMON OMEDE | Email: omedep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 511 | Name: VINCENT USMAN | Email: usmanv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 512 | Name: ELEOJO ATTAH | Email: attahe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 513 | Name: AUGUSTINE ANYA | Email: anyaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 514 | Name: OHIEMI ECHUDE | Email: echudeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 515 | Name: EKENE OKAFOR | Email: okaforee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 516 | Name: ERNEST UHIENE | Email: uhienee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 517 | Name: JOY PETER | Email: peterj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 518 | Name: SUNDAY IDAKWOJI | Email: idakwojis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 519 | Name: LINUS LAWRENCE | Email: lawrencel@veritas.edu.ng
+  Roles: None assigned
+
+ID: 520 | Name: GREGORY EZEOKEKE | Email: ezeokekeg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 521 | Name: CHIGOZIE ONAH | Email: onahc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 522 | Name: THOMAS OKONKWO | Email: okonkwot@veritas.edu.ng
+  Roles: None assigned
+
+ID: 523 | Name: USHALUMUN KURA | Email: kurau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 524 | Name: CHIAMAKA ONYEDIBE | Email: onyedibec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 525 | Name: FIDELIS ONAH | Email: onahf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 526 | Name: ENUWA OBEKPA | Email: obekpae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 527 | Name: MICHAEL PILANI | Email: pilanim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 528 | Name: CHUKWUDUMEBI ATTA | Email: attac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 529 | Name: ZEKERI MOMOH | Email: momohz@veritas.edu.ng
+  Roles: None assigned
+
+ID: 530 | Name: CALISTUS CHIMEZIE | Email: chimeziec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 531 | Name: JAMES AGBONHESE | Email: agbonhesej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 532 | Name: CATHERINE IRENE | Email: irenec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 533 | Name: PAUL IDORNIGIE | Email: idornigiep@veritas.edu.ng
+  Roles: None assigned
+
+ID: 534 | Name: AUGUSTINE UGWUMGBO | Email: ugwumgboa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 535 | Name: FYALI JIBJI-BUKAR | Email: jibji-bukarf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 536 | Name: MICHAEL AKAIGWE | Email: akaigwem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 537 | Name: MICHAEL AKAIGWE | Email: akaigwemu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 538 | Name: MOSES JOSHUA | Email: joshuam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 539 | Name: ADA FIDELIS | Email: fidelisa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 540 | Name: CHINWE ANYANWU | Email: anyanwuct@veritas.edu.ng
+  Roles: None assigned
+
+ID: 541 | Name: MODUPE STEPHEN | Email: stephenm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 542 | Name: CELESTINE UZONDU | Email: uzonduc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 543 | Name: CHISOM EZEH | Email: ezehc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 544 | Name: AJONYE OKOCHI | Email: okochia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 545 | Name: OLUWASEYE ADEDIRIN | Email: adedirino@veritas.edu.ng
+  Roles: None assigned
+
+ID: 546 | Name: IMOH JIMMY | Email: jimmyi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 547 | Name: ASHANG UTUBAKU | Email: utubakua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 548 | Name: CLINTON AHANEKU | Email: ahanekuc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 549 | Name: JOSHUA ABDULSALAAM | Email: rilickzy4@gmail.com
+  Roles: None assigned
+
+ID: 550 | Name: DANLADI ADAMAKU | Email: adamakud@veritas.edu.ng
+  Roles: None assigned
+
+ID: 551 | Name: SYLVESTER NWAORGU | Email: nwaorguc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 552 | Name: OSEREMEN OIGBOCHIE | Email: oigbochieo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 553 | Name: FLORENCE AGUORU | Email: aguoruf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 554 | Name: AJEGBA EKOJA | Email: ekojaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 555 | Name: CHINWENDU ONWUEGEKPE | Email: onwuegekpec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 556 | Name: EUNICE GODWIN | Email: godwine@veritas.edu.ng
+  Roles: None assigned
+
+ID: 557 | Name: COMFORT TSENONGO | Email: tsenongoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 558 | Name: ALOYSIUS ACHONWA | Email: achonwaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 559 | Name: PATIENCE SALIFU | Email: salifup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 560 | Name: JOY VANGARBA | Email: vangarbaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 561 | Name: EMMANUEL BAJEH | Email: bajehe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 562 | Name: ESTHER OGABO | Email: ogaboe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 563 | Name: RICHARD GOKUM | Email: gokumr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 564 | Name: JOSHUA IGNATIUS | Email: ignatiusj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 565 | Name: UGOCHUKWU OWO | Email: owou@veritas.edu.ng
+  Roles: None assigned
+
+ID: 566 | Name: JOSEPH TSEHEMBA | Email: tsehembaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 567 | Name: WILSON NZENWA | Email: nzenwaw@veritas.edu.ng
+  Roles: None assigned
+
+ID: 568 | Name: BENJAMIN OKON | Email: OKONB@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 569 | Name: JOSEPH OBANSA | Email: obansaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 570 | Name: CHINYERE AHAMEFULA | Email: ahamefulac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 571 | Name: ONYINYECHI NWACHUKWU | Email: nwachukwul@veritas.edu.ng
+  Roles: None assigned
+
+ID: 572 | Name: JOSHUA ADAMA | Email: adamaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 573 | Name: VINCENT AMAD | Email: amadv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 574 | Name: TEMIDAYO ADENIGBA | Email: adenigbat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 575 | Name: FRANCIS EDOH | Email: edohf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 576 | Name: DANIEL MAKOLO | Email: makolod@veritas.edu.ng
+  Roles: None assigned
+
+ID: 577 | Name: EMMANUEL EGBE | Email: egbee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 578 | Name: MARY KAMA | Email: kamam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 579 | Name: JUSTINA ELOM | Email: elomj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 580 | Name: SAMUEL OGBUJI | Email: ogbujis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 581 | Name: UNIMKE UGI | Email: ugiu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 582 | Name: DENNIS EKUMANKAMA | Email: ekumankamad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 583 | Name: DICKSON DAKO | Email: dakod@veritas.edu.ng
+  Roles: None assigned
+
+ID: 584 | Name: OLADAYO AKINWANDE | Email: akinwandeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 585 | Name: LINUS OSUAGWU | Email: osuagwul@veritas.edu.ng
+  Roles: None assigned
+
+ID: 586 | Name: ARMSTRONG IDACHABA | Email: idachabaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 587 | Name: OBIORA CHUKWUMBA | Email: chukwumbao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 588 | Name: SYLVIA OKONGOR | Email: okongors@veritas.edu.ng
+  Roles: None assigned
+
+ID: 589 | Name: AUGUSTINE GODWIN | Email: udourioha@veritas.edu.ng
+  Roles: None assigned
+
+ID: 590 | Name: AUGUSTINE GODWIN | Email: udouriohu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 591 | Name: Godwin Pharmacy | Email: udouriohp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 592 | Name: Godwin Nursing | Email: udouriohn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 593 | Name: Godwin Medical | Email: udouriohm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 594 | Name: UDOURIOH AUGUSTINE | Email: udouriohau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 595 | Name: AUGUSTINE AHMADU | Email: ahmadua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 596 | Name: BONIFACE ONOYIMA | Email: onoyimab@veritas.edu.ng
+  Roles: Transcript Administrator 
+
+ID: 597 | Name: ODOH GILBERT | Email: gilberto@veritas.edu.ng
+  Roles: None assigned
+
+ID: 598 | Name: NELLY AGWU | Email: agwun@veritas.edu.ng
+  Roles: None assigned
+
+ID: 599 | Name: CHRISTIAN NWANAGBA | Email: nwanagbac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 600 | Name: PIUS AGBA | Email: agbap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 601 | Name: BITRUS THOMAS | Email: thomasb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 602 | Name: SAMUEL OJO | Email: ojos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 603 | Name: CHRISTIANA ONYEKWEKE | Email: onyekwerec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 604 | Name: KATE WILFRED-BONSE | Email: wilfred-bonsek@veritas.edu.ng
+  Roles: None assigned
+
+ID: 605 | Name: ELKANAH NDIE | Email: ndiee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 606 | Name: ONYEKACHI NWANKWO | Email: nwankwoo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 607 | Name: IFEANYI IKE | Email: IKEI@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 608 | Name: BARNABAS ORKUMA | Email: orkumab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 609 | Name: UDOKA OSUJI | Email: osujiu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 610 | Name: PATRICK PILLAH | Email: pillahp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 611 | Name: IKOUWEM USOH | Email: usohi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 612 | Name: EMMANUEL LONGKANG | Email: Longkange@veritas.edu.ng
+  Roles: None assigned
+
+ID: 613 | Name: IMMACULATE AGUBATA | Email: AGUBATAI@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 614 | Name: SHEKINAH EMENOGU | Email: EMENOGUS@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 615 | Name: REBECCA AJEH | Email: AJEHR@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 616 | Name: FLORENCE NWAFOR | Email: NWAFORF@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 617 | Name: UCHECHUKWU EZE | Email: ezeu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 618 | Name: OGORI OCHE | Email: ocheo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 619 | Name: MATHEW OTONOKU | Email: otonokum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 620 | Name: ABIGAIL PHILIP | Email: philipa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 621 | Name: THOMAS BAIDOO | Email: baidoot@veritas.edu.ng
+  Roles: None assigned
+
+ID: 622 | Name: ENOCH DANIEL | Email: daniele@veritas.edu.ng
+  Roles: None assigned
+
+ID: 623 | Name: ISAAC EMEJE | Email: emejei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 624 | Name: VINCENT OKORE | Email: okorev@veritas.edu.ng
+  Roles: None assigned
+
+ID: 625 | Name: OLU AJOBIEWE | Email: ajobieweo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 626 | Name: URSULA KEMAS | Email: kemasu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 627 | Name: Teresia kaluma | Email: Kalumat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 628 | Name: KELECHUKWU MWOKORIE | Email: nwokoriek@veritas.edu.ng
+  Roles: None assigned
+
+ID: 629 | Name: GLORIA DANLAMI | Email: DANLAMIG@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 630 | Name: OBINNA UGWU | Email: ugwuoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 631 | Name: OVID MAMAH | Email: mamaho@veritas.edu.ng
+  Roles: None assigned
+
+ID: 632 | Name: UCHENNA UDOJI | Email: UDOJIU@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 633 | Name: OLUWAGBEMIGA ZACCHEUS | Email: ZACCHEUSO@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 634 | Name: ALEXANDER ANAGBADO | Email: ANAGBADOA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 635 | Name: CAROL ANIONWU | Email: anionwuc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 636 | Name: SUNDAY ONALO | Email: onalos@veritas.edu.ng
+  Roles: None assigned
+
+ID: 637 | Name: SESUGH AONDONENGEN | Email: aondonengens@veritas.edu.ng
+  Roles: None assigned
+
+ID: 638 | Name: JOSEPH OBAMEN | Email: OBAMENJ@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 639 | Name: AGNES AGU | Email: AGUA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 640 | Name: AYUBA YAKUBU | Email: yakubua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 641 | Name: AUGUSTA OBI | Email: OBIA@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 642 | Name: MARYANN EBEAGWU | Email: ebeagwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 643 | Name: OLORUNMOLA EHINMIDU | Email: ehinmiduo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 644 | Name: HASSAN NATALA | Email: NATALAH@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 645 | Name: MARYANN EBEAGWU | Email: ebeagwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 646 | Name: HARUNA BULUS | Email: bulush@veritas.edu.ng
+  Roles: None assigned
+
+ID: 647 | Name: GRACE LEO | Email: LEOG@VERITAS.EDU.NG
+  Roles: None assigned
+
+ID: 648 | Name: SUPREME OKOH | Email: okohsa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 649 | Name: OKPO EKERENAM | Email: ekerenamo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 650 | Name: IGNATIUS ONIMAWO | Email: onimawoi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 651 | Name: SYLVESTER ISAH | Email: isahs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 652 | Name: AUGUSTINE DANLADI | Email: danladia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 653 | Name: MARY JOHN | Email: johnm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 654 | Name: CHARLES OZOR | Email: ozorc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 655 | Name: TABITHA MUSA | Email: musat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 656 | Name: SEGUN ALONGE | Email: alonges@veritas.edu.ng
+  Roles: None assigned
+
+ID: 657 | Name: VIVIAN INYANG | Email: inyangv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 658 | Name: GLORY UMEH | Email: umehg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 659 | Name: GABRIEL OKENWA | Email: okenwag@veritas.edu.ng
+  Roles: None assigned
+
+ID: 660 | Name: Abiodun Shittu | Email: shitttua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 661 | Name: JULIUS ANIAH | Email: aniahj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 662 | Name: RAYMOND OKOLO | Email: okolor@veritas.edu.ng
+  Roles: None assigned
+
+ID: 663 | Name: JOHN OGEDENGBE | Email: ogedengbej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 665 | Name: IFEANYICHUKWU UKONU | Email: ukonui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 669 | Name: JESREIGN OGBONLAIYE | Email: ogbonlaiyej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 671 | Name: CHUKWUEMEKA ONWE | Email: onwec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 674 | Name: EZE NWACHUKWU | Email: nwachukwue@veritas.edu.ng
+  Roles: None assigned
+
+ID: 675 | Name: KEHINDE ADEBAYO | Email: adebayok@veritas.edu.ng
+  Roles: None assigned
+
+ID: 676 | Name: CHRISTOPHER SANNI | Email: christophers@veritas.edu.ng
+  Roles: None assigned
+
+ID: 677 | Name: Barnabas Julius | Email: juliusb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 678 | Name: STANLEY ANDEOBU | Email: andeobus@veritas.edu.ng
+  Roles: None assigned
+
+ID: 679 | Name: GRACE ELERI | Email: elerig@veritas.edu.ng
+  Roles: None assigned
+
+ID: 680 | Name: CHUKWUMA ODE | Email: odec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 681 | Name: JULIUS OLAJIRE | Email: olajirej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 682 | Name: REJOICE JAGABA | Email: jagabar@veritas.edu.ng
+  Roles: None assigned
+
+ID: 683 | Name: FIDELIS AKOMAYE | Email: akomayef@veritas.edu.ng
+  Roles: None assigned
+
+ID: 684 | Name: Sylvia Twins AKWUTE | Email: akwutes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 685 | Name: AKAWU LUKA | Email: lukaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 686 | Name: AUGUSTA OBI | Email: Obiau@veritas.edu.ng
+  Roles: None assigned
+
+ID: 687 | Name: SIMON ADEDE | Email: adedes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 688 | Name: ENOCH ABUH | Email: abuhe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 689 | Name: Samuel Egwu | Email: egwus@veritas.edu.ng
+  Roles: None assigned
+
+ID: 690 | Name: Oluyemisi Kunle | Email: kunleo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 691 | Name: Adalikwu Ogar | Email: ogara@veritas.edu.ng
+  Roles: None assigned
+
+ID: 692 | Name: ONYINYE USHIE | Email: ushieo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 693 | Name: JOSEPH OKWORI | Email: okworij@veritas.edu.ng
+  Roles: None assigned
+
+ID: 694 | Name: EZEKIEL TANKO | Email: tankoe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 695 | Name: HARRISON OKORO | Email: okoroh@veritas.edu.ng
+  Roles: None assigned
+
+ID: 696 | Name: IDAHOSA OSAMWONYI | Email: osamwonyii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 697 | Name: CHIBUEZE IKPO | Email: ikpoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 698 | Name: CHINENYE ADAKOLE | Email: adakolec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 699 | Name: HALIRU MUSA | Email: musah@veritas.edu.ng
+  Roles: None assigned
+
+ID: 700 | Name: THEODORA OMENOBA | Email: omenobat@veritas.edu.ng
+  Roles: None assigned
+
+ID: 701 | Name: EMMANUEL OLAYINKA | Email: olayinkae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 702 | Name: AYENGA TOR | Email: tora@veritas.edu.ng
+  Roles: None assigned
+
+ID: 703 | Name: SUNDAY KAURA | Email: kauras@veritas.edu.ng
+  Roles: None assigned
+
+ID: 704 | Name: ERIC IBE | Email: ibee@veritas.edu.ng
+  Roles: None assigned
+
+ID: 705 | Name: OGHENERUNO EMUEJEOBOGHENE | Email: emuejeobogheneo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 706 | Name: SAMUEL WYCLIFF | Email: wycliffs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 707 | Name: VINCENT OKAFOR | Email: okaforv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 708 | Name: AMARACHUKWU UCHENNA | Email: uchennaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 709 | Name: BAMIKOLE FOLORUNSO | Email: folorunsob@veritas.edu.ng
+  Roles: None assigned
+
+ID: 710 | Name: LAMBERT UKANGA | Email: ukangal@veritas.edu.ng
+  Roles: None assigned
+
+ID: 711 | Name: CHINWE UKPAI | Email: ukpaic@veritas.edu.ng
+  Roles: None assigned
+
+ID: 712 | Name: CHINAZA ANAETO | Email: anaetoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 713 | Name: JENNIFER ANAZOR-UGWU | Email: anazor-ugwuj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 714 | Name: CHARITY UNOGWU | Email: unogwuc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 715 | Name: AMARACHI FAITH | Email: faitha@veritas.edu.ng
+  Roles: None assigned
+
+ID: 716 | Name: MERCY ITANYI | Email: itanyim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 717 | Name: BLESSING SIMON | Email: simonb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 718 | Name: BONIFACE USHANG | Email: ushangb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 719 | Name: BASSEY BASSEY | Email: basseyb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 720 | Name: KELVIN ETENG | Email: etengk@veritas.edu.ng
+  Roles: None assigned
+
+ID: 721 | Name: LAZARUS DIKKO | Email: dikkol@veritas.edu.ng
+  Roles: None assigned
+
+ID: 722 | Name: JESAM UJONG | Email: ujongj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 723 | Name: JUSTUS UWANTA | Email: uwantaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 724 | Name: ISAAC AUGUSTINE | Email: augustinei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 725 | Name: OLUCHUKWU EZE | Email: ezeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 726 | Name: PROMISE GODWIN | Email: godwinp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 727 | Name: GODSWILL OBIDIKE | Email: obidikeg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 728 | Name: GRACE DAFIEL | Email: dafielg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 729 | Name: FABIAN UGWU | Email: ugwuf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 730 | Name: GIFT BULUS-OMOPARIOLA | Email: bulus-omopariolag@veritas.edu.ng
+  Roles: None assigned
+
+ID: 731 | Name: LUCY JOHN-AFRICA | Email: john-africal@veritas.edu.ng
+  Roles: None assigned
+
+ID: 732 | Name: HAFIZ MUSTAPHA | Email: mustaphah@veritas.edu.ng
+  Roles: None assigned
+
+ID: 733 | Name: NICOHLAS ALOR | Email: alorn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 734 | Name: IBRAHIM HARUNA | Email: harunai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 735 | Name: JOY EMMANUEL | Email: emmanuelj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 736 | Name: IKECHUKWU KANU | Email: kanui@veritas.edu.ng
+  Roles: None assigned
+
+ID: 737 | Name: HOPE DIKE | Email: dikeh@veritas.edu.ng
+  Roles: None assigned
+
+ID: 738 | Name: EMMANUEL DANLADI AYUBA | Email: danladiayubae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 739 | Name: DANGANA DANJUMA D. GORA | Email: danjumadgorad@veritas.edu
+  Roles: None assigned
+
+ID: 740 | Name: VALENTINE NNADI | Email: nnadiv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 741 | Name: FEMI AMODU | Email: amoduf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 742 | Name: AMOS TANKO | Email: tankoa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 743 | Name: OLOCHE EKOJA | Email: ekojao@veritas.edu.ng
+  Roles: None assigned
+
+ID: 744 | Name: BEN AGANDE | Email: agandeb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 745 | Name: FRIDAY PETER | Email: peterf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 746 | Name: BLESSING CHIKA | Email: chikab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 747 | Name: URSULA OCHE | Email: ocheu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 748 | Name: VICTOR GABRIEL | Email: gabrielv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 749 | Name: ANDREW HASSAN | Email: hassana@veritas.edu.ng
+  Roles: None assigned
+
+ID: 750 | Name: GERALDINE CHUKWU | Email: chukwug@veritas.edu.ng
+  Roles: None assigned
+
+ID: 751 | Name: AISHATU HASSAN | Email: hassanai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 752 | Name: NGENE MICHAEL | Email: michaeln@veritas.edu.ng
+  Roles: None assigned
+
+ID: 753 | Name: GLORIA MATHEW | Email: mathewg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 754 | Name: RICHARD OBASI | Email: obasir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 755 | Name: GIDEON NUHU | Email: nuhug@veritas.edu.ng
+  Roles: None assigned
+
+ID: 756 | Name: PATRICK KANU | Email: kanup@veritas.edu.ng
+  Roles: None assigned
+
+ID: 757 | Name: IFEOLUWA AKANNI | Email: akannii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 758 | Name: VITALIS ALI | Email: aliv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 759 | Name: BLESSING AYUBA | Email: ayubab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 760 | Name: MONICA JONATHAN | Email: jonathanm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 761 | Name: JOHN GIMBA | Email: gimbaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 762 | Name: MERITH ANABA | Email: anabam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 763 | Name: BLESSING ILLIKAH-ILOZUE | Email: illikah-ilozueb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 764 | Name: CHRISTY FREDRICK | Email: fredrickc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 765 | Name: NNAMDI OKORO | Email: okoron@veritas.edu.ng
+  Roles: None assigned
+
+ID: 766 | Name: ISIAKA MOSUDI | Email: mosudii@veritas.edu.ng
+  Roles: None assigned
+
+ID: 767 | Name: JOHN OHIEKU | Email: ohiekuj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 768 | Name: EMMANUEL ONOJA | Email: onojae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 769 | Name: THANKGOD JOHN | Email: johnt@veritas.edu.ng
+  Roles: None assigned
+
+ID: 770 | Name: CELESTINA EZEKWUDO | Email: ezekwudoc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 771 | Name: ANAYO IKEGWU | Email: ikegwua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 772 | Name: LYDIA CHUKWU | Email: chukwul@veritas.edu.ng
+  Roles: None assigned
+
+ID: 773 | Name: TOCHI IKE | Email: iket@veritas.edu.ng
+  Roles: None assigned
+
+ID: 774 | Name: KEKERE SHEDRACK | Email: kekeres@veritas.edu.ng
+  Roles: None assigned
+
+ID: 775 | Name: DAVID OGBU | Email: ogbud@veritas.edu.ng
+  Roles: None assigned
+
+ID: 776 | Name: JOHN AKOR | Email: akorj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 777 | Name: TITUS CHUKWUANUKWU | Email: chukwuanukwut@veritas.edu.ng
+  Roles: None assigned
+
+ID: 778 | Name: ESIRI UBIEDI | Email: ubiedie@veritas.edu.ng
+  Roles: None assigned
+
+ID: 779 | Name: OLUMIDE AGBEDE | Email: agbedeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 780 | Name: GRACE UGBABE | Email: ugbabeg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 781 | Name: SAMUEL ACHEME | Email: achemes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 782 | Name: ALEXANDER OKUNNU | Email: okunnua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 783 | Name: ICT Support | Email: ictsupport@veritas.edu.ng
+  Roles: None assigned
+
+ID: 784 | Name: OLUBUKOLA TIKARE | Email: tikareo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 785 | Name: ROBINSON EJILAH | Email: ejilahr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 786 | Name: AMOS NWORIE | Email: nworiea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 787 | Name: VICTORIA OTUNYO | Email: otunyov@veritas.edu.ng
+  Roles: None assigned
+
+ID: 788 | Name: GRACE ERIKI | Email: erikig@veritas.edu.ng
+  Roles: None assigned
+
+ID: 789 | Name: DOOWUESE GBENYI | Email: gbenyid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 790 | Name: FRIDAY AGBO | Email: agbofr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 791 | Name: CHARLES DAGOGOT | Email: dagogotc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 792 | Name: EKEMA ESSIEN | Email: essienek@veritas.edu.ng
+  Roles: None assigned
+
+ID: 793 | Name: QUINCEY ASANAENYI | Email: asanaenyiq@veritas.edu.ng
+  Roles: None assigned
+
+ID: 794 | Name: ANNA YOHANNA | Email: yohannaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 795 | Name: BANYO AMDII | Email: amdiib@veritas.edu.ng
+  Roles: None assigned
+
+ID: 796 | Name: STEPHEN ALFA | Email: alfas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 797 | Name: DEBORAH OMOSAYIN | Email: omosayind@veritas.edu.ng
+  Roles: None assigned
+
+ID: 798 | Name: REUBEN ILIYA | Email: iliyar@veritas.edu.ng
+  Roles: None assigned
+
+ID: 799 | Name: AFOLABI AWODEYI | Email: awodeyia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 800 | Name: MATTHEW ASHIKENI | Email: ashikenim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 801 | Name: TIWALADE ADELAKUN | Email: adelakunt@veritas.edu.ng
+  Roles: None assigned
+
+ID: 802 | Name: CHIJIOKE EJIMOFOR | Email: ejimoforc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 803 | Name: HAPPY MICHEAL | Email: michealh@veritas.edu.ng
+  Roles: None assigned
+
+ID: 804 | Name: CHRISTIAN OFODEME | Email: ofodemec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 805 | Name: AMBROSE ANENE | Email: anenea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 806 | Name: NGOZI IBEH | Email: ibehn@veritas.edu.ng
+  Roles: None assigned
+
+ID: 807 | Name: VIVIAN NWAOCHA | Email: nwaochav@veritas.edu.ng
+  Roles: None assigned
+
+ID: 808 | Name: AMAKU AMAKU | Email: amakua@veritas.edu.ng
+  Roles: None assigned
+
+ID: 809 | Name: PATRICIA PETER | Email: peterp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 810 | Name: SEEMBER AONDOAVER | Email: aondoavers@veritas.edu.ng
+  Roles: None assigned
+
+ID: 811 | Name: BONAVENTURE ANSELM | Email: anselmb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 812 | Name: JOYCE ENIAYEYE | Email: eniayeyej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 813 | Name: ISIOMA OKONKWO | Email: okonkwois@veritas.edu.ng
+  Roles: None assigned
+
+ID: 814 | Name: ZENAS OKARAGA | Email: okaragaz@veritas.edu.ng
+  Roles: None assigned
+
+ID: 815 | Name: KATHLEEN MCGARVEY | Email: mcgarveyk@veritas.edu.ng
+  Roles: None assigned
+
+ID: 816 | Name: NANCY ORJINTA | Email: orjintan@veritas.edu.ng
+  Roles: None assigned
+
+ID: 817 | Name: FRANCIS ADEBAYO | Email: adebayof@veritas.edu.ng
+  Roles: None assigned
+
+ID: 818 | Name: JONATHAN OKONKWO | Email: okonkwoj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 819 | Name: ELIZABETH YONKOR | Email: yonkore@veritas.edu.ng
+  Roles: None assigned
+
+ID: 820 | Name: ISAAC AKERELE | Email: akerelei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 821 | Name: CHRISTIAN OFODEME | Email: ofodemech@veritas.edu.ng
+  Roles: None assigned
+
+ID: 822 | Name: SEEMBER AONDOAVER | Email: aondoaverse@veritas.edu.ng
+  Roles: None assigned
+
+ID: 823 | Name: EMMANUEL OKECHUKWU | Email: okechukwue@veritas.edu.ng
+  Roles: None assigned
+
+ID: 824 | Name: VIVIAN NWAOCHIA | Email: ogochukwuv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 825 | Name: IDUH ADEDE | Email: adedei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 826 | Name: HAPPY MICHAEL | Email: michaelh@veritas.edu.ng
+  Roles: None assigned
+
+ID: 827 | Name: VERONICA YOHANNA | Email: yohannav@veritas.edu.ng
+  Roles: None assigned
+
+ID: 828 | Name: BLESSING OGBE | Email: ogbeb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 829 | Name: NGOZI IBEH | Email: ibehng@veritas.edu.ng
+  Roles: None assigned
+
+ID: 830 | Name: ROSEMARY ORJIAKO | Email: orjiakor@veritas.edu.ng
+  Roles: None assigned
+
+ID: 831 | Name: TAIWO AYODELE | Email: ayodelet@veritas.edu.ng
+  Roles: None assigned
+
+ID: 832 | Name: SAMUEL ABAKI | Email: abakis@veritas.edu.ng
+  Roles: None assigned
+
+ID: 833 | Name: EMMANUEL AGADA | Email: agadae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 834 | Name: SAMUEL AGADA | Email: agadas@veritas.edu.ng
+  Roles: None assigned
+
+ID: 835 | Name: DANIEL AZUAMA | Email: azuamad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 836 | Name: MOSES ADUKWU | Email: adukwum@veritas.edu.ng
+  Roles: None assigned
+
+ID: 837 | Name: JACOB DAHEL | Email: dahelj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 838 | Name: ABIGAIL YUDA | Email: yudaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 839 | Name: DAVID DANJUMA | Email: danjumad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 840 | Name: CHETHACHUKWU NWANA | Email: nwanac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 841 | Name: AMBROSE ANENE | Email: aneneam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 842 | Name: TAPIYADI INNAZO | Email: innazot@veritas.edu.ng
+  Roles: None assigned
+
+ID: 843 | Name: FELIX UBOH | Email: ubohf@veritas.edu.ng
+  Roles: None assigned
+
+ID: 844 | Name: DOOSUUR LUPER | Email: luperd@veritas.edu.ng
+  Roles: None assigned
+
+ID: 845 | Name: ADDLINE ANYANWU | Email: anyanwuad@veritas.edu.ng
+  Roles: None assigned
+
+ID: 846 | Name: DANJUMA MAICHIBI | Email: maichibid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 847 | Name: JONATHAN MUSA | Email: musajo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 848 | Name: MERCY JAMES | Email: jamesm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 849 | Name: PATRICIA PETER | Email: peterpa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 850 | Name: ALICE ALI | Email: alia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 852 | Name: MARTHA EGESIMBA | Email: egesimbam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 853 | Name: ANTHONY SANNI | Email: sannia@veritas.edu.ng
+  Roles: None assigned
+
+ID: 854 | Name: SALOME TOR | Email: tors@veritas.edu.ng
+  Roles: None assigned
+
+ID: 855 | Name: NNAMDI IGWE | Email: igwen@veritas.edu.ng
+  Roles: None assigned
+
+ID: 856 | Name: LAWRENCE OHAMMAH | Email: ohammahla@veritas.edu.ng
+  Roles: None assigned
+
+ID: 857 | Name: SUDGA INUNDUH | Email: inunduhs@veritas.edu.ng
+  Roles: None assigned
+
+ID: 858 | Name: VICTOR OGUH | Email: oguhv@veritas.edu.ng
+  Roles: None assigned
+
+ID: 859 | Name: MOJIBOLA MAKUN | Email: ogwuchel@veritas.edu.ng
+  Roles: None assigned
+
+ID: 860 | Name: LEONARD OGWUCHE | Email: ogwuchele@veritas.edu.ng
+  Roles: None assigned
+
+ID: 861 | Name: KENECHUKWU ONYIA | Email: onyiak@veritas.edu.ng
+  Roles: None assigned
+
+ID: 862 | Name: MOSES OGIJO | Email: ogijom@veritas.edu.ng
+  Roles: None assigned
+
+ID: 863 | Name: EKAETTE UMOH | Email: umohe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 864 | Name: CAROL SOLOMON | Email: solomonc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 865 | Name: BELLO SUBERU | Email: suberub@veritas.edu.ng
+  Roles: None assigned
+
+ID: 866 | Name: EMMANUEL EFFIONG | Email: effionge@veritas.edu.ng
+  Roles: None assigned
+
+ID: 867 | Name: BULUS DIYEN | Email: diyenb@veritas.edu.ng
+  Roles: None assigned
+
+ID: 868 | Name: GLORY BASSEY | Email: basseyg@veritas.edu.ng
+  Roles: None assigned
+
+ID: 869 | Name: EMMANUELLA DOMINIC | Email: dominice@veritas.edu.ng
+  Roles: None assigned
+
+ID: 870 | Name: ADERONKE OBISESAN | Email: obisesana@veritas.edu.ng
+  Roles: None assigned
+
+ID: 871 | Name: PRINCE UDEH | Email: udehp@veritas.edu.ng
+  Roles: None assigned
+
+ID: 872 | Name: ANTHONY OKOYE | Email: okoyea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 873 | Name: OLUWAKANYINSOLA SALAWU | Email: salawuo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 874 | Name: OKECHUKWU OKONKWO | Email: okonkwoo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 875 | Name: BESSIE EZIECHILA | Email: eziechilab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 876 | Name: OYEDELE OYEKU | Email: oyekuo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 877 | Name: OJONOMA OKWUTE | Email: okwuteo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 879 | Name: DANJUMA AJIBILI | Email: ajibilid@veritas.edu.ng
+  Roles: None assigned
+
+ID: 880 | Name: DANJUMA AJIBILI | Email: ajibilida@veritas.edu.ng
+  Roles: None assigned
+
+ID: 881 | Name: ERIC UMEH | Email: umehe@veritas.edu.ng
+  Roles: None assigned
+
+ID: 882 | Name: JUSTINA KWASKEBE | Email: kwaskebej@veritas.edu.ng
+  Roles: None assigned
+
+ID: 883 | Name: ONYILOKO DANIEL-EBUNE | Email: daniel-ebuneo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 884 | Name: CHIMBUOYIM UZODIMMA | Email: uzodimmac@veritas.edu.ng
+  Roles: None assigned
+
+ID: 885 | Name: IKECHUKWU ALOZIEUWA | Email: alozieuwai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 886 | Name: ANYAKU ANTHONIA | Email: anthoniaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 887 | Name: YONKOR ELIZABETH | Email: elizabethy@veritas.edu.ng
+  Roles: None assigned
+
+ID: 888 | Name: AUDU ROBO | Email: roboa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 889 | Name: AZUBUGWU JENNIFER | Email: jennifera@veritas.edu.ng
+  Roles: None assigned
+
+ID: 890 | Name: AGUSIEGBE MIRACLE | Email: miraclea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 891 | Name: ISHAKU BLESSING | Email: blessingi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 892 | Name: DANJUMA SHEKOLO | Email: shekolod@veritas.edu.ng
+  Roles: None assigned
+
+ID: 893 | Name: ANNASTASIA KINSE | Email: kinsea@veritas.edu.ng
+  Roles: None assigned
+
+ID: 894 | Name: ANAYOCHUKWU OGBUA | Email: ogbuaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 895 | Name: EMMANUEL  OKOLI | Email: okolie@veritas.edu.ng
+  Roles: None assigned
+
+ID: 897 | Name: ISTIFANUS BITRUS | Email: bitrusi@veritas.edu.ng
+  Roles: None assigned
+
+ID: 898 | Name: EMMANUEL ATTAH | Email: attahem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 899 | Name: ENEMALI AMANA | Email: amanae@veritas.edu.ng
+  Roles: None assigned
+
+ID: 900 | Name: VICTOR UDOWO | Email: udowov@veritas.edu.ng
+  Roles: None assigned
+
+ID: 901 | Name: KUNLE  OLOBAYO | Email: olobayok@veritas.edu.ng
+  Roles: None assigned
+
+ID: 902 | Name: EZE EVENLYN | Email: evenlyne@veritas.edu.ng
+  Roles: None assigned
+
+ID: 903 | Name: SYLVESTER AYE | Email: ayes@veritas.edu.ng
+  Roles: None assigned
+
+ID: 904 | Name: PROSPER ELIJA | Email: elijap@veritas.edu.ng
+  Roles: None assigned
+
+ID: 905 | Name: PROSPER ELIJA | Email: elijapr@veritas.edu.ng
+  Roles: None assigned
+
+ID: 906 | Name: UDUAK GEORGE | Email: georgeu@veritas.edu.ng
+  Roles: None assigned
+
+ID: 907 | Name: CHUKWUEMEKA  ANDREW  | Email: andrewc@veritas.edu.ng
+  Roles: None assigned
+
+ID: 908 | Name: JOSEPH ESEYIN | Email: eseyinj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 909 | Name: OJONUGWA JAMES | Email: jameso@veritas.edu.ng
+  Roles: None assigned
+
+ID: 910 | Name: OLUTAYO OYEDERE | Email: oyedereo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 911 | Name: ELIJAH PROSPER | Email: prospere@veritas.edu.ng
+  Roles: None assigned
+
+ID: 912 | Name: OJONUGWA JAMES | Email: jamesoj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 913 | Name: REGINALD  NNAMDI | Email: nnamdir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 916 | Name: HABIBA UMAR | Email: umarh@veritas.edu.ng
+  Roles: None assigned
+
+ID: 917 | Name: IFEOMA OMOBHUDE | Email: omobhudei@veritas.edu.ng
+  Roles: None assigned
+
+ID: 918 | Name: JAMES APOCHI | Email: apochij@veritas.edu.ng
+  Roles: None assigned
+
+ID: 919 | Name: ZACK OKORONKWO | Email: okoronkwoz@veritas.edu.ng
+  Roles: None assigned
+
+ID: 920 | Name: OLUWANIFEMI AJAYI | Email: ajayio@veritas.edu.ng
+  Roles: None assigned
+
+ID: 921 | Name: IBIKUNLE DUROTOLUWA | Email: durotoluwai@veritas.edu.ng
+  Roles: None assigned
+
+ID: 922 | Name: OPEYEMI ABISOYE | Email: abisoyeo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 923 | Name: RUTH AJAYI | Email: ajayir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 924 | Name: RUTH AKANJI | Email: akanjir@veritas.edu.ng
+  Roles: None assigned
+
+ID: 925 | Name: MARY LAWRENCE | Email: lawrencem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 926 | Name: HABIBA UMAR | Email: umarha@veritas.edu.ng
+  Roles: None assigned
+
+ID: 928 | Name: JOSEPH TORYILA | Email: toryilaj@veritas.edu.ng
+  Roles: None assigned
+
+ID: 929 | Name: BONNIEVOLO ECOMA | Email: ecomab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 930 | Name: MUHAMMED SA'AD | Email: sa'adm@veritas.edu.ng
+  Roles: None assigned
+
+ID: 931 | Name: AUGUSTA MGBEDIMMA | Email: mgbedimmaa@veritas.edu.ng
+  Roles: None assigned
+
+ID: 932 | Name: EMMANUEL EJEMBI | Email: ejembie@veritas.edu.ng
+  Roles: None assigned
+
+ID: 933 | Name: CHEKWAS CHIKEZIE | Email: chikeziec@veritas.edu.ng
+  Roles: None assigned
+
+ID: 934 | Name: SOLOMON  MSAR | Email: msars@veritas.edu.ng
+  Roles: None assigned
+
+ID: 935 | Name: ZARIYI YUSUF | Email: yusufz@veritas.edu.ng
+  Roles: None assigned
+
+ID: 936 | Name: BULUS DAUKAKA | Email: daukakab@veritas.edu.ng
+  Roles: None assigned
+
+ID: 937 | Name: NELSON OGBOGU | Email: ogbogun@veritas.edu.ng
+  Roles: None assigned
+
+ID: 938 | Name: MUSIRAFAT SHUTTI | Email: shuttim@veritas.edu.ng
+  Roles: None assigned
+
+ID: 939 | Name: KALU EKE | Email: ekek@veritas.edu.ng
+  Roles: None assigned
+
+ID: 940 | Name: BONNIEVOLO ECOMA | Email: ecomabo@veritas.edu.ng
+  Roles: None assigned
+
+ID: 941 | Name: EMMANUEL  EJEMBI | Email: ejembiem@veritas.edu.ng
+  Roles: None assigned
+
+ID: 942 | Name: MGBEDIMMA AUGUSTA | Email: augustam@veritas.edu.ng
+  Roles: None assigned
+
+ID: 943 | Name: SA'ADMUHAMMAD SA'AD | Email: sa'ads@veritas.edu.ng
+  Roles: None assigned
+
+ID: 944 | Name: GALI REBECCA | Email: rebeccag@veritas.edu.ng
+  Roles: None assigned
+
+ID: 945 | Name: ESTHER ALI | Email: alie@veritas.edu.ng
+  Roles: None assigned
+
+ID: 946 | Name: GODSTIME EIGBIREMOLEN | Email: eigbiremoleng@veritas.edu.ng
+  Roles: None assigned
+
+4. TESTING STAFF PERMISSIONS:
+-----------------------------
+Testing permissions for: OBUMNEME OFOR
+  - view_transcript_applications: NO
+  - manage_transcript_applications: NO
+  - manage_transcript_staff: NO
+  - manage_transcript_payments: NO
+
+=== TEST COMPLETED ===

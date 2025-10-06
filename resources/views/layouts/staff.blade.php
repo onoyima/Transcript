@@ -121,8 +121,8 @@
             @include('spartials.staff-navbar')
 
             <!-- Main Content -->
-            <main class="grow">
-                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <main class="grow relative">
+                <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 relative">
                     
                     <!-- Flash Messages -->
                     @if(session('success'))
