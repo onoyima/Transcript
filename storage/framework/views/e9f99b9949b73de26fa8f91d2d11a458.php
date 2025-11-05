@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'New Transcript Application'); ?>
 
-@section('title', 'New Transcript Application')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
@@ -12,7 +10,7 @@
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-white">New Transcript Application</h1>
     <p class="text-gray-600 dark:text-gray-300 mt-1">Submit a new transcript request</p>
                 </div>
-                <a href="{{ route('student.dashboard') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <a href="<?php echo e(route('student.dashboard')); ?>" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Dashboard
                 </a>
@@ -64,45 +62,45 @@
         </div>
 
         <!-- Error and Success Messages -->
-        @if(session('error'))
+        <?php if(session('error')): ?>
             <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-4 mb-6">
                 <div class="flex items-center">
                     <i class="fas fa-exclamation-circle text-red-500 mr-3"></i>
-                    <div class="text-red-700 dark:text-red-400">{{ session('error') }}</div>
+                    <div class="text-red-700 dark:text-red-400"><?php echo e(session('error')); ?></div>
                 </div>
             </div>
-        @endif
+        <?php endif; ?>
 
-        @if(session('success'))
+        <?php if(session('success')): ?>
             <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-4 mb-6">
                 <div class="flex items-center">
                     <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                    <div class="text-green-700 dark:text-green-400">{{ session('success') }}</div>
+                    <div class="text-green-700 dark:text-green-400"><?php echo e(session('success')); ?></div>
                 </div>
             </div>
-        @endif
+        <?php endif; ?>
 
-        @if($errors->any())
+        <?php if($errors->any()): ?>
             <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-4 mb-6">
                 <div class="flex items-start">
                     <i class="fas fa-exclamation-triangle text-red-500 mr-3 mt-1"></i>
                     <div>
                         <div class="text-red-700 dark:text-red-400 font-medium mb-2">Please correct the following errors:</div>
                         <ul class="text-red-600 dark:text-red-400 text-sm space-y-1">
-                            @foreach($errors->all() as $error)
-                                <li>• {{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li>• <?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
             </div>
-        @endif
+        <?php endif; ?>
 
         <!-- Application Form -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="p-6">
-                <form id="transcriptForm" action="{{ route('student.transcript.store') }}" method="POST">
-                    @csrf
+                <form id="transcriptForm" action="<?php echo e(route('student.transcript.store')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
                     
                     <!-- Step 1: Category (Undergraduate/Postgraduate) -->
                     <div class="mb-6">
@@ -256,7 +254,7 @@
                     <!-- Self E-copy Section -->
                     <div class="mb-6" id="selfEcopySection" style="display: none;">
                         <label for="self_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Email Address</label>
-                        <input type="email" id="self_email" name="self_email" value="{{ $student->email ?? '' }}" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" readonly>
+                        <input type="email" id="self_email" name="self_email" value="<?php echo e($student->email ?? ''); ?>" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" readonly>
                         <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">E-copy will be sent to this email address</p>
                         <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg p-4 mt-3">
                             <div class="flex items-center justify-between">
@@ -402,7 +400,7 @@
                     <!-- Email Confirmation (for Self E-copy) -->
                     <div class="mb-6" id="emailConfirmationSection" style="display: none;">
                         <label for="student_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Email Address</label>
-                        <input type="email" id="student_email" name="student_email" value="{{ $student->email ?? '' }}" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" readonly>
+                        <input type="email" id="student_email" name="student_email" value="<?php echo e($student->email ?? ''); ?>" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" readonly>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">E-copy will be sent to this email address</p>
                     </div>
 
@@ -467,7 +465,7 @@
 
                     <!-- Submit Button -->
                     <div class="flex gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
-<a href="{{ route('student.dashboard') }}" class="px-6 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+<a href="<?php echo e(route('student.dashboard')); ?>" class="px-6 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                             Cancel
                         </a>
                         <button type="submit" id="submitBtn" class="inline-flex items-center px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed">
@@ -493,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load pricing structure from backend
     async function loadPricingStructure() {
         try {
-            const response = await fetch(`{{ route('student.transcript.pricing') }}?structure=1`);
+            const response = await fetch(`<?php echo e(route('student.transcript.pricing')); ?>?structure=1`);
             const data = await response.json();
             
             if (data.success && data.pricing) {
@@ -511,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load payment methods from backend
     async function loadPaymentMethods() {
         try {
-            const response = await fetch(`{{ route('student.transcript.pricing') }}?payment_methods=1`);
+            const response = await fetch(`<?php echo e(route('student.transcript.pricing')); ?>?payment_methods=1`);
             const data = await response.json();
             
             if (data.success && data.payment_methods) {
@@ -841,7 +839,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (courier) params.append('courier', courier);
             if (paymentMethod) params.append('payment_method', paymentMethod);
 
-            const response = await fetch(`{{ route('student.transcript.pricing') }}?${params.toString()}`);
+            const response = await fetch(`<?php echo e(route('student.transcript.pricing')); ?>?${params.toString()}`);
             const data = await response.json();
 
             if (data.success && data.breakdown) {
@@ -966,4 +964,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/student/transcript/create.blade.php ENDPATH**/ ?>

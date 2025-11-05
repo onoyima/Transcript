@@ -4,7 +4,7 @@
     <!-- SIDEBAR HEADER -->
     <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
         class="sidebar-header flex items-center gap-2 pt-6 pb-6 border-b border-gray-100 dark:border-gray-800">
-        <a href="{{ route('student.dashboard') }}" class="flex items-center space-x-3 group">
+        <a href="<?php echo e(route('student.dashboard')); ?>" class="flex items-center space-x-3 group">
             <div class="flex-shrink-0">
                 <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                     <i class="fas fa-graduation-cap text-white text-lg"></i>
@@ -19,7 +19,7 @@
 
     <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear py-4">
         <!-- Sidebar Menu -->
-        <nav x-data="{ selected: $persist('{{ request()->routeIs('student.dashboard') ? 'Dashboard' : (request()->routeIs('student.profile') ? 'Profile' : (request()->routeIs('student.transcript.*') ? 'Transcript' : 'Dashboard')) }}') }" class="space-y-2">
+        <nav x-data="{ selected: $persist('<?php echo e(request()->routeIs('student.dashboard') ? 'Dashboard' : (request()->routeIs('student.profile') ? 'Profile' : (request()->routeIs('student.transcript.*') ? 'Transcript' : 'Dashboard'))); ?>') }" class="space-y-2">
             <!-- Menu Group -->
             <div>
                 <h3 class="mb-4 px-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -35,8 +35,8 @@
                 <ul class="space-y-1">
                     <!-- Menu Item Dashboard -->
                     <li>
-                        <a href="{{ route('student.dashboard') }}"
-                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ request()->routeIs('student.dashboard') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' }}"
+                        <a href="<?php echo e(route('student.dashboard')); ?>"
+                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 <?php echo e(request()->routeIs('student.dashboard') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'); ?>"
                             :class="sidebarToggle ? 'lg:justify-center' : ''">
                             <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center"
                                  :class="sidebarToggle ? 'mr-0' : 'mr-3'">
@@ -53,8 +53,8 @@
 
                     <!-- Menu Item Profile -->
                     <li>
-                        <a href="{{ route('student.profile') }}"
-                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ request()->routeIs('student.profile') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' }}"
+                        <a href="<?php echo e(route('student.profile')); ?>"
+                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 <?php echo e(request()->routeIs('student.profile') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'); ?>"
                             :class="sidebarToggle ? 'lg:justify-center' : ''">
                             <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center"
                                  :class="sidebarToggle ? 'mr-0' : 'mr-3'">
@@ -70,8 +70,8 @@
 
                     <!-- Menu Item New Application -->
                     <li>
-                        <a href="{{ route('student.transcript.create') }}"
-                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ request()->routeIs('student.transcript.create') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' }}"
+                        <a href="<?php echo e(route('student.transcript.create')); ?>"
+                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 <?php echo e(request()->routeIs('student.transcript.create') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'); ?>"
                             :class="sidebarToggle ? 'lg:justify-center' : ''">
                             <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center"
                                  :class="sidebarToggle ? 'mr-0' : 'mr-3'">
@@ -87,8 +87,8 @@
 
                     <!-- Menu Item Application History -->
                     <li>
-                        <a href="{{ route('student.transcript.history') }}"
-                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ request()->routeIs('student.transcript.history') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' }}"
+                        <a href="<?php echo e(route('student.transcript.history')); ?>"
+                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 <?php echo e(request()->routeIs('student.transcript.history') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'); ?>"
                             :class="sidebarToggle ? 'lg:justify-center' : ''">
                             <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center"
                                  :class="sidebarToggle ? 'mr-0' : 'mr-3'">
@@ -104,8 +104,8 @@
 
                     <!-- Menu Item Payment History -->
                     <li>
-                        <a href="{{ route('student.payments') }}"
-                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ request()->routeIs('student.payments') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white' }}"
+                        <a href="<?php echo e(route('student.payments')); ?>"
+                            class="group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 <?php echo e(request()->routeIs('student.payments') ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'); ?>"
                             :class="sidebarToggle ? 'lg:justify-center' : ''">
                             <div class="flex-shrink-0 w-6 h-6 flex items-center justify-center"
                                  :class="sidebarToggle ? 'mr-0' : 'mr-3'">
@@ -148,3 +148,4 @@
         <!-- Promo Box -->
     </div>
 </aside>
+<?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/partials/sidebar.blade.php ENDPATH**/ ?>

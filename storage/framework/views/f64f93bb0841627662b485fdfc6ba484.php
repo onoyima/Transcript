@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Payment History'); ?>
 
-@section('title', 'Payment History')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
@@ -12,7 +10,7 @@
                     <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Payment History</h1>
                     <p class="text-gray-900 dark:text-gray-100 mt-1">View all your payment transactions and receipts</p>
                 </div>
-                <a href="{{ route('student.dashboard') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <a href="<?php echo e(route('student.dashboard')); ?>" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Dashboard
                 </a>
@@ -20,12 +18,12 @@
         </div>
 
         <!-- Summary Cards -->
-        @php
+        <?php
             $totalPaid = $payments->where('status', 'completed')->sum('amount');
             $totalPending = $payments->where('status', 'pending')->sum('amount');
             $totalTransactions = $payments->count();
             $thisMonthAmount = $payments->where('created_at', '>=', now()->startOfMonth())->sum('amount');
-        @endphp
+        ?>
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
@@ -37,7 +35,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Total Paid</p>
-                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦{{ number_format($totalPaid, 0) }}</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦<?php echo e(number_format($totalPaid, 0)); ?></p>
                     </div>
                 </div>
             </div>
@@ -50,7 +48,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Pending</p>
-                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦{{ number_format($totalPending, 0) }}</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦<?php echo e(number_format($totalPending, 0)); ?></p>
                     </div>
                 </div>
             </div>
@@ -63,7 +61,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Transactions</p>
-                        <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $totalTransactions }}</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white"><?php echo e($totalTransactions); ?></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +74,7 @@
                     </div>
                     <div class="ml-4">
                         <p class="text-sm font-medium text-gray-700 dark:text-gray-300">This Month</p>
-                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦{{ number_format($thisMonthAmount, 0) }}</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦<?php echo e(number_format($thisMonthAmount, 0)); ?></p>
                     </div>
                 </div>
             </div>
@@ -132,87 +130,88 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                            @forelse($payments as $payment)
+                            <?php $__empty_1 = true; $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <tr class="hover:bg-gray-50 transition-colors duration-200">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
-                                            @if($payment->status === 'completed')
+                                            <?php if($payment->status === 'completed'): ?>
                                             <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
                                                 <i class="fas fa-check text-green-600"></i>
                                             </div>
-                                            @elseif($payment->status === 'pending')
+                                            <?php elseif($payment->status === 'pending'): ?>
                                             <div class="h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
                                                 <i class="fas fa-clock text-yellow-600"></i>
                                             </div>
-                                            @else
+                                            <?php else: ?>
                                             <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
                                                 <i class="fas fa-times text-red-600"></i>
                                             </div>
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
                                         <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $payment->transaction_id ?? 'TXN-' . str_pad($payment->id, 3, '0', STR_PAD_LEFT) }}</div>
-                                            @if($payment->rrr)
-                                            <div class="text-sm text-gray-700 dark:text-gray-300">RRR: {{ $payment->rrr }}</div>
-                                            @endif
+                                            <div class="text-sm font-medium text-gray-900 dark:text-white"><?php echo e($payment->transaction_id ?? 'TXN-' . str_pad($payment->id, 3, '0', STR_PAD_LEFT)); ?></div>
+                                            <?php if($payment->rrr): ?>
+                                            <div class="text-sm text-gray-700 dark:text-gray-300">RRR: <?php echo e($payment->rrr); ?></div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 dark:text-white">{{ $payment->application->transcript_type ?? 'Transcript' }}</div>
-                                    @if($payment->application)
-                                    <div class="text-sm text-gray-700 dark:text-gray-300">{{ ucfirst($payment->application->delivery_method) }} - {{ $payment->application->number_of_copies }} {{ $payment->application->number_of_copies > 1 ? 'Copies' : 'Copy' }}</div>
-                                    @endif
+                                    <div class="text-sm text-gray-900 dark:text-white"><?php echo e($payment->application->transcript_type ?? 'Transcript'); ?></div>
+                                    <?php if($payment->application): ?>
+                                    <div class="text-sm text-gray-700 dark:text-gray-300"><?php echo e(ucfirst($payment->application->delivery_method)); ?> - <?php echo e($payment->application->number_of_copies); ?> <?php echo e($payment->application->number_of_copies > 1 ? 'Copies' : 'Copy'); ?></div>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900 dark:text-white">₦{{ number_format($payment->amount, 0) }}</div>
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white">₦<?php echo e(number_format($payment->amount, 0)); ?></div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 dark:text-white">{{ ucfirst(str_replace('_', ' ', $payment->payment_method ?? 'Online Payment')) }}</div>
-                                    @if($payment->payment_reference)
-                                    <div class="text-sm text-gray-700 dark:text-gray-300">{{ $payment->payment_reference }}</div>
-                                    @endif
+                                    <div class="text-sm text-gray-900 dark:text-white"><?php echo e(ucfirst(str_replace('_', ' ', $payment->payment_method ?? 'Online Payment'))); ?></div>
+                                    <?php if($payment->payment_reference): ?>
+                                    <div class="text-sm text-gray-700 dark:text-gray-300"><?php echo e($payment->payment_reference); ?></div>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    @if($payment->status === 'completed')
+                                    <?php if($payment->status === 'completed'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                         Successful
                                     </span>
-                                    @elseif($payment->status === 'pending')
+                                    <?php elseif($payment->status === 'pending'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                         Pending
                                     </span>
-                                    @elseif($payment->status === 'failed')
+                                    <?php elseif($payment->status === 'failed'): ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                         Failed
                                     </span>
-                                    @else
+                                    <?php else: ?>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                        {{ ucfirst($payment->status) }}
+                                        <?php echo e(ucfirst($payment->status)); ?>
+
                                     </span>
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $payment->created_at->format('M d, Y') }}<br>
-                                    <span class="text-xs text-gray-700 dark:text-gray-300">{{ $payment->created_at->format('g:i A') }}</span>
+                                    <?php echo e($payment->created_at->format('M d, Y')); ?><br>
+                                    <span class="text-xs text-gray-700 dark:text-gray-300"><?php echo e($payment->created_at->format('g:i A')); ?></span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    @if($payment->status === 'completed')
+                                    <?php if($payment->status === 'completed'): ?>
                                     <button class="text-blue-600 hover:text-blue-900 mr-3">
                                         <i class="fas fa-download mr-1"></i>Receipt
                                     </button>
-                                    @elseif($payment->status === 'pending')
+                                    <?php elseif($payment->status === 'pending'): ?>
                                     <button class="text-blue-600 hover:text-blue-900 mr-3">
                                         <i class="fas fa-sync mr-1"></i>Check Status
                                     </button>
-                                    @endif
-                                    <a href="{{ route('student.payments.show', $payment->id) }}" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                                    <?php endif; ?>
+                                    <a href="<?php echo e(route('student.payments.show', $payment->id)); ?>" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                                         <i class="fas fa-eye mr-1"></i>Details
                                     </a>
                                 </td>
                             </tr>
-                            @empty
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <tr>
                                 <td colspan="7" class="px-6 py-12 text-center">
                                     <div class="flex flex-col items-center">
@@ -222,7 +221,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforelse
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -282,4 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/student/payments.blade.php ENDPATH**/ ?>

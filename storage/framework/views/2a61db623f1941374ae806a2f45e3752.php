@@ -81,7 +81,7 @@
     <meta name="theme-color" content="#ffffff" id="theme-color-meta">
 
     <!-- Theme Styles (cache-busted) -->
-    <link rel="stylesheet" href="{{ asset('css/theme-styles.css') }}?v={{ filemtime(public_path('css/theme-styles.css')) }}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/theme-styles.css')); ?>?v=<?php echo e(filemtime(public_path('css/theme-styles.css'))); ?>">
 
     <script>
         document.addEventListener('alpine:init', () => {
@@ -108,31 +108,31 @@
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
 
-            @auth('student')
-                @include('partials.sidebar') <!-- Include sidebar for authenticated users -->
-            @endauth
+            <?php if(auth()->guard('student')->check()): ?>
+                <?php echo $__env->make('partials.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?> <!-- Include sidebar for authenticated users -->
+            <?php endif; ?>
 
 
             <div class="relative flex flex-1 flex-col h-screen transition-all duration-300"
-                 @guest('student') style="margin-left: 0;" @endguest>
+                 <?php if(auth()->guard('student')->guest()): ?> style="margin-left: 0;" <?php endif; ?>>
                 <!-- Small Device Overlay Start -->
-                @auth('student')
+                <?php if(auth()->guard('student')->check()): ?>
                 <div :class="sidebarToggle ? 'block lg:hidden' : 'hidden'"
                      class="fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300"
                      @click="sidebarToggle = false"></div>
-                @endauth
+                <?php endif; ?>
                 <!-- Small Device Overlay End -->
 
                 <!-- ===== Header Start ===== -->
-                @auth('student')
-                @include('partials.navbar') <!-- Include navbar partial here -->
-                @endauth
+                <?php if(auth()->guard('student')->check()): ?>
+                <?php echo $__env->make('partials.navbar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?> <!-- Include navbar partial here -->
+                <?php endif; ?>
 
                 <!-- ===== Main Content Start ===== -->
                 <main class="flex-1 overflow-y-auto">
                   <!-- ===== Content Area Start ===== -->
-                  <div class="@auth('student') mx-auto max-w-screen-2xl p-4 md:p-6 lg:p-8 @else p-0 @endauth">
-                      @yield('content') <!-- Dynamic content goes here -->
+                  <div class="<?php if(auth()->guard('student')->check()): ?> mx-auto max-w-screen-2xl p-4 md:p-6 lg:p-8 <?php else: ?> p-0 <?php endif; ?>">
+                      <?php echo $__env->yieldContent('content'); ?> <!-- Dynamic content goes here -->
                   </div>
                   <!-- ===== Content Area End ===== -->
                 </main>
@@ -182,8 +182,9 @@
     </script>
 
     <!-- Theme Manager Script (cache-busted) -->
-    <script src="{{ asset('js/theme-manager.js') }}?v={{ filemtime(public_path('js/theme-manager.js')) }}"></script>
+    <script src="<?php echo e(asset('js/theme-manager.js')); ?>?v=<?php echo e(filemtime(public_path('js/theme-manager.js'))); ?>"></script>
 
 </body>
 
 </html>
+<?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/layouts/app.blade.php ENDPATH**/ ?>
