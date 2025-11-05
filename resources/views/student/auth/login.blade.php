@@ -3,34 +3,34 @@
 @section('title', 'Student Login - Veritas University')
 
 @section('content')
-<div class="min-h-screen bg-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl w-full space-y-6 sm:space-y-8">
         <!-- Header Section -->
         <div class="text-center">
             <div class="mx-auto h-16 w-16 sm:h-20 sm:w-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg">
                 <i class="fas fa-graduation-cap text-white text-2xl sm:text-3xl"></i>
             </div>
-            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-800 mb-2 sm:mb-3">Veritas University</h2>
-            <p class="text-black dark:text-black text-base sm:text-lg font-medium">Student Transcript Portal</p>
-            <p class="text-black dark:text-black text-xs sm:text-sm mt-1 sm:mt-2">Secure access to your academic records</p>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">Veritas University</h2>
+            <p class="text-gray-900 dark:text-white text-base sm:text-lg font-medium">Student Transcript Portal</p>
+            <p class="text-gray-900 dark:text-white text-xs sm:text-sm mt-1 sm:mt-2">Secure access to your academic records</p>
         </div>
 
         <!-- Main Card -->
-        <div class="bg-white/95 dark:bg-gray-50/95 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-300/50 overflow-hidden">
+        <div class="bg-white/95 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
             <!-- Card Header -->
-            <div class="bg-gray-50 dark:bg-gray-100 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 border-b border-gray-200 dark:border-gray-300">
+            <div class="bg-gray-50 dark:bg-gray-700 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 border-b border-gray-200 dark:border-gray-700">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-800 flex items-center">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white flex items-center">
                             <i class="fas fa-sign-in-alt mr-2 sm:mr-3 text-primary-600 dark:text-primary-400"></i>
                             <span class="hidden sm:inline">Student Authentication Portal</span>
                             <span class="sm:hidden">Authentication Portal</span>
                         </h3>
-                        <p class="text-black dark:text-black text-xs sm:text-sm mt-1">Choose your preferred login method below</p>
+                        <p class="text-gray-900 dark:text-white text-xs sm:text-sm mt-1">Choose your preferred login method below</p>
                     </div>
                     <div class="flex-shrink-0">
                         <a href="{{ route('transcript.staff.login') }}" 
-                           class="inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm font-medium text-black bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm">
+                           class="inline-flex items-center px-3 sm:px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-xs sm:text-sm font-medium text-black dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm">
                             <i class="fas fa-user-tie mr-1 sm:mr-2 text-xs"></i>
                             <span class="hidden sm:inline">Staff Login</span>
                             <span class="sm:hidden">Staff</span>
@@ -78,13 +78,13 @@
                             <span class="hidden sm:inline">Login with Password</span>
                             <span class="sm:hidden">Password</span>
                         </button>
-                        <button class="tab-button border-b-2 border-transparent py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium text-black dark:text-black hover:text-black dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-t-lg transition-all duration-200 flex items-center justify-center sm:justify-start flex-1 sm:flex-none" 
+                        <button class="tab-button border-b-2 border-transparent py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-t-lg transition-all duration-200 flex items-center justify-center sm:justify-start flex-1 sm:flex-none" 
                                 id="matric-tab" data-target="#matric-verification">
                             <i class="fas fa-id-card mr-1 sm:mr-2 text-xs sm:text-sm"></i>
                             <span class="hidden sm:inline">I Know My Matric Number</span>
                             <span class="sm:hidden">Matric Number</span>
                         </button>
-                        <button class="tab-button border-b-2 border-transparent py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium text-black dark:text-black hover:text-black dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-t-lg transition-all duration-200 flex items-center justify-center sm:justify-start flex-1 sm:flex-none" 
+                        <button class="tab-button border-b-2 border-transparent py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-t-lg transition-all duration-200 flex items-center justify-center sm:justify-start flex-1 sm:flex-none" 
                                 id="security-tab" data-target="#security-questions">
                             <i class="fas fa-question-circle mr-1 sm:mr-2 text-xs sm:text-sm"></i>
                             <span class="hidden sm:inline">Can't Remember Matric Number?</span>
@@ -99,11 +99,11 @@
                         <form id="loginForm" method="POST" action="{{ route('student.login.submit') }}" class="space-y-4 sm:space-y-6">
                             @csrf
                             <div>
-                                <label for="email" class="block text-xs sm:text-sm font-medium text-black dark:text-gray-300 mb-1 sm:mb-2">
-                                    <i class="fas fa-user mr-1 sm:mr-2 text-black dark:text-black text-xs sm:text-sm"></i>Email Address
+                                <label for="email" class="block text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-300 mb-1 sm:mb-2">
+                                    <i class="fas fa-user mr-1 sm:mr-2 text-gray-900 dark:text-white text-xs sm:text-sm"></i>Email Address
                                 </label>
                                 <input type="email" 
-                                       class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-sm sm:text-base @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-sm sm:text-base @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
                                        id="email" 
                                        name="email" 
                                        value="{{ old('email') }}" 
@@ -117,18 +117,18 @@
                             </div>
 
                             <div>
-                                <label for="password" class="block text-xs sm:text-sm font-medium text-black dark:text-gray-300 mb-1 sm:mb-2">
-                                    <i class="fas fa-lock mr-1 sm:mr-2 text-black dark:text-black text-xs sm:text-sm"></i>Password
+                                <label for="password" class="block text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-300 mb-1 sm:mb-2">
+                                    <i class="fas fa-lock mr-1 sm:mr-2 text-gray-900 dark:text-white text-xs sm:text-sm"></i>Password
                                 </label>
                                 <div class="relative">
                                     <input type="password" 
-                                           class="w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-sm sm:text-base @error('password') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                           class="w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-sm sm:text-base @error('password') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
                                            id="password" 
                                            name="password" 
                                            required 
                                            placeholder="Enter your password">
                                     <button type="button" 
-                                            class="absolute inset-y-0 right-0 pr-2 sm:pr-3 flex items-center text-black dark:text-black hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200" 
+                                            class="absolute inset-y-0 right-0 pr-2 sm:pr-3 flex items-center text-gray-900 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200" 
                                             id="togglePassword">
                                         <i class="fas fa-eye text-sm"></i>
                                     </button>
@@ -193,8 +193,8 @@
                         <form method="POST" action="{{ route('student.matric.process') }}" class="space-y-6">
                             @csrf
                             <div>
-                                <label for="matric_number" class="block text-sm font-medium text-black dark:text-gray-300 mb-2">
-                                    <i class="fas fa-id-card mr-2 text-black"></i>Matriculation Number
+                                <label for="matric_number" class="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-id-card mr-2 text-gray-900"></i>Matriculation Number
                                 </label>
                                 <input type="text" 
                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 uppercase @error('matric_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
@@ -208,14 +208,14 @@
                                         <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
                                     </p>
                                 @enderror
-                                <p class="mt-2 text-sm text-black dark:text-black">
+                                <p class="mt-2 text-sm text-gray-900 dark:text-white">
                                     Enter your matriculation number exactly as it appears on your student ID.
                                 </p>
                             </div>
 
                             <div>
-                                <label for="email_matric" class="block text-sm font-medium text-black dark:text-gray-300 mb-2">
-                                    <i class="fas fa-envelope mr-2 text-black"></i>Email Address
+                                <label for="email_matric" class="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-envelope mr-2 text-gray-900"></i>Email Address
                                 </label>
                                 <input type="email" 
                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
@@ -229,7 +229,7 @@
                                         <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
                                     </p>
                                 @enderror
-                                <p class="mt-2 text-sm text-black dark:text-black">
+                                <p class="mt-2 text-sm text-gray-900 dark:text-white">
                                     We'll send your login credentials and password reset link to this email.
                                 </p>
                             </div>

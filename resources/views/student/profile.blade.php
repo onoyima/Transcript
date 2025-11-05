@@ -50,26 +50,26 @@
 
             <!-- Personal & Academic Information Card -->
             <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-200/50 dark:border-gray-700/50">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-black mb-6 flex items-center">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
                     <i class="fas fa-user-graduate mr-3 text-green-600 dark:text-green-400"></i>
                     Personal & Academic Information
                 </h3>
 
                 <!-- Personal Information Section -->
                 <div class="mb-6">
-                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Personal Details</h4>
+                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Personal Details</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Name</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $student->fname }} {{ $student->lname }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Name</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $student->fname }} {{ $student->lname }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Gender</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ ucfirst($student->gender ?? 'N/A') }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Gender</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ ucfirst($student->gender ?? 'N/A') }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Date of Birth</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Date of Birth</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">
                                 @if($student->dob)
                                     {{ \Carbon\Carbon::parse($student->dob)->format('M j, Y') }}
                                 @else
@@ -78,16 +78,16 @@
                             </p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Email</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black truncate">{{ $student->email ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Email</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ $student->email ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Phone</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $student->phone ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Phone</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $student->phone ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">State</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $student->state_id ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">State</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $student->state_id ?? 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -95,23 +95,23 @@
                 <!-- Academic Information Section -->
                 @if($academicInfo)
                 <div>
-                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Academic Details</h4>
+                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Academic Details</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Matric Number</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $academicInfo->matric_no ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Matric Number</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $academicInfo->matric_no ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Level</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $academicInfo->level ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Level</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $academicInfo->level ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Program</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $academicInfo->program->course_study_id ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Program</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $academicInfo->program->course_study_id ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Session</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $academicInfo->session ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Session</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $academicInfo->session ?? 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
 
             <!-- Contact & Medical Information Card -->
             <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-200/50 dark:border-gray-700/50">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-black mb-6 flex items-center">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
                     <i class="fas fa-address-card mr-3 text-green-600 dark:text-green-400"></i>
                     Contact & Medical Information
                 </h3>
@@ -128,23 +128,23 @@
                 <!-- Emergency Contact Section -->
                 @if($contactInfo)
                 <div class="mb-6">
-                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Emergency Contact</h4>
+                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Emergency Contact</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Contact Name</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $contactInfo->full_name ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Contact Name</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $contactInfo->full_name ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Relationship</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ ucfirst($contactInfo->relationship ?? 'N/A') }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Relationship</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ ucfirst($contactInfo->relationship ?? 'N/A') }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Phone</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $contactInfo->paphone ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Phone</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $contactInfo->paphone ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Email</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black truncate">{{ $contactInfo->email ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Email</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ $contactInfo->email ?? 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -153,27 +153,27 @@
                 <!-- Medical Information Section -->
                 @if($medicalInfo)
                 <div>
-                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-900 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Medical Details</h4>
+                    <h4 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 border-b border-gray-200 dark:border-gray-600 pb-2">Medical Details</h4>
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Blood Group</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $medicalInfo->blood_group ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Blood Group</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $medicalInfo->blood_group ?? 'N/A' }}</p>
                         </div>
                         <div class="space-y-2">
-                            <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Genotype</p>
-                            <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $medicalInfo->genotype ?? 'N/A' }}</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Genotype</p>
+                            <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $medicalInfo->genotype ?? 'N/A' }}</p>
                         </div>
                     </div>
                     @if($medicalInfo->condition && $medicalInfo->condition !== 'None reported')
                     <div class="space-y-2 mb-4">
-                        <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Medical Conditions</p>
-                        <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $medicalInfo->condition }}</p>
+                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Medical Conditions</p>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $medicalInfo->condition }}</p>
                     </div>
                     @endif
                     @if($medicalInfo->allergies && $medicalInfo->allergies !== 'None reported')
                     <div class="space-y-2">
-                        <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Allergies</p>
-                        <p class="text-sm font-semibold text-gray-900 dark:text-black">{{ $medicalInfo->allergies }}</p>
+                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Allergies</p>
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $medicalInfo->allergies }}</p>
                     </div>
                     @endif
                 </div>
@@ -183,7 +183,7 @@
 
         <!-- Update Contact Form -->
         <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md border border-gray-200/50 dark:border-gray-700/50">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-black mb-6 flex items-center">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
                 <i class="fas fa-edit mr-3 text-green-600 dark:text-green-400"></i>
                 Update Contact Information
             </h3>
@@ -195,7 +195,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <!-- Phone Number Input -->
                     <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-900 dark:text-gray-900 mb-2">
+                        <label for="phone" class="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                             <i class="fas fa-phone mr-2 text-green-600 dark:text-green-400"></i>
                             Phone Number
                         </label>
@@ -213,7 +213,7 @@
 
                     <!-- Email Address Input -->
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-900 dark:text-gray-900 mb-2">
+                        <label for="email" class="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">
                             <i class="fas fa-envelope mr-2 text-green-600 dark:text-green-400"></i>
                             Email Address
                         </label>

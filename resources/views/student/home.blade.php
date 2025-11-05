@@ -35,7 +35,7 @@
 
             <!-- Instructions or Info Section -->
             <div class="mt-6">
-                <p class="text-black dark:text-black text-sm">
+                <p class="text-gray-900 dark:text-white text-sm">
                     Need help? Please contact support at <span class="font-semibold text-primary-600 dark:text-primary-400">ictsupport@veritas.edu.ng</span> for assistance.
                 </p>
             </div>

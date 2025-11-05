@@ -118,32 +118,33 @@
                         {{ $payment->payer_name }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {{ $payment->student->matric_no ?? 'N/A' }}
+                        {{ $payment->studentTrans->student->matric_number ?? 'N/A' }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                            {{ $payment->feeType->name ?? 'N/A' }}
+                            {{ ucfirst($payment->studentTrans->application_type ?? 'transcript') }}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                         ₦{{ number_format($payment->amount, 2) }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        @if($payment->status == 'pending')
+                        @php($ts = $payment->transaction_status)
+                        @if($ts === 'Pending' || $ts === 'RRR_Generated')
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
                                 Pending
                             </span>
-                        @elseif($payment->status == 'approved')
+                        @elseif($ts === 'Success')
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                 Approved
                             </span>
-                        @elseif($payment->status == 'failed')
+                        @elseif($ts === 'Failed')
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
                                 Failed
                             </span>
-                        @elseif($payment->status == 'refunded')
+                        @else
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
-                                Refunded
+                                {{ $ts ?? 'Unknown' }}
                             </span>
                         @endif
                     </td>
@@ -159,7 +160,7 @@
                             </a>
                             
                             @can('manage_transcript_payments', $staff)
-                            @if($payment->status == 'pending')
+                            @if(($payment->transaction_status ?? '') === 'Pending' || ($payment->transaction_status ?? '') === 'RRR_Generated')
                             <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors duration-200" 
                                     onclick="verifyPayment({{ $payment->id }})" 
                                     title="Verify Payment">
@@ -167,7 +168,7 @@
                             </button>
                             @endif
                             
-                            @if($payment->status == 'approved')
+                            @if(($payment->transaction_status ?? '') === 'Success')
                             @can('process_transcript_refunds', $staff)
                             <button class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-200" 
                                     onclick="processRefund({{ $payment->id }})" 
@@ -177,8 +178,8 @@
                                             @endcan
                                             @endif
                                             @endcan
-                                        </div>
-                                    </td>
+                        </div>
+                    </td>
                                 </tr>
                                 @empty
                                 <tr>

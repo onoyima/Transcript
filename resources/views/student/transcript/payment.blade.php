@@ -8,7 +8,7 @@
         <!-- Header -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Transcript Payment</h1>
-            <p class="mt-2 text-black dark:text-black">Complete your payment to process your transcript application</p>
+            <p class="mt-2 text-gray-900 dark:text-white">Complete your payment to process your transcript application</p>
         </div>
 
         <!-- Success/Error Messages -->
@@ -49,42 +49,42 @@
                 
                 <div class="space-y-4">
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Application ID:</span>
+                        <span class="text-gray-900 dark:text-white">Application ID:</span>
                         <span class="font-medium text-gray-900 dark:text-white">#{{ $transcriptApplication->id }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Category:</span>
+                        <span class="text-gray-900 dark:text-white">Category:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->category }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Type:</span>
+                        <span class="text-gray-900 dark:text-white">Type:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->type }}</span>
                     </div>
                     
                     @if($transcriptApplication->destination)
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Destination:</span>
+                        <span class="text-gray-900 dark:text-white">Destination:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->destination }}</span>
                     </div>
                     @endif
                     
                     @if($transcriptApplication->courier)
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Courier:</span>
+                        <span class="text-gray-900 dark:text-white">Courier:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->courier }}</span>
                     </div>
                     @endif
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Number of Copies:</span>
+                        <span class="text-gray-900 dark:text-white">Number of Copies:</span>
                         <span class="font-medium text-gray-900 dark:text-white">{{ $transcriptApplication->number_of_copies }}</span>
                     </div>
                     
                     @if($transcriptApplication->institution_name)
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Institution:</span>
+                        <span class="text-gray-900 dark:text-white">Institution:</span>
                         <span class="font-medium text-gray-900 dark:text-white">{{ $transcriptApplication->institution_name }}</span>
                     </div>
                     @endif
@@ -110,7 +110,7 @@
                         
                         <div class="bg-white dark:bg-gray-700 rounded-lg p-4 border">
                             <div class="text-center">
-                                <p class="text-sm text-black dark:text-black mb-1">Payment Reference (RRR)</p>
+                                <p class="text-sm text-gray-900 dark:text-white mb-1">Payment Reference (RRR)</p>
                                 <p class="text-2xl font-bold text-gray-900 dark:text-white tracking-wider">{{ $existingPayment->rrr }}</p>
                             </div>
                         </div>

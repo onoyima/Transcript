@@ -34,7 +34,7 @@
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Transaction ID:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->transaction_id ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->transaction_reference ?? $payment->rrr ?? $payment->id }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Amount:</span>
@@ -43,30 +43,31 @@
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Status:</span>
                             <span>
-                                @if($payment->status == 'pending')
+                                @php($ts = $payment->transaction_status)
+                                @if($ts === 'Pending' || $ts === 'RRR_Generated')
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">Pending</span>
-                                @elseif($payment->status == 'approved')
+                                @elseif($ts === 'Success')
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Approved</span>
-                                @elseif($payment->status == 'failed')
+                                @elseif($ts === 'Failed')
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">Failed</span>
-                                @elseif($payment->status == 'refunded')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">Refunded</span>
+                                @else
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">{{ $ts ?? 'Unknown' }}</span>
                                 @endif
                             </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Fee Type:</span>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                                {{ $payment->feeType->name ?? 'N/A' }}
+                                {{ ucfirst($payment->studentTrans->application_type ?? 'transcript') }}
                             </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Description:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->description ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->notes ?? '-' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Payment Date:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->created_at->format('M d, Y H:i:s') }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ ($payment->payment_date ?? $payment->created_at)->format('M d, Y H:i:s') }}</span>
                         </div>
                         @if($payment->updated_at != $payment->created_at)
                         <div class="flex justify-between">
@@ -87,7 +88,7 @@
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Matric Number:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->matric_no ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->studentTrans->student->matric_number ?? 'N/A' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Email:</span>
@@ -97,18 +98,18 @@
                             <span class="font-medium text-gray-600 dark:text-gray-400">Phone:</span>
                             <span class="text-gray-900 dark:text-white">{{ $payment->payer_phone ?? 'N/A' }}</span>
                         </div>
-                        @if($payment->student)
+                        @if($payment->studentTrans && $payment->studentTrans->student)
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Faculty:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->faculty ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->studentTrans->student->faculty ?? 'N/A' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Department:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->department ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->studentTrans->student->department ?? 'N/A' }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="font-medium text-gray-600 dark:text-gray-400">Graduation Year:</span>
-                            <span class="text-gray-900 dark:text-white">{{ $payment->student->graduation_year ?? 'N/A' }}</span>
+                            <span class="text-gray-900 dark:text-white">{{ $payment->studentTrans->student->graduation_year ?? 'N/A' }}</span>
                         </div>
                         @endif
                     </div>
@@ -119,7 +120,7 @@
             <div class="mt-8">
                 <div class="flex flex-wrap gap-3">
                     @can('manage_transcript_payments', $staff)
-                    @if($payment->status == 'pending')
+                    @if(($payment->transaction_status ?? '') === 'Pending' || ($payment->transaction_status ?? '') === 'RRR_Generated')
                     <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200" onclick="verifyPayment({{ $payment->id }})">
                         <i class="fas fa-check mr-2"></i> Verify Payment
                     </button>
@@ -128,7 +129,7 @@
                     </button>
                     @endif
                     
-                    @if($payment->status == 'approved')
+                    @if(($payment->transaction_status ?? '') === 'Success')
                     @can('process_transcript_refunds', $staff)
                     <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200" onclick="processRefund({{ $payment->id }})">
                         <i class="fas fa-undo mr-2"></i> Process Refund

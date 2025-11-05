@@ -6,7 +6,7 @@
     <div class="bg-gradient-to-r from-green-400 to-green-600 dark:from-green-600 dark:to-green-800 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6 relative overflow-hidden">
         <div class="flex items-start justify-between">
             <div class="flex-1">
-                <h1 class="text-2xl font-bold text-gray-100 dark:text-white mb-2">
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     Welcome back, {{ auth('transcript_staff')->user()->fname }}! 👋
                 </h1>
                 <p class="text-gray-900 dark:text-gray-100 mb-4">
@@ -50,8 +50,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Total Applications</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['total_applications'] ?? 0 }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Applications</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['total_applications'] ?? 0 }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-file-alt text-blue-600 dark:text-blue-400"></i>
@@ -63,8 +63,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Pending</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['pending_applications'] ?? 0 }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Pending Applications</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['pending_applications'] ?? 0 }}</p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-clock text-yellow-600 dark:text-yellow-400"></i>
@@ -72,14 +72,14 @@
             </div>
         </div>
         @endcan
-        
+
         @can('view_transcript_payments', $staff)
         <!-- Completed Payments -->
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Completed</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['completed_payments'] ?? 0 }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Completed</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['completed_applications'] ?? 0 }}</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-check-circle text-green-600 dark:text-green-400"></i>
@@ -91,8 +91,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Total Revenue</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">₦{{ number_format($stats['total_revenue'] ?? 0, 2) }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Payments</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">₦{{ number_format($stats['total_payments'] ?? 0, 2) }}</p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-naira-sign text-purple-600 dark:text-purple-400"></i>
@@ -104,43 +104,43 @@
 
     <!-- Quick Actions -->
     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-black mb-4">Quick Actions</h3>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @can('view_transcript_applications', auth('transcript_staff')->user())
-            <a href="{{ route('transcript.staff.applications.index') }}" 
+            <a href="{{ route('transcript.staff.applications.index') }}"
                class="flex items-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-md transition-all duration-200 group">
                 <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200">
-                    <i class="fas fa-file-alt text-white"></i>
+                <i class="fas fa-file-alt text-gray-600 dark:text-white"></i>
                 </div>
                 <div>
                     <h3 class="font-medium text-gray-900 dark:text-white">View Applications</h3>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">Manage transcript requests</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-100">Review and process transcript applications</p>
                 </div>
             </a>
             @endcan
 
             @can('view_transcript_payments', auth('transcript_staff')->user())
-            <a href="{{ route('transcript.staff.payments.index') }}" 
+            <a href="{{ route('transcript.staff.payments.index') }}"
                class="flex items-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-md transition-all duration-200 group">
                 <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200">
-                    <i class="fas fa-credit-card text-white"></i>
+                <i class="fas fa-credit-card text-gray-600 dark:text-white"></i>
                 </div>
                 <div>
                     <h3 class="font-medium text-gray-900 dark:text-white">Manage Payments</h3>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">Process payment records</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-100">Process payment records</p>
                 </div>
             </a>
             @endcan
 
             @can('generate_transcript_reports', auth('transcript_staff')->user())
-            <a href="{{ route('transcript.staff.reports.index') }}" 
+            <a href="{{ route('transcript.staff.reports.index') }}"
                class="flex items-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-md transition-all duration-200 group">
                 <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-200">
-                    <i class="fas fa-chart-bar text-white"></i>
+                <i class="fas fa-chart-bar text-gray-600 dark:text-white"></i>
                 </div>
                 <div>
                     <h3 class="font-medium text-gray-900 dark:text-white">Generate Reports</h3>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">View system analytics</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-100">View system analytics</p>
                 </div>
             </a>
             @endcan
@@ -152,14 +152,14 @@
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
         <div class="p-6 border-b border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold text-gray-900 dark:text-black">Recent Applications</h2>
-                <a href="{{ route('transcript.staff.applications.index') }}" 
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Recent Applications</h2>
+                <a href="{{ route('transcript.staff.applications.index') }}"
                    class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium">
                     View All
                 </a>
             </div>
         </div>
-        
+
         <div class="p-6">
             @if(isset($recent_applications) && $recent_applications->count() > 0)
                 <div class="space-y-4">
@@ -172,7 +172,7 @@
                                     @elseif($application->status == 'pending') bg-yellow-100 dark:bg-yellow-900/20
                                     @else bg-gray-100 dark:bg-gray-900/20
                                     @endif">
-                                    <i class="fas fa-file-alt 
+                                    <i class="fas fa-file-alt
                                         @if($application->status == 'approved') text-green-600 dark:text-green-400
                                         @elseif($application->status == 'processing') text-blue-600 dark:text-blue-400
                                         @elseif($application->status == 'pending') text-yellow-600 dark:text-yellow-400

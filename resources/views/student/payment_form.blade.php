@@ -28,7 +28,7 @@
                         <input type="hidden" name="student_id" value="{{ $student->id }}">
 
                         <div class="mb-6">
-                            <label for="fee_type" class="block text-sm font-medium text-black dark:text-black">Select Fee Type</label>
+                            <label for="fee_type" class="block text-sm font-medium text-gray-900 dark:text-white">Select Fee Type</label>
                             <select name="fee_type_id" id="fee_type" class="w-full p-3 mt-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500" required>
                                 <option value="" disabled selected>Select a fee type</option>
                                 @foreach ($feeTypes as $feeType)
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="mb-6">
-                            <label for="amount" class="block text-sm font-medium text-black dark:text-black">Amount to Pay</label>
+                            <label for="amount" class="block text-sm font-medium text-gray-900 dark:text-white">Amount to Pay</label>
                             <input type="text" name="amount" id="amount" class="w-full p-3 mt-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500" readonly required />
                         </div>
 

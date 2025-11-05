@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="themeData()" x-init="init()" :class="{ 'dark': darkMode }">
 
 <head>
     <meta charset="UTF-8">
@@ -8,16 +8,16 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Custom CSS (if needed) -->
     <style>
         /* Add any custom styles here if needed */
@@ -26,13 +26,14 @@
     <!-- Alpine.js for interactive components -->
     <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Bootstrap JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -70,22 +71,28 @@
             }
         }
     </script>
-    
+
     <!-- Alpine.js x-cloak CSS -->
     <style>
         [x-cloak] { display: none !important; }
     </style>
+
+    <!-- Theme Color Meta Tag -->
+    <meta name="theme-color" content="#ffffff" id="theme-color-meta">
+
+    <!-- Theme Styles (cache-busted) -->
+    <link rel="stylesheet" href="{{ asset('css/theme-styles.css') }}?v={{ filemtime(public_path('css/theme-styles.css')) }}">
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('darkMode', () => themeData());
+        });
+    </script>
 </head>
 
 
-<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-    x-init="
-         // Initialize dark mode from localStorage, defaulting to false (light mode)
-         darkMode = localStorage.getItem('darkMode') ? JSON.parse(localStorage.getItem('darkMode')) : false;
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark': darkMode === true}"
-    class="font-inter bg-white dark:bg-gray-900 transition-colors duration-300"
-  >
+<body x-data="{ page: 'ecommerce', 'loaded': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    class="font-inter bg-white dark:bg-gray-900 transition-colors duration-300">
 <!-- ===== Preloader Start ===== -->
     <div x-show="loaded" x-init="window.addEventListener('DOMContentLoaded', () => { setTimeout(() => loaded = false, 500) })"
         class="fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-white dark:bg-gray-900">
@@ -104,23 +111,23 @@
             @auth('student')
                 @include('partials.sidebar') <!-- Include sidebar for authenticated users -->
             @endauth
-    
 
-            <div class="relative flex flex-1 flex-col h-screen transition-all duration-300" 
+
+            <div class="relative flex flex-1 flex-col h-screen transition-all duration-300"
                  @guest('student') style="margin-left: 0;" @endguest>
                 <!-- Small Device Overlay Start -->
                 @auth('student')
-                <div :class="sidebarToggle ? 'block lg:hidden' : 'hidden'" 
-                     class="fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300" 
+                <div :class="sidebarToggle ? 'block lg:hidden' : 'hidden'"
+                     class="fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300"
                      @click="sidebarToggle = false"></div>
                 @endauth
                 <!-- Small Device Overlay End -->
-        
+
                 <!-- ===== Header Start ===== -->
                 @auth('student')
                 @include('partials.navbar') <!-- Include navbar partial here -->
                 @endauth
-                
+
                 <!-- ===== Main Content Start ===== -->
                 <main class="flex-1 overflow-y-auto">
                   <!-- ===== Content Area Start ===== -->
@@ -132,9 +139,9 @@
                 <!-- ===== Main Content End ===== -->
               </div>
     </div>
- 
+
     <!-- JavaScript is handled by Vite -->
-    
+
     <!-- Additional JavaScript for enhanced functionality -->
     <script>
         // Smooth scrolling for anchor links
@@ -152,7 +159,7 @@
                     }
                 });
             });
-            
+
             // Add loading states to forms
             const forms = document.querySelectorAll('form');
             forms.forEach(form => {
@@ -162,7 +169,7 @@
                         submitBtn.disabled = true;
                         const originalText = submitBtn.textContent;
                         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-                        
+
                         // Re-enable after 5 seconds as fallback
                         setTimeout(() => {
                             submitBtn.disabled = false;
@@ -173,6 +180,9 @@
             });
         });
     </script>
+
+    <!-- Theme Manager Script (cache-busted) -->
+    <script src="{{ asset('js/theme-manager.js') }}?v={{ filemtime(public_path('js/theme-manager.js')) }}"></script>
 
 </body>
 

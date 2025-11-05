@@ -13,7 +13,7 @@
                 </svg>
             </div>
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Payment Successful!</h1>
-            <p class="mt-2 text-black dark:text-black">Your transcript application payment has been processed successfully</p>
+            <p class="mt-2 text-gray-900 dark:text-white">Your transcript application payment has been processed successfully</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -23,22 +23,22 @@
                 
                 <div class="space-y-4">
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Transaction Reference:</span>
+                        <span class="text-gray-900 dark:text-white">Transaction Reference:</span>
                         <span class="font-medium text-gray-900 dark:text-white">{{ $payment->rrr }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Amount Paid:</span>
+                        <span class="text-gray-900 dark:text-white">Amount Paid:</span>
                         <span class="font-medium text-green-600 dark:text-green-400">₦{{ number_format($payment->amount, 2) }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Payment Date:</span>
+                        <span class="text-gray-900 dark:text-white">Payment Date:</span>
                         <span class="font-medium text-gray-900 dark:text-white">{{ $payment->updated_at->format('M d, Y h:i A') }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Status:</span>
+                        <span class="text-gray-900 dark:text-white">Status:</span>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400">
                             Successful
                         </span>
@@ -52,29 +52,29 @@
                 
                 <div class="space-y-4">
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Application ID:</span>
+                        <span class="text-gray-900 dark:text-white">Application ID:</span>
                         <span class="font-medium text-gray-900 dark:text-white">#{{ $transcriptApplication->id }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Current Status:</span>
+                        <span class="text-gray-900 dark:text-white">Current Status:</span>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
                             {{ $transcriptApplication->payment_status }}
                         </span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Category:</span>
+                        <span class="text-gray-900 dark:text-white">Category:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->category }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Type:</span>
+                        <span class="text-gray-900 dark:text-white">Type:</span>
                         <span class="font-medium text-gray-900 dark:text-white capitalize">{{ $transcriptApplication->type }}</span>
                     </div>
                     
                     <div class="flex justify-between">
-                        <span class="text-black dark:text-black">Number of Copies:</span>
+                        <span class="text-gray-900 dark:text-white">Number of Copies:</span>
                         <span class="font-medium text-gray-900 dark:text-white">{{ $transcriptApplication->number_of_copies }}</span>
                     </div>
                 </div>

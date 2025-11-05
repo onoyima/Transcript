@@ -51,7 +51,7 @@
                 <!-- Dark Mode Toggler (Mobile) -->
                 <button
                     class="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-500 transition-all duration-200 hover:bg-gray-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white shadow-sm hover:shadow-md"
-                    @click.prevent="$root.darkMode = !$root.darkMode">
+                    @click.prevent="toggleTheme()" title="Toggle theme">
                     <svg class="hidden dark:block" width="16" height="16" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -87,7 +87,7 @@
                 <!-- Dark Mode Toggler -->
                 <button
                     class="relative flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-500 transition-all duration-200 hover:bg-gray-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white shadow-sm hover:shadow-md"
-                    @click.prevent="$root.darkMode = !$root.darkMode">
+                    @click.prevent="toggleTheme()" title="Toggle theme">
                     <svg class="hidden dark:block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{ darkMode: false }" x-init="
-        if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          localStorage.setItem('darkMode', JSON.stringify(true));
-        }
-        darkMode = JSON.parse(localStorage.getItem('darkMode'));
-        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" x-cloak :class="{ 'dark': darkMode }">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="themeData()" x-init="init()" :class="{ 'dark': darkMode }">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#ffffff">
 
     <title>@yield('title', 'Staff Portal') - {{ config('app.name', 'Transcript System') }}</title>
 
@@ -20,6 +16,9 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Styles (cache-busted) -->
+    <link rel="stylesheet" href="{{ asset('css/theme-styles.css') }}?v={{ filemtime(public_path('css/theme-styles.css')) }}">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -101,6 +100,8 @@
         .sidebar-transition {
             transition: transform 0.3s ease-in-out;
         }
+
+        /* (debug outlines removed) */
     </style>
 
     @stack('styles')
@@ -123,7 +124,7 @@
             <!-- Main Content -->
             <main class="grow relative">
                 <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 relative">
-                    
+
                     <!-- Flash Messages -->
                     @if(session('success'))
                         <div class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20" x-data="{ show: true }" x-show="show" x-transition>
@@ -199,6 +200,9 @@
         </div>
         @endauth
     </div>
+
+    <!-- Theme Manager (cache-busted) -->
+    <script src="{{ asset('js/theme-manager.js') }}?v={{ filemtime(public_path('js/theme-manager.js')) }}"></script>
 
     <!-- Scripts -->
     <script>

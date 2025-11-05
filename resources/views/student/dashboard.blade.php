@@ -49,8 +49,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Total Applications</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['total_applications'] }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Applications</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['total_applications'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-file-alt text-blue-600 dark:text-blue-400"></i>
@@ -62,8 +62,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Pending</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['pending_applications'] }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Pending</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['pending_applications'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-clock text-yellow-600 dark:text-yellow-400"></i>
@@ -75,8 +75,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Completed</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ $stats['completed_applications'] }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Completed</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['completed_applications'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-check-circle text-green-600 dark:text-green-400"></i>
@@ -88,8 +88,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-900 dark:text-gray-900">Total Paid</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-black">₦{{ number_format($stats['total_paid'], 2) }}</p>
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Paid</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">₦{{ number_format($stats['total_paid'], 2) }}</p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
                     <i class="fas fa-naira-sign text-purple-600 dark:text-purple-400"></i>
@@ -100,7 +100,7 @@
 
     <!-- Quick Actions -->
     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200/50 dark:border-gray-700/50">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-black mb-4">Quick Actions</h3>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a href="{{ route('student.transcript.create') }}" 
                class="flex items-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:shadow-md transition-all duration-200 group">
@@ -141,7 +141,7 @@
     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
         <div class="p-6 border-b border-gray-200/50 dark:border-gray-700/50">
             <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold text-gray-900 dark:text-black">Recent Applications</h2>
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Recent Applications</h2>
                 <a href="{{ route('student.transcript.history') }}" 
                    class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium">
                     View All

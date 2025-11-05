@@ -1,14 +1,14 @@
 <!-- Sidebar -->
 <aside
     :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-    class="absolute left-0 top-0 z-40 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white/95 backdrop-blur-md border-r border-gray-200/50 duration-300 ease-linear dark:bg-gray-900/95 dark:border-gray-700/50 lg:static shadow-xl"
+    class="absolute left-0 top-0 z-40 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white border-r border-gray-200/50 duration-300 ease-linear dark:bg-gray-900 dark:border-gray-700/50 lg:static shadow-xl"
     @click.outside="sidebarToggle = false">
-    
+
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 border-b border-gray-200/50 dark:border-gray-700/50">
         <a href="{{ route('transcript.staff.dashboard') }}" class="flex items-center space-x-3">
             <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
-                <i class="fas fa-graduation-cap text-white text-lg"></i>
+            <i class="fas fa-graduation-cap text-white text-lg"></i>
             </div>
             <div>
                 <span class="font-bold text-gray-900 dark:text-white text-xl">Veritas</span>
@@ -23,7 +23,7 @@
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M19 8.175H2.98748L9.36248 1.6875C9.69998 1.35 9.69998 0.825 9.36248 0.4875C9.02498 0.15 8.49998 0.15 8.16248 0.4875L0.399976 8.3625C0.0624756 8.7 0.0624756 9.225 0.399976 9.5625L8.16248 17.4375C8.31248 17.5875 8.53748 17.7 8.76248 17.7C8.98748 17.7 9.17498 17.625 9.36248 17.475C9.69998 17.1375 9.69998 16.6125 9.36248 16.275L3.02498 9.8625H19C19.45 9.8625 19.825 9.4875 19.825 9.0375C19.825 8.55 19.45 8.175 19 8.175Z"
-                    fill="" />
+                    fill="currentColor" />
             </svg>
         </button>
     </div>
@@ -237,15 +237,15 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="flex items-center justify-between">
-                    <a href="{{ route('transcript.staff.profile') }}" 
+                    <a href="{{ route('transcript.staff.profile') }}"
                        class="text-xs text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors duration-200">
                         View Profile
                     </a>
                     <form method="POST" action="{{ route('transcript.staff.logout') }}" class="inline">
                         @csrf
-                        <button type="submit" 
+                        <button type="submit"
                                 class="text-xs text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-medium transition-colors duration-200">
                             Logout
                         </button>
