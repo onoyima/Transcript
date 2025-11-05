@@ -309,7 +309,7 @@ class StudentAuthController extends Controller
             );
 
             return redirect()->route('student.login')
-                ->with('status', 'Password reset link with your login credentials has been sent to ' . $email);
+                ->with('success', 'A password reset link with your login credentials has been sent to ' . $email . '. Please check your inbox.');
 
         } catch (\Exception $e) {
             SecurityAuditService::logVerificationAttempt(

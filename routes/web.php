@@ -32,7 +32,8 @@ Route::prefix('student')->name('student.')->group(function() {
     Route::post('logout', [StudentAuthController::class, 'logout'])->name('logout');
 
     // Matric Number Verification and Email Update
-    Route::post('matric/process', [StudentAuthController::class, 'processMatric'])->name('matric.process');
+    // Use auth controller flow that sends reset email with credentials when email is provided
+    Route::post('matric/process', [StudentAuthController::class, 'processMatricForAuth'])->name('matric.process');
     Route::get('email/update', [StudentAuthController::class, 'showEmailUpdate'])->name('email.update');
     Route::post('email/update', [StudentAuthController::class, 'updateEmail'])->name('email.update.submit');
     Route::get('email/verification-sent', [StudentAuthController::class, 'showVerificationSent'])->name('email.verification.sent');
@@ -137,8 +138,8 @@ Route::prefix('student')->name('student.')->group(function() {
     // 7. Show Security Questions Form (For students who forgot their matric number) (Handled by StudentController)
     Route::get('security/questions', [StudentController::class, 'showSecurityQuestionsForm'])->name('security.questions');
 
-    // 8. Verify Security Questions (Handled by StudentController)
-    Route::post('security/verify', [StudentController::class, 'verifySecurityQuestions'])->name('security.verify');
+    // 8. Verify Security Questions handled earlier by StudentAuthController to send reset email with credentials
+    // Duplicate mapping removed to avoid ambiguity
 
     // Password Setup and Reset Routes (New Implementation)
     Route::get('password/setup', [StudentPasswordController::class, 'showPasswordSetup'])->name('password.setup');

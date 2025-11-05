@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Student Login - Veritas University'); ?>
 
-@section('title', 'Student Login - Veritas University')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl w-full space-y-6 sm:space-y-8">
         <!-- Theme Toggle -->
@@ -29,7 +27,7 @@
             <div class="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <!-- Quick Staff Login Link -->
                 <div class="flex justify-end mb-4">
-                    <a href="{{ route('transcript.staff.login') }}"
+                    <a href="<?php echo e(route('transcript.staff.login')); ?>"
                        class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
                         <i class="fas fa-user-tie text-sm"></i>
                         <span class="text-sm">Staff Login</span>
@@ -38,33 +36,33 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Left: Existing Login Content -->
                     <div>
-                @if(session('success'))
+                <?php if(session('success')): ?>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center">
                         <div class="flex-shrink-0">
                             <i class="fas fa-check-circle text-green-400 text-xl"></i>
                         </div>
                         <div class="ml-3">
-                            <p class="text-green-800 font-medium">{{ session('success') }}</p>
+                            <p class="text-green-800 font-medium"><?php echo e(session('success')); ?></p>
                         </div>
                         <button type="button" class="ml-auto text-green-400 hover:text-green-600" onclick="this.parentElement.remove()">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                @endif
+                <?php endif; ?>
 
-                @if(session('error'))
+                <?php if(session('error')): ?>
                     <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center">
                         <div class="flex-shrink-0">
                             <i class="fas fa-exclamation-circle text-red-400 text-xl"></i>
                         </div>
                         <div class="ml-3">
-                            <p class="text-red-800 font-medium">{{ session('error') }}</p>
+                            <p class="text-red-800 font-medium"><?php echo e(session('error')); ?></p>
                         </div>
                         <button type="button" class="ml-auto text-red-400 hover:text-red-600" onclick="this.parentElement.remove()">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                @endif
+                <?php endif; ?>
 
                 <!-- Tabs moved to right column -->
                 <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Student Login</h2>
@@ -72,24 +70,39 @@
                 <div class="tab-content">
                     <!-- Password Login Tab -->
                     <div class="tab-panel active" id="password-login">
-                        <form id="loginForm" method="POST" action="{{ route('student.login.submit') }}" class="space-y-4 sm:space-y-6">
-                            @csrf
+                        <form id="loginForm" method="POST" action="<?php echo e(route('student.login.submit')); ?>" class="space-y-4 sm:space-y-6">
+                            <?php echo csrf_field(); ?>
                             <div>
                                 <label for="email" class="block text-sm sm:text-base font-medium text-gray-900 dark:text-gray-300 mb-2">
                                     <i class="fas fa-user mr-1 sm:mr-2 text-gray-900 dark:text-white text-xs sm:text-sm"></i>Email Address
                                 </label>
                                 <input type="email" 
-                                       class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base sm:text-lg @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 sm:px-5 py-3 sm:py-4 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base sm:text-lg <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="email" 
                                        name="email" 
-                                       value="{{ old('email') }}" 
+                                       value="<?php echo e(old('email')); ?>" 
                                        required 
                                        placeholder="Enter your email address">
-                                @error('email')
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div>
@@ -98,7 +111,14 @@
                                 </label>
                                 <div class="relative">
                                     <input type="password" 
-                                           class="w-full px-4 sm:px-5 py-3 sm:py-4 pr-10 sm:pr-12 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base sm:text-lg @error('password') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                           class="w-full px-4 sm:px-5 py-3 sm:py-4 pr-10 sm:pr-12 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 text-base sm:text-lg <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                            id="password" 
                                            name="password" 
                                            required 
@@ -109,11 +129,19 @@
                                         <i class="fas fa-eye text-sm"></i>
                                     </button>
                                 </div>
-                                @error('password')
+                                <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div class="flex items-center">
@@ -146,7 +174,7 @@
                             </div>
 
                             <div class="text-center">
-                                <a href="{{ route('student.password.reset') }}" 
+                                <a href="<?php echo e(route('student.password.reset')); ?>" 
                                    class="text-xs sm:text-sm text-primary-600 hover:text-primary-500 font-medium transition-colors duration-200">
                                     <i class="fas fa-question-circle mr-1 text-xs sm:text-sm"></i>Forgot your password?
                                 </a>
@@ -166,24 +194,39 @@
                             </div>
                         </div>
 
-                        <form method="POST" action="{{ route('student.matric.process') }}" class="space-y-6">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('student.matric.process')); ?>" class="space-y-6">
+                            <?php echo csrf_field(); ?>
                             <div>
                                 <label for="matric_number" class="block text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
                                     <i class="fas fa-id-card mr-2 text-gray-900"></i>Matriculation Number
                                 </label>
                                 <input type="text" 
-                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 uppercase @error('matric_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 uppercase <?php $__errorArgs = ['matric_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="matric_number" 
                                        name="matric_number" 
-                                       value="{{ old('matric_number') }}" 
+                                       value="<?php echo e(old('matric_number')); ?>" 
                                        required 
                                        placeholder="Enter your matriculation number">
-                                @error('matric_number')
+                                <?php $__errorArgs = ['matric_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 <p class="mt-2 text-sm text-gray-900 dark:text-white">
                                     Enter your matriculation number exactly as it appears on your student ID.
                                 </p>
@@ -194,17 +237,32 @@
                                     <i class="fas fa-envelope mr-2 text-gray-900"></i>Email Address
                                 </label>
                                 <input type="email" 
-                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-400 bg-white dark:bg-gray-50 text-gray-900 dark:text-gray-800 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="email_matric" 
                                        name="email" 
-                                       value="{{ old('email') }}" 
+                                       value="<?php echo e(old('email')); ?>" 
                                        required 
                                        placeholder="Enter your email address">
-                                @error('email')
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 <p class="mt-2 text-sm text-gray-900 dark:text-white">
                                     We'll send your login credentials and password reset link to this email.
                                 </p>
@@ -231,24 +289,39 @@
                             </div>
                         </div>
 
-                        <form method="POST" action="{{ route('student.security.verify') }}" class="space-y-6">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('student.security.verify')); ?>" class="space-y-6">
+                            <?php echo csrf_field(); ?>
                             <div>
                                 <label for="surname" class="block text-sm font-medium text-black mb-2">
                                     <i class="fas fa-user mr-2 text-black"></i>Surname (Last Name)
                                 </label>
                                 <input type="text" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('surname') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 <?php $__errorArgs = ['surname'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="surname" 
                                        name="surname" 
-                                       value="{{ old('surname') }}" 
+                                       value="<?php echo e(old('surname')); ?>" 
                                        required 
                                        placeholder="Enter your surname as registered">
-                                @error('surname')
+                                <?php $__errorArgs = ['surname'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div>
@@ -256,38 +329,68 @@
                                     <i class="fas fa-calendar mr-2 text-black"></i>Date of Birth
                                 </label>
                                 <input type="date" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('date_of_birth') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 <?php $__errorArgs = ['date_of_birth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="date_of_birth" 
                                        name="date_of_birth" 
-                                       value="{{ old('date_of_birth') }}" 
+                                       value="<?php echo e(old('date_of_birth')); ?>" 
                                        required>
-                                @error('date_of_birth')
+                                <?php $__errorArgs = ['date_of_birth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div>
                                 <label for="program_id" class="block text-sm font-medium text-black mb-2">
                                     <i class="fas fa-graduation-cap mr-2 text-black"></i>Program of Study
                                 </label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('program_id') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 <?php $__errorArgs = ['program_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                         id="program_id" 
                                         name="program_id" 
                                         required>
                                     <option value="">Select your program</option>
-                                    @foreach($programs as $program)
-                                        <option value="{{ $program->id }}" {{ old('program_id') == $program->id ? 'selected' : '' }}>
-                                            {{ $program->name }} ({{ $program->code }})
+                                    <?php $__currentLoopData = $programs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $program): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($program->id); ?>" <?php echo e(old('program_id') == $program->id ? 'selected' : ''); ?>>
+                                            <?php echo e($program->name); ?> (<?php echo e($program->code); ?>)
                                         </option>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
-                                @error('program_id')
+                                <?php $__errorArgs = ['program_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div>
@@ -295,17 +398,32 @@
                                     <i class="fas fa-envelope mr-2 text-black"></i>Email Address
                                 </label>
                                 <input type="email" 
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 @error('email') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> border-red-300 focus:ring-red-500 focus:border-red-500 <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" 
                                        id="email_security" 
                                        name="email" 
-                                       value="{{ old('email') }}" 
+                                       value="<?php echo e(old('email')); ?>" 
                                        required 
                                        placeholder="Enter your email address">
-                                @error('email')
+                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <p class="mt-2 text-sm text-red-600 flex items-center">
-                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $message }}
+                                        <i class="fas fa-exclamation-circle mr-1"></i><?php echo e($message); ?>
+
                                     </p>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 <p class="mt-2 text-sm text-black">
                                     We'll send your login credentials and password reset link to this email.
                                 </p>
@@ -546,4 +664,6 @@
         }
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/student/auth/login.blade.php ENDPATH**/ ?>
