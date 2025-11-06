@@ -148,6 +148,12 @@ Route::prefix('student')->name('student.')->group(function() {
     Route::post('password/email/send', [StudentPasswordController::class, 'sendPasswordResetEmail'])->name('password.email.send');
     Route::get('password/reset/{token}', [StudentPasswordController::class, 'showResetForm'])->name('password.reset.form');
     Route::post('password/reset', [StudentPasswordController::class, 'resetPassword'])->name('password.reset');
+
+    // Force password change after login with default password
+    Route::middleware(['student.auth', 'student.session'])->group(function() {
+        Route::get('password/force-change', [StudentPasswordController::class, 'showForceChangeForm'])->name('password.force');
+        Route::post('password/force-change', [StudentPasswordController::class, 'forceChange'])->name('password.force.update');
+    });
 });
 
 // Transcript Staff Routes
@@ -227,6 +233,9 @@ Route::prefix('transcript/staff')->name('transcript.staff.')->group(function() {
             Route::get('admin/dashboard', [TranscriptStaffAuthController::class, 'adminDashboard'])->name('admin.dashboard');
             Route::post('admin/update-status/{id}', [TranscriptStaffAuthController::class, 'updateApplicationStatus'])->name('admin.updateStatus');
         });
-    });
 });
+});
+
+// Immediate CAPTCHA validation endpoint
+Route::post('/captcha/validate', [StudentAuthController::class, 'validateCaptcha'])->name('captcha.validate');
 

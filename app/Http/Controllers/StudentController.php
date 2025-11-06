@@ -235,7 +235,8 @@ class StudentController extends Controller
             'program_id.exists' => 'The selected program is invalid.',
         ]);
 
-        $student = Student::where('surname', $request->surname)
+        // DB column is 'lname' (last name)
+        $student = Student::where('lname', $request->surname)
             ->where('dob', $request->dob)
             ->first();
 

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -37,6 +38,28 @@ class StudentAuthController extends Controller
     }
 
     /**
+     * Validate captcha input immediately via AJAX.
+     */
+    public function validateCaptcha(Request $request)
+    {
+        $key = $request->input('key');
+        $rules = ['captcha' => ['required', $key ? ('captcha_api:' . $key) : 'captcha']];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'valid' => false,
+                'message' => 'Invalid captcha'
+            ]);
+        }
+
+        return response()->json([
+            'valid' => true,
+            'message' => 'Captcha verified'
+        ]);
+    }
+
+    /**
      * Handle student login
      */
     public function login(Request $request)
@@ -51,6 +74,12 @@ class StudentAuthController extends Controller
         if (Auth::guard('student')->attempt($credentials)) {
             $student = Auth::guard('student')->user();
             
+            // Enforce password change if logging in with default password
+            if (\Illuminate\Support\Facades\Hash::check('welcome@1', $student->password)) {
+                session()->flash('warning', 'You must change your password before proceeding.');
+                return redirect()->route('student.password.force');
+            }
+
             // Check if email is verified
             if (!$student->hasVerifiedEmail()) {
                 Auth::guard('student')->logout();
@@ -220,10 +249,11 @@ class StudentAuthController extends Controller
             'date_of_birth' => 'required|date',
             'program_id' => 'required|exists:programs,id',
             'email' => 'required|email',
+            // captcha temporarily disabled
         ]);
 
-        // Find student by security questions
-        $student = Student::where('surname', $request->surname)
+        // Find student by security questions (DB uses 'lname' for last name)
+        $student = Student::where('lname', $request->surname)
             ->where('dob', $request->date_of_birth)
             ->first();
 
@@ -275,6 +305,10 @@ class StudentAuthController extends Controller
      */
     private function sendPasswordResetWithCredentials(Student $student, $email)
     {
+        // Set default password and require change on next login
+        $student->password = Hash::make('welcome@1');
+        $student->save();
+
         // Generate password reset token
         $token = Str::random(64);
         
@@ -294,7 +328,8 @@ class StudentAuthController extends Controller
                 'student' => $student,
                 'resetUrl' => route('student.password.reset.form', ['token' => $token, 'email' => $student->email]),
                 'loginEmail' => $student->email,
-                'matricNumber' => $student->studentAcademic->matric_no ?? 'N/A'
+                'matricNumber' => $student->studentAcademic->matric_no ?? 'N/A',
+                'defaultPassword' => 'welcome@1'
             ], function ($message) use ($email, $student) {
                 $message->to($email)
                         ->subject('Password Reset & Login Credentials - ' . config('app.name'));
@@ -383,12 +418,12 @@ class StudentAuthController extends Controller
 
         if ($student->hasVerifiedEmail()) {
             return redirect()->route('student.login')
-                ->with('status', 'Email already verified. You can now login.');
+                ->with('success', 'Email already verified. You can now login.');
         }
 
         $student->sendEmailVerificationNotification();
 
-        return back()->with('status', 'Verification email sent successfully!');
+        return back()->with('success', 'Verification email sent successfully!');
     }
 
     /**
@@ -411,6 +446,7 @@ class StudentAuthController extends Controller
             $request->validate([
                 'matric_number' => 'required|string|max:20',
                 'email' => 'required|email',
+                // captcha temporarily disabled
             ]);
 
             // Find student by matric number
@@ -442,6 +478,7 @@ class StudentAuthController extends Controller
         // Original flow: Matric number only (for new users)
         $request->validate([
             'matric_number' => 'required|string|max:20',
+            // captcha temporarily disabled
         ]);
 
         // Find student by matric number
@@ -472,6 +509,8 @@ class StudentAuthController extends Controller
 
         return view('student.auth.email-update', compact('student'));
     }
+
+    // Using mews/captcha for image captcha generation and validation
 
     /**
      * Update student email and send verification

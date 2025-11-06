@@ -8,22 +8,21 @@
         <!-- Theme Toggle -->
         <div class="flex justify-end">
             <button
-                class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm"
+                class="relative flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-500 transition-all duration-200 hover:bg-gray-50 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white shadow-sm hover:shadow-md"
                 @click.prevent="toggleTheme()"
-                title="Toggle theme">
+                aria-label="Toggle theme">
                 <svg class="hidden dark:block" width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12A6 6 0 0110 4z" fill="currentColor"/>
                 </svg>
                 <svg class="dark:hidden" width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 15a5 5 0 100-10 5 5 0 000 10z" fill="currentColor"/>
                 </svg>
-                <span class="text-sm">Theme</span>
             </button>
         </div>
         
 
         <!-- Main Card -->
-        <div class="bg-white dark:bg-gray-50 rounded-2xl shadow-2xl overflow-hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
 
             <!-- Card Body -->
             <div class="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -210,9 +209,12 @@
                                 </p>
                             </div>
 
+                            {{-- Captcha temporarily disabled --}}
+
                             <div>
                                 <button type="submit" 
-                                        class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 transform hover:scale-[1.02]">
+                                        id="matricSubmit"
+                                        class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed">
                                     <i class="fas fa-paper-plane mr-2"></i>Send Password Reset Link
                                 </button>
                             </div>
@@ -311,9 +313,12 @@
                                 </p>
                             </div>
 
+                            {{-- Captcha temporarily disabled --}}
+
                             <div>
                                 <button type="submit" 
-                                        class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-200 transform hover:scale-[1.02]">
+                                        id="securitySubmit"
+                                        class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed">
                                     <i class="fas fa-search mr-2"></i>Verify & Send Reset Link
                                 </button>
                             </div>
@@ -544,6 +549,8 @@
                 }, 5000);
             });
         }
+
+        // Captcha temporarily disabled
     });
 </script>
 @endsection

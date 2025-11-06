@@ -198,4 +198,37 @@ class StudentPasswordController extends Controller
         
         return redirect()->route('student.profile')->with('success', 'Password reset successfully! You are now logged in.');
     }
+
+    /**
+     * Show force-change password form for logged-in students using default password
+     */
+    public function showForceChangeForm()
+    {
+        $student = auth('student')->user();
+        if (!$student) {
+            return redirect()->route('student.login');
+        }
+        return view('student.force_password_change', compact('student'));
+    }
+
+    /**
+     * Update password from force-change form
+     */
+    public function forceChange(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        $student = auth('student')->user();
+        if (!$student) {
+            return redirect()->route('student.login');
+        }
+
+        $student->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->route('student.dashboard')->with('success', 'Password changed successfully.');
+    }
 }

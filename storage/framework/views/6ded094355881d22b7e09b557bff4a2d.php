@@ -141,11 +141,11 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <div class="logo">{{ config('app.name') }}</div>
+            <div class="logo"><?php echo e(config('app.name')); ?></div>
             <h2 style="color: #333; margin: 0;">Password Reset & Login Credentials</h2>
         </div>
 
-        <p>Hello <strong>{{ $student->fname }} {{ $student->lname }}</strong>,</p>
+        <p>Hello <strong><?php echo e($student->fname); ?> <?php echo e($student->lname); ?></strong>,</p>
 
         <p>You requested a password reset for your account. Below are your login credentials and a secure link to reset your password.</p>
 
@@ -153,15 +153,15 @@
             <div class="credentials-title">🔐 Your Login Credentials</div>
             <div class="credential-item">
                 <span class="credential-label">Email Address:</span>
-                <span class="credential-value">{{ $loginEmail }}</span>
+                <span class="credential-value"><?php echo e($loginEmail); ?></span>
             </div>
             <div class="credential-item">
                 <span class="credential-label">Matriculation Number:</span>
-                <span class="credential-value">{{ $matricNumber }}</span>
+                <span class="credential-value"><?php echo e($matricNumber); ?></span>
             </div>
             <div class="credential-item">
                 <span class="credential-label">Temporary Password:</span>
-                <span class="credential-value">{{ $defaultPassword }}</span>
+                <span class="credential-value"><?php echo e($defaultPassword); ?></span>
             </div>
         </div>
 
@@ -175,7 +175,7 @@
         </div>
 
         <div style="text-align: center; margin: 30px 0;">
-            <a href="{{ $resetUrl }}" class="reset-button">
+            <a href="<?php echo e($resetUrl); ?>" class="reset-button">
                 🔑 Reset Your Password
             </a>
         </div>
@@ -190,12 +190,12 @@
 
         <p><strong>Alternative Login Options:</strong></p>
         <ul>
-            <li>Use your <strong>email address</strong> ({{ $loginEmail }}) and password</li>
-            <li>Use your <strong>matriculation number</strong> ({{ $matricNumber }}) for verification</li>
+            <li>Use your <strong>email address</strong> (<?php echo e($loginEmail); ?>) and password</li>
+            <li>Use your <strong>matriculation number</strong> (<?php echo e($matricNumber); ?>) for verification</li>
         </ul>
 
         <div class="footer">
-            <p>This email was sent from {{ config('app.name') }} Transcript System.</p>
+            <p>This email was sent from <?php echo e(config('app.name')); ?> Transcript System.</p>
             <p>If you have any questions, please contact our support team.</p>
             <p style="font-size: 12px; color: #999;">
                 This is an automated email. Please do not reply to this message.
@@ -203,4 +203,4 @@
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Users\Veritas ICT\Downloads\trans\transcript-system\resources\views/emails/password-reset-with-credentials.blade.php ENDPATH**/ ?>
